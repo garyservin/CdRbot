@@ -1,0 +1,779 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[s S16 `uc 1 `uc 1 `ui 1 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `ui 1 `ui 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S16 _USB_DEV_DSC bLength bDscType bcdUSB bDevCls bDevSubCls bDevProtocol bMaxPktSize0 idVendor idProduct bcdDevice iMFR iProduct iSerialNum bNumCfg ]
+[s S17 `uc 1 `uc 1 `ui 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S17 _USB_CFG_DSC bLength bDscType wTotalLength bNumIntf bCfgValue iCfg bmAttributes bMaxPower ]
+[s S18 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S18 _USB_INTF_DSC bLength bDscType bIntfNum bAltSetting bNumEPs bIntfCls bIntfSubCls bIntfProtocol iIntf ]
+[s S20 `uc 1 `ui 1 ]
+[n S20 _USB_HID_DSC_HEADER bDscType wDscLength ]
+[s S21 `uc 1 `uc 1 `ui 1 `uc 1 `uc 1 `S20 -> -> 1 `i `ux ]
+[n S21 _USB_HID_DSC bLength bDscType bcdHID bCountryCode bNumDsc hid_dsc_header ]
+[s S19 `uc 1 `uc 1 `uc 1 `uc 1 `ui 1 `uc 1 ]
+[n S19 _USB_EP_DSC bLength bDscType bEPAdr bmAttributes wMaxPktSize bInterval ]
+[s S22 `S17 1 `S18 1 `S21 1 `S19 1 `S19 1 ]
+[n S22 . cd01 i00a00 hid_i00a00 ep01i_i00a00 ep01o_i00a00 ]
+[s S23 `uc -> 29 `i ]
+[n S23 . report ]
+"74 ../usbdsc.h
+[v _hid_rpt01 `CS23 ~T0 @X0 0 e ]
+[s S48 `uc 1 `uc 1 `ui -> -> 1 `i `ux ]
+[n S48 . bLength bDscType string ]
+[s S49 `uc 1 `uc 1 `ui -> 25 `i ]
+[n S49 . bLength bDscType string ]
+[s S50 `uc 1 `uc 1 `ui -> 18 `i ]
+[n S50 . bLength bDscType string ]
+"123 ../typedefs.h
+[v F62 `(v ~T0 @X0 0 tf ]
+"152 ../hid.h
+[v _USBCheckHIDRequest `(v ~T0 @X0 0 ef ]
+[; ;typedefs.h: 40: typedef unsigned char byte;
+[; ;typedefs.h: 41: typedef unsigned int word;
+[; ;typedefs.h: 42: typedef unsigned long dword;
+[; ;typedefs.h: 44: typedef union _BYTE
+[; ;typedefs.h: 45: {
+[; ;typedefs.h: 46: byte _byte;
+[; ;typedefs.h: 47: struct
+[; ;typedefs.h: 48: {
+[; ;typedefs.h: 49: unsigned b0:1;
+[; ;typedefs.h: 50: unsigned b1:1;
+[; ;typedefs.h: 51: unsigned b2:1;
+[; ;typedefs.h: 52: unsigned b3:1;
+[; ;typedefs.h: 53: unsigned b4:1;
+[; ;typedefs.h: 54: unsigned b5:1;
+[; ;typedefs.h: 55: unsigned b6:1;
+[; ;typedefs.h: 56: unsigned b7:1;
+[; ;typedefs.h: 57: };
+[; ;typedefs.h: 58: } BYTE_t;
+[; ;typedefs.h: 60: typedef union _WORD
+[; ;typedefs.h: 61: {
+[; ;typedefs.h: 62: word _word;
+[; ;typedefs.h: 63: struct
+[; ;typedefs.h: 64: {
+[; ;typedefs.h: 65: byte byte0;
+[; ;typedefs.h: 66: byte byte1;
+[; ;typedefs.h: 67: };
+[; ;typedefs.h: 68: struct
+[; ;typedefs.h: 69: {
+[; ;typedefs.h: 70: BYTE_t Byte0;
+[; ;typedefs.h: 71: BYTE_t Byte1;
+[; ;typedefs.h: 72: };
+[; ;typedefs.h: 73: struct
+[; ;typedefs.h: 74: {
+[; ;typedefs.h: 75: BYTE_t LowB;
+[; ;typedefs.h: 76: BYTE_t HighB;
+[; ;typedefs.h: 77: };
+[; ;typedefs.h: 78: struct
+[; ;typedefs.h: 79: {
+[; ;typedefs.h: 80: byte v[2];
+[; ;typedefs.h: 81: };
+[; ;typedefs.h: 82: } WORD_t;
+[; ;typedefs.h: 86: typedef union _DWORD
+[; ;typedefs.h: 87: {
+[; ;typedefs.h: 88: dword _dword;
+[; ;typedefs.h: 89: struct
+[; ;typedefs.h: 90: {
+[; ;typedefs.h: 91: byte byte0;
+[; ;typedefs.h: 92: byte byte1;
+[; ;typedefs.h: 93: byte byte2;
+[; ;typedefs.h: 94: byte byte3;
+[; ;typedefs.h: 95: };
+[; ;typedefs.h: 96: struct
+[; ;typedefs.h: 97: {
+[; ;typedefs.h: 98: word word0;
+[; ;typedefs.h: 99: word word1;
+[; ;typedefs.h: 100: };
+[; ;typedefs.h: 101: struct
+[; ;typedefs.h: 102: {
+[; ;typedefs.h: 103: BYTE_t Byte0;
+[; ;typedefs.h: 104: BYTE_t Byte1;
+[; ;typedefs.h: 105: BYTE_t Byte2;
+[; ;typedefs.h: 106: BYTE_t Byte3;
+[; ;typedefs.h: 107: };
+[; ;typedefs.h: 108: struct
+[; ;typedefs.h: 109: {
+[; ;typedefs.h: 110: WORD_t Word0;
+[; ;typedefs.h: 111: WORD_t Word1;
+[; ;typedefs.h: 112: };
+[; ;typedefs.h: 113: struct
+[; ;typedefs.h: 114: {
+[; ;typedefs.h: 115: byte v[4];
+[; ;typedefs.h: 116: };
+[; ;typedefs.h: 117: } DWORD_t;
+[; ;typedefs.h: 123: typedef void(*pFunc)(void);
+[; ;typedefs.h: 125: typedef union _POINTER
+[; ;typedefs.h: 126: {
+[; ;typedefs.h: 127: struct
+[; ;typedefs.h: 128: {
+[; ;typedefs.h: 129: byte bLow;
+[; ;typedefs.h: 130: byte bHigh;
+[; ;typedefs.h: 132: };
+[; ;typedefs.h: 133: word _word;
+[; ;typedefs.h: 137: byte* bRam;
+[; ;typedefs.h: 139: word* wRam;
+[; ;typedefs.h: 142: const byte* bRom;
+[; ;typedefs.h: 143: const word* wRom;
+[; ;typedefs.h: 148: } POINTER_t;
+[; ;usbdefs_std_dsc.h: 122: typedef struct _USB_DEV_DSC
+[; ;usbdefs_std_dsc.h: 123: {
+[; ;usbdefs_std_dsc.h: 124: byte bLength; byte bDscType; word bcdUSB;
+[; ;usbdefs_std_dsc.h: 125: byte bDevCls; byte bDevSubCls; byte bDevProtocol;
+[; ;usbdefs_std_dsc.h: 126: byte bMaxPktSize0; word idVendor; word idProduct;
+[; ;usbdefs_std_dsc.h: 127: word bcdDevice; byte iMFR; byte iProduct;
+[; ;usbdefs_std_dsc.h: 128: byte iSerialNum; byte bNumCfg;
+[; ;usbdefs_std_dsc.h: 129: } USB_DEV_DSC;
+[; ;usbdefs_std_dsc.h: 134: typedef struct _USB_CFG_DSC
+[; ;usbdefs_std_dsc.h: 135: {
+[; ;usbdefs_std_dsc.h: 136: byte bLength; byte bDscType; word wTotalLength;
+[; ;usbdefs_std_dsc.h: 137: byte bNumIntf; byte bCfgValue; byte iCfg;
+[; ;usbdefs_std_dsc.h: 138: byte bmAttributes; byte bMaxPower;
+[; ;usbdefs_std_dsc.h: 139: } USB_CFG_DSC;
+[; ;usbdefs_std_dsc.h: 144: typedef struct _USB_INTF_DSC
+[; ;usbdefs_std_dsc.h: 145: {
+[; ;usbdefs_std_dsc.h: 146: byte bLength; byte bDscType; byte bIntfNum;
+[; ;usbdefs_std_dsc.h: 147: byte bAltSetting; byte bNumEPs; byte bIntfCls;
+[; ;usbdefs_std_dsc.h: 148: byte bIntfSubCls; byte bIntfProtocol; byte iIntf;
+[; ;usbdefs_std_dsc.h: 149: } USB_INTF_DSC;
+[; ;usbdefs_std_dsc.h: 154: typedef struct _USB_EP_DSC
+[; ;usbdefs_std_dsc.h: 155: {
+[; ;usbdefs_std_dsc.h: 156: byte bLength; byte bDscType; byte bEPAdr;
+[; ;usbdefs_std_dsc.h: 157: byte bmAttributes; word wMaxPktSize; byte bInterval;
+[; ;usbdefs_std_dsc.h: 158: } USB_EP_DSC;
+[; ;hid.h: 131: typedef struct _USB_HID_DSC_HEADER
+[; ;hid.h: 132: {
+[; ;hid.h: 133: byte bDscType;
+[; ;hid.h: 134: word wDscLength;
+[; ;hid.h: 135: } USB_HID_DSC_HEADER;
+[; ;hid.h: 137: typedef struct _USB_HID_DSC
+[; ;hid.h: 138: {
+[; ;hid.h: 139: byte bLength; byte bDscType; word bcdHID;
+[; ;hid.h: 140: byte bCountryCode; byte bNumDsc;
+[; ;hid.h: 141: USB_HID_DSC_HEADER hid_dsc_header[1];
+[; ;hid.h: 145: } USB_HID_DSC;
+[; ;hid.h: 148: extern byte hid_rpt_rx_len;
+[; ;hid.h: 151: void HIDInitEP(void);
+[; ;hid.h: 152: void USBCheckHIDRequest(void);
+[; ;hid.h: 153: void HIDTxReport(char *buffer, byte len);
+[; ;hid.h: 154: byte HIDRxReport(char *buffer, byte len);
+[; ;usbdsc.h: 53: typedef const struct { USB_CFG_DSC cd01; USB_INTF_DSC i00a00; USB_HID_DSC hid_i00a00; USB_EP_DSC ep01i_i00a00; USB_EP_DSC ep01o_i00a00; } CFG01_t;
+[; ;usbdsc.h: 62: typedef const struct{
+[; ;usbdsc.h: 63: byte report[29];
+[; ;usbdsc.h: 64: }HID_RPT01_t;
+[; ;usbdsc.h: 69: extern const USB_DEV_DSC device_dsc;
+[; ;usbdsc.h: 70: extern CFG01_t cfg01;
+[; ;usbdsc.h: 71: extern const unsigned char *const USB_CD_Ptr[];
+[; ;usbdsc.h: 72: extern const unsigned char *const USB_SD_Ptr[];
+[; ;usbdsc.h: 74: extern HID_RPT01_t hid_rpt01;
+[; ;usbdsc.h: 75: extern const pFunc ClassReqHandler[1];
+[; ;usbdefs_ep0_buff.h: 59: typedef union _CTRL_TRF_SETUP
+[; ;usbdefs_ep0_buff.h: 60: {
+[; ;usbdefs_ep0_buff.h: 62: struct
+[; ;usbdefs_ep0_buff.h: 63: {
+[; ;usbdefs_ep0_buff.h: 64: byte _byte[8];
+[; ;usbdefs_ep0_buff.h: 65: };
+[; ;usbdefs_ep0_buff.h: 68: struct
+[; ;usbdefs_ep0_buff.h: 69: {
+[; ;usbdefs_ep0_buff.h: 70: byte bmRequestType;
+[; ;usbdefs_ep0_buff.h: 71: byte bRequest;
+[; ;usbdefs_ep0_buff.h: 72: word wValue;
+[; ;usbdefs_ep0_buff.h: 73: word wIndex;
+[; ;usbdefs_ep0_buff.h: 74: word wLength;
+[; ;usbdefs_ep0_buff.h: 75: };
+[; ;usbdefs_ep0_buff.h: 76: struct
+[; ;usbdefs_ep0_buff.h: 77: {
+[; ;usbdefs_ep0_buff.h: 78: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 79: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 80: WORD_t W_Value;
+[; ;usbdefs_ep0_buff.h: 81: WORD_t W_Index;
+[; ;usbdefs_ep0_buff.h: 82: WORD_t W_Length;
+[; ;usbdefs_ep0_buff.h: 83: };
+[; ;usbdefs_ep0_buff.h: 84: struct
+[; ;usbdefs_ep0_buff.h: 85: {
+[; ;usbdefs_ep0_buff.h: 86: unsigned Recipient:5;
+[; ;usbdefs_ep0_buff.h: 87: unsigned RequestType:2;
+[; ;usbdefs_ep0_buff.h: 88: unsigned DataDir:1;
+[; ;usbdefs_ep0_buff.h: 89: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 90: byte bFeature;
+[; ;usbdefs_ep0_buff.h: 91: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 92: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 93: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 94: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 95: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 96: };
+[; ;usbdefs_ep0_buff.h: 97: struct
+[; ;usbdefs_ep0_buff.h: 98: {
+[; ;usbdefs_ep0_buff.h: 99: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 100: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 101: byte bDscIndex;
+[; ;usbdefs_ep0_buff.h: 102: byte bDscType;
+[; ;usbdefs_ep0_buff.h: 103: word wLangID;
+[; ;usbdefs_ep0_buff.h: 104: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 105: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 106: };
+[; ;usbdefs_ep0_buff.h: 107: struct
+[; ;usbdefs_ep0_buff.h: 108: {
+[; ;usbdefs_ep0_buff.h: 109: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 110: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 111: BYTE_t bDevADR;
+[; ;usbdefs_ep0_buff.h: 112: byte bDevADRH;
+[; ;usbdefs_ep0_buff.h: 113: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 114: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 115: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 116: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 117: };
+[; ;usbdefs_ep0_buff.h: 118: struct
+[; ;usbdefs_ep0_buff.h: 119: {
+[; ;usbdefs_ep0_buff.h: 120: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 121: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 122: byte bCfgValue;
+[; ;usbdefs_ep0_buff.h: 123: byte bCfgRSD;
+[; ;usbdefs_ep0_buff.h: 124: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 125: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 126: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 127: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 128: };
+[; ;usbdefs_ep0_buff.h: 129: struct
+[; ;usbdefs_ep0_buff.h: 130: {
+[; ;usbdefs_ep0_buff.h: 131: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 132: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 133: byte bAltID;
+[; ;usbdefs_ep0_buff.h: 134: byte bAltID_H;
+[; ;usbdefs_ep0_buff.h: 135: byte bIntfID;
+[; ;usbdefs_ep0_buff.h: 136: byte bIntfID_H;
+[; ;usbdefs_ep0_buff.h: 137: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 138: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 139: };
+[; ;usbdefs_ep0_buff.h: 140: struct
+[; ;usbdefs_ep0_buff.h: 141: {
+[; ;usbdefs_ep0_buff.h: 142: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 143: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 144: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 145: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 146: byte bEPID;
+[; ;usbdefs_ep0_buff.h: 147: byte bEPID_H;
+[; ;usbdefs_ep0_buff.h: 148: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 149: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 150: };
+[; ;usbdefs_ep0_buff.h: 151: struct
+[; ;usbdefs_ep0_buff.h: 152: {
+[; ;usbdefs_ep0_buff.h: 153: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 154: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 155: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 156: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 157: unsigned EPNum:4;
+[; ;usbdefs_ep0_buff.h: 158: unsigned :3;
+[; ;usbdefs_ep0_buff.h: 159: unsigned EPDir:1;
+[; ;usbdefs_ep0_buff.h: 160: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 161: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 162: unsigned :8;
+[; ;usbdefs_ep0_buff.h: 163: };
+[; ;usbdefs_ep0_buff.h: 166: } CTRL_TRF_SETUP;
+[; ;usbdefs_ep0_buff.h: 179: typedef union _CTRL_TRF_DATA
+[; ;usbdefs_ep0_buff.h: 180: {
+[; ;usbdefs_ep0_buff.h: 182: struct
+[; ;usbdefs_ep0_buff.h: 183: {
+[; ;usbdefs_ep0_buff.h: 184: byte _byte[8];
+[; ;usbdefs_ep0_buff.h: 185: };
+[; ;usbdefs_ep0_buff.h: 188: struct
+[; ;usbdefs_ep0_buff.h: 189: {
+[; ;usbdefs_ep0_buff.h: 190: byte _byte0;
+[; ;usbdefs_ep0_buff.h: 191: byte _byte1;
+[; ;usbdefs_ep0_buff.h: 192: byte _byte2;
+[; ;usbdefs_ep0_buff.h: 193: byte _byte3;
+[; ;usbdefs_ep0_buff.h: 194: byte _byte4;
+[; ;usbdefs_ep0_buff.h: 195: byte _byte5;
+[; ;usbdefs_ep0_buff.h: 196: byte _byte6;
+[; ;usbdefs_ep0_buff.h: 197: byte _byte7;
+[; ;usbdefs_ep0_buff.h: 198: };
+[; ;usbdefs_ep0_buff.h: 199: struct
+[; ;usbdefs_ep0_buff.h: 200: {
+[; ;usbdefs_ep0_buff.h: 201: word _word0;
+[; ;usbdefs_ep0_buff.h: 202: word _word1;
+[; ;usbdefs_ep0_buff.h: 203: word _word2;
+[; ;usbdefs_ep0_buff.h: 204: word _word3;
+[; ;usbdefs_ep0_buff.h: 205: };
+[; ;usbdefs_ep0_buff.h: 207: } CTRL_TRF_DATA;
+[; ;usbmmap.h: 70: typedef union _USB_DEVICE_STATUS
+[; ;usbmmap.h: 71: {
+[; ;usbmmap.h: 72: byte _byte;
+[; ;usbmmap.h: 73: struct
+[; ;usbmmap.h: 74: {
+[; ;usbmmap.h: 75: unsigned RemoteWakeup:1;
+[; ;usbmmap.h: 76: unsigned ctrl_trf_mem:1;
+[; ;usbmmap.h: 77: };
+[; ;usbmmap.h: 78: } USB_DEVICE_STATUS;
+[; ;usbmmap.h: 80: typedef union _BD_STAT
+[; ;usbmmap.h: 81: {
+[; ;usbmmap.h: 82: byte _byte;
+[; ;usbmmap.h: 83: struct{
+[; ;usbmmap.h: 84: unsigned BC8:1;
+[; ;usbmmap.h: 85: unsigned BC9:1;
+[; ;usbmmap.h: 86: unsigned BSTALL:1;
+[; ;usbmmap.h: 87: unsigned DTSEN:1;
+[; ;usbmmap.h: 88: unsigned INCDIS:1;
+[; ;usbmmap.h: 89: unsigned KEN:1;
+[; ;usbmmap.h: 90: unsigned DTS:1;
+[; ;usbmmap.h: 91: unsigned UOWN:1;
+[; ;usbmmap.h: 92: };
+[; ;usbmmap.h: 93: struct{
+[; ;usbmmap.h: 94: unsigned BC8:1;
+[; ;usbmmap.h: 95: unsigned BC9:1;
+[; ;usbmmap.h: 96: unsigned PID0:1;
+[; ;usbmmap.h: 97: unsigned PID1:1;
+[; ;usbmmap.h: 98: unsigned PID2:1;
+[; ;usbmmap.h: 99: unsigned PID3:1;
+[; ;usbmmap.h: 100: unsigned :1;
+[; ;usbmmap.h: 101: unsigned UOWN:1;
+[; ;usbmmap.h: 102: };
+[; ;usbmmap.h: 103: struct{
+[; ;usbmmap.h: 104: unsigned :2;
+[; ;usbmmap.h: 105: unsigned PID:4;
+[; ;usbmmap.h: 106: unsigned :2;
+[; ;usbmmap.h: 107: };
+[; ;usbmmap.h: 108: } BD_STAT;
+[; ;usbmmap.h: 110: typedef union _BDT
+[; ;usbmmap.h: 111: {
+[; ;usbmmap.h: 112: struct
+[; ;usbmmap.h: 113: {
+[; ;usbmmap.h: 114: BD_STAT Stat;
+[; ;usbmmap.h: 115: byte Cnt;
+[; ;usbmmap.h: 116: byte ADRL;
+[; ;usbmmap.h: 117: byte ADRH;
+[; ;usbmmap.h: 118: };
+[; ;usbmmap.h: 119: struct
+[; ;usbmmap.h: 120: {
+[; ;usbmmap.h: 121: unsigned :8;
+[; ;usbmmap.h: 122: unsigned :8;
+[; ;usbmmap.h: 123: byte* ADR;
+[; ;usbmmap.h: 124: };
+[; ;usbmmap.h: 125: } BDT;
+[; ;usbmmap.h: 128: extern byte usb_device_state;
+[; ;usbmmap.h: 129: extern USB_DEVICE_STATUS usb_stat;
+[; ;usbmmap.h: 130: extern byte usb_active_cfg;
+[; ;usbmmap.h: 131: extern byte usb_alt_intf[1];
+[; ;usbmmap.h: 133: extern volatile BDT ep0Bo;
+[; ;usbmmap.h: 134: extern volatile BDT ep0Bi;
+[; ;usbmmap.h: 135: extern volatile BDT ep1Bo;
+[; ;usbmmap.h: 136: extern volatile BDT ep1Bi;
+[; ;usbmmap.h: 167: extern volatile
+[; ;usbmmap.h: 168: CTRL_TRF_SETUP SetupPkt;
+[; ;usbmmap.h: 169: extern volatile
+[; ;usbmmap.h: 170: CTRL_TRF_DATA CtrlTrfData;
+[; ;usbmmap.h: 173: extern volatile unsigned char hid_report_out[64];
+[; ;usbmmap.h: 174: extern volatile unsigned char hid_report_in[64];
+[; ;usbdrv.h: 206: void USBCheckBusStatus(void);
+[; ;usbdrv.h: 207: void USBDriverService(void);
+[; ;usbdrv.h: 208: void USBRemoteWakeup(void);
+[; ;usbdrv.h: 209: void USBSoftDetach(void);
+[; ;usbdrv.h: 211: void ClearArray(byte* startAdr,byte count);
+[; ;usbctrltrf.h: 88: extern byte ctrl_trf_session_owner;
+[; ;usbctrltrf.h: 90: extern POINTER_t pSrc;
+[; ;usbctrltrf.h: 91: extern POINTER_t pDst;
+[; ;usbctrltrf.h: 92: extern WORD_t wCount;
+[; ;usbctrltrf.h: 95: byte USBCtrlEPService(void);
+[; ;usbctrltrf.h: 96: void USBCtrlTrfTxService(void);
+[; ;usbctrltrf.h: 97: void USBCtrlTrfRxService(void);
+[; ;usbctrltrf.h: 98: void USBCtrlEPServiceComplete(void);
+[; ;usbctrltrf.h: 99: void USBPrepareForNextSetupTrf(void);
+[; ;usb9.h: 92: void USBCheckStdRequest(void);
+"180 ../usbdsc.c
+[v _device_dsc `CS16 ~T0 @X0 1 e ]
+[i _device_dsc
+:U ..
+:U ..
+"182
+-> -> # `S16 `ui `uc
+"183
+-> -> 1 `i `uc
+"184
+-> -> 512 `i `ui
+"185
+-> -> 0 `i `uc
+"186
+-> -> 0 `i `uc
+"187
+-> -> 0 `i `uc
+"188
+-> -> 8 `i `uc
+"189
+-> -> 1240 `i `ui
+"190
+-> -> 60 `i `ui
+"191
+-> -> 2 `i `ui
+"192
+-> -> 1 `i `uc
+"193
+-> -> 2 `i `uc
+"194
+-> -> 0 `i `uc
+"196
+-> -> 1 `i `uc
+..
+..
+]
+[; ;usbdsc.c: 180: const USB_DEV_DSC device_dsc=
+[; ;usbdsc.c: 181: {
+[; ;usbdsc.c: 182: sizeof(USB_DEV_DSC),
+[; ;usbdsc.c: 183: 0x01,
+[; ;usbdsc.c: 184: 0x0200,
+[; ;usbdsc.c: 185: 0x00,
+[; ;usbdsc.c: 186: 0x00,
+[; ;usbdsc.c: 187: 0x00,
+[; ;usbdsc.c: 188: 8,
+[; ;usbdsc.c: 189: 0x04D8,
+[; ;usbdsc.c: 190: 0x003C,
+[; ;usbdsc.c: 191: 0x0002,
+[; ;usbdsc.c: 192: 0x01,
+[; ;usbdsc.c: 193: 0x02,
+[; ;usbdsc.c: 194: 0x00,
+[; ;usbdsc.c: 195: 0x01
+[; ;usbdsc.c: 196: };
+"199
+[v _cfg01 `CS22 ~T0 @X0 1 e ]
+[i _cfg01
+:U ..
+:U ..
+:U ..
+:U ..
+"201
+-> -> # `S17 `ui `uc
+"202
+-> -> 2 `i `uc
+"203
+-> # _cfg01 `ui
+"204
+-> -> 1 `i `uc
+"205
+-> -> 1 `i `uc
+"206
+-> -> 0 `i `uc
+"207
+-> | << -> 1 `i -> 7 `i << -> 1 `i -> 6 `i `uc
+"208
+-> -> 50 `i `uc
+..
+..
+:U ..
+:U ..
+"211
+-> -> # `S18 `ui `uc
+"212
+-> -> 4 `i `uc
+"213
+-> -> 0 `i `uc
+"214
+-> -> 0 `i `uc
+"215
+-> -> 2 `i `uc
+"216
+-> -> 3 `i `uc
+"217
+-> -> 0 `i `uc
+"218
+-> -> 0 `i `uc
+"219
+-> -> 0 `i `uc
+..
+..
+:U ..
+:U ..
+"222
+-> -> # `S21 `ui `uc
+"223
+-> -> 33 `i `uc
+"224
+-> -> 273 `i `ui
+"225
+-> -> 0 `i `uc
+"226
+-> -> 1 `i `uc
+:U ..
+:U ..
+"227
+-> -> 34 `i `uc
+"228
+-> # `CS23 `ui
+..
+..
+..
+..
+:U ..
+:U ..
+"231
+-> -> # `S19 `ui `uc
+-> -> 5 `i `uc
+-> -> 129 `i `uc
+-> -> 3 `i `uc
+-> -> 64 `i `ui
+-> -> 1 `i `uc
+..
+..
+:U ..
+:U ..
+"232
+-> -> # `S19 `ui `uc
+-> -> 5 `i `uc
+-> -> 1 `i `uc
+-> -> 3 `i `uc
+-> -> 64 `i `ui
+"233
+-> -> 1 `i `uc
+..
+..
+..
+..
+]
+[; ;usbdsc.c: 199: CFG01_t cfg01={
+[; ;usbdsc.c: 201: sizeof(USB_CFG_DSC),
+[; ;usbdsc.c: 202: 0x02,
+[; ;usbdsc.c: 203: sizeof(cfg01),
+[; ;usbdsc.c: 204: 1,
+[; ;usbdsc.c: 205: 1,
+[; ;usbdsc.c: 206: 0,
+[; ;usbdsc.c: 207: 0x01<<7|0x01<<6,
+[; ;usbdsc.c: 208: 50,
+[; ;usbdsc.c: 211: sizeof(USB_INTF_DSC),
+[; ;usbdsc.c: 212: 0x04,
+[; ;usbdsc.c: 213: 0,
+[; ;usbdsc.c: 214: 0,
+[; ;usbdsc.c: 215: 2,
+[; ;usbdsc.c: 216: 0x03,
+[; ;usbdsc.c: 217: 0,
+[; ;usbdsc.c: 218: 0,
+[; ;usbdsc.c: 219: 0,
+[; ;usbdsc.c: 222: sizeof(USB_HID_DSC),
+[; ;usbdsc.c: 223: 0x21,
+[; ;usbdsc.c: 224: 0x0111,
+[; ;usbdsc.c: 225: 0x00,
+[; ;usbdsc.c: 226: 1,
+[; ;usbdsc.c: 227: 0x22,
+[; ;usbdsc.c: 228: sizeof(hid_rpt01),
+[; ;usbdsc.c: 231: sizeof(USB_EP_DSC),0x05,0x81,0x03,64,0x01,
+[; ;usbdsc.c: 232: sizeof(USB_EP_DSC),0x05,0x01,0x03,64,0x01
+[; ;usbdsc.c: 233: };
+"235
+[v _sd000 `CS48 ~T0 @X0 1 e ]
+[i _sd000
+:U ..
+:U ..
+"236
+-> -> # _sd000 `ui `uc
+-> -> 3 `i `uc
+:U ..
+-> -> 1033 `i `ui
+..
+..
+..
+]
+[; ;usbdsc.c: 235: const struct{byte bLength;byte bDscType;word string[1];}sd000={
+[; ;usbdsc.c: 236: sizeof(sd000),0x03,0x0409};
+"238
+[v _sd001 `CS49 ~T0 @X0 1 e ]
+[i _sd001
+:U ..
+:U ..
+"239
+-> -> # _sd001 `ui `uc
+-> -> 3 `i `uc
+:U ..
+"240
+-> 77 `ui
+-> 105 `ui
+-> 99 `ui
+-> 114 `ui
+-> 111 `ui
+-> 99 `ui
+-> 104 `ui
+-> 105 `ui
+-> 112 `ui
+-> 32 `ui
+"241
+-> 84 `ui
+-> 101 `ui
+-> 99 `ui
+-> 104 `ui
+-> 110 `ui
+-> 111 `ui
+-> 108 `ui
+-> 111 `ui
+-> 103 `ui
+-> 121 `ui
+-> 32 `ui
+-> 73 `ui
+-> 110 `ui
+-> 99 `ui
+-> 46 `ui
+..
+..
+..
+]
+[; ;usbdsc.c: 238: const struct{byte bLength;byte bDscType;word string[25];}sd001={
+[; ;usbdsc.c: 239: sizeof(sd001),0x03,
+[; ;usbdsc.c: 240: 'M','i','c','r','o','c','h','i','p',' ',
+[; ;usbdsc.c: 241: 'T','e','c','h','n','o','l','o','g','y',' ','I','n','c','.'};
+"243
+[v _sd002 `CS50 ~T0 @X0 1 e ]
+[i _sd002
+:U ..
+:U ..
+"244
+-> -> # _sd002 `ui `uc
+-> -> 3 `i `uc
+:U ..
+"245
+-> 72 `ui
+-> 73 `ui
+-> 68 `ui
+-> 32 `ui
+-> 85 `ui
+-> 83 `ui
+-> 66 `ui
+-> 32 `ui
+-> 66 `ui
+-> 111 `ui
+-> 111 `ui
+"246
+-> 116 `ui
+-> 108 `ui
+-> 111 `ui
+-> 97 `ui
+-> 100 `ui
+-> 101 `ui
+-> 114 `ui
+..
+..
+..
+]
+[; ;usbdsc.c: 243: const struct{byte bLength;byte bDscType;word string[18];}sd002={
+[; ;usbdsc.c: 244: sizeof(sd002),0x03,
+[; ;usbdsc.c: 245: 'H','I','D',' ','U','S','B',' ','B','o','o',
+[; ;usbdsc.c: 246: 't','l','o','a','d','e','r'};
+"248
+[v _hid_rpt01 `CS23 ~T0 @X0 1 e ]
+[i _hid_rpt01
+:U ..
+:U ..
+:U ..
+"255
+-> -> 6 `i `uc
+-> -> 0 `i `uc
+-> -> 255 `i `uc
+"256
+-> -> 9 `i `uc
+-> -> 1 `i `uc
+"257
+-> -> 161 `i `uc
+-> -> 1 `i `uc
+"258
+-> -> 25 `i `uc
+-> -> 1 `i `uc
+"259
+-> -> 41 `i `uc
+-> -> 64 `i `uc
+"260
+-> -> 21 `i `uc
+-> -> 0 `i `uc
+"261
+-> -> 38 `i `uc
+-> -> 255 `i `uc
+-> -> 0 `i `uc
+"262
+-> -> 117 `i `uc
+-> -> 8 `i `uc
+"263
+-> -> 149 `i `uc
+-> -> 64 `i `uc
+"264
+-> -> 129 `i `uc
+-> -> 0 `i `uc
+"265
+-> -> 25 `i `uc
+-> -> 1 `i `uc
+"266
+-> -> 41 `i `uc
+-> -> 64 `i `uc
+"267
+-> -> 145 `i `uc
+-> -> 0 `i `uc
+"268
+-> -> 192 `i `uc
+..
+..
+..
+]
+[; ;usbdsc.c: 248: HID_RPT01_t hid_rpt01={
+[; ;usbdsc.c: 254: {
+[; ;usbdsc.c: 255: 0x06, 0x00, 0xFF,
+[; ;usbdsc.c: 256: 0x09, 0x01,
+[; ;usbdsc.c: 257: 0xA1, 0x01,
+[; ;usbdsc.c: 258: 0x19, 0x01,
+[; ;usbdsc.c: 259: 0x29, 0x40,
+[; ;usbdsc.c: 260: 0x15, 0x00,
+[; ;usbdsc.c: 261: 0x26, 0xFF, 0x00,
+[; ;usbdsc.c: 262: 0x75, 0x08,
+[; ;usbdsc.c: 263: 0x95, 0x40,
+[; ;usbdsc.c: 264: 0x81, 0x00,
+[; ;usbdsc.c: 265: 0x19, 0x01,
+[; ;usbdsc.c: 266: 0x29, 0x40,
+[; ;usbdsc.c: 267: 0x91, 0x00,
+[; ;usbdsc.c: 268: 0xC0}
+[; ;usbdsc.c: 269: };
+"71 ../usbdsc.h
+[v F157 `*Cuc ~T0 @X0 1 t ]
+"271 ../usbdsc.c
+[v _USB_CD_Ptr `C*Cuc ~T0 @X0 -> 0 `x e ]
+[i _USB_CD_Ptr
+:U ..
+"273
+[v F386 `*Cuc ~T0 @X0 1 t ]
+-> -> &U _cfg01 `C*Cuc `*Cuc
+"275
+"274
+[v F388 `*Cuc ~T0 @X0 1 t ]
+-> -> &U _cfg01 `C*Cuc `*Cuc
+..
+]
+[; ;usbdsc.c: 271: const unsigned char *const USB_CD_Ptr[]=
+[; ;usbdsc.c: 272: {
+[; ;usbdsc.c: 273: (const unsigned char *const)&cfg01,
+[; ;usbdsc.c: 274: (const unsigned char *const)&cfg01
+[; ;usbdsc.c: 275: };
+"72 ../usbdsc.h
+[v F160 `*Cuc ~T0 @X0 1 t ]
+"276 ../usbdsc.c
+[v _USB_SD_Ptr `C*Cuc ~T0 @X0 -> 0 `x e ]
+[i _USB_SD_Ptr
+:U ..
+"278
+[v F392 `*Cuc ~T0 @X0 1 t ]
+-> -> &U _sd000 `C*Cuc `*Cuc
+"279
+[v F394 `*Cuc ~T0 @X0 1 t ]
+-> -> &U _sd001 `C*Cuc `*Cuc
+"281
+"280
+[v F396 `*Cuc ~T0 @X0 1 t ]
+-> -> &U _sd002 `C*Cuc `*Cuc
+..
+]
+[; ;usbdsc.c: 276: const unsigned char *const USB_SD_Ptr[]=
+[; ;usbdsc.c: 277: {
+[; ;usbdsc.c: 278: (const unsigned char *const)&sd000,
+[; ;usbdsc.c: 279: (const unsigned char *const)&sd001,
+[; ;usbdsc.c: 280: (const unsigned char *const)&sd002
+[; ;usbdsc.c: 281: };
+"123 ../typedefs.h
+[v _pFunc `*F62 ~T0 @X0 1 t ]
+"283 ../usbdsc.c
+[v _ClassReqHandler `C*F62 ~T0 @X0 -> -> 1 `i `ux e ]
+[i _ClassReqHandler
+:U ..
+"286
+&U _USBCheckHIDRequest
+..
+]
+[; ;usbdsc.c: 283: const pFunc ClassReqHandler[1]=
+[; ;usbdsc.c: 284: {
+[; ;usbdsc.c: 285: &USBCheckHIDRequest
+[; ;usbdsc.c: 286: };

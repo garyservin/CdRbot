@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Fri 03 May 2013 12:40:44 AM PYT
+EESchema Schematic File Version 2  date Fri 03 May 2013 04:10:01 PM PYT
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -29,6 +29,7 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:CdRbot-cache
 EELAYER 24 0
 EELAYER END
 $Descr A4 11693 8268
@@ -411,4 +412,99 @@ Wire Wire Line
 	1950 2400 1950 2450
 Wire Wire Line
 	1950 2850 1950 2900
+$Comp
+L CONN_3 K?
+U 1 1 51841825
+P 1300 3450
+F 0 "K?" V 1250 3450 50  0000 C CNN
+F 1 "CONN_3" V 1350 3450 40  0000 C CNN
+F 2 "~" H 1300 3450 60  0000 C CNN
+F 3 "~" H 1300 3450 60  0000 C CNN
+	1    1300 3450
+	-1   0    0    1   
+$EndComp
+Text GLabel 1700 3450 2    60   Input ~ 0
+VDD
+Text GLabel 1700 3550 2    60   Input ~ 0
+VSS
+Wire Wire Line
+	1650 3450 1700 3450
+Wire Wire Line
+	1700 3550 1650 3550
+$Comp
+L CONN_3 K?
+U 1 1 518418CD
+P 1300 3850
+F 0 "K?" V 1250 3850 50  0000 C CNN
+F 1 "CONN_3" V 1350 3850 40  0000 C CNN
+F 2 "~" H 1300 3850 60  0000 C CNN
+F 3 "~" H 1300 3850 60  0000 C CNN
+	1    1300 3850
+	-1   0    0    1   
+$EndComp
+Text GLabel 1700 3850 2    60   Input ~ 0
+VDD
+Text GLabel 1700 3950 2    60   Input ~ 0
+VSS
+Wire Wire Line
+	1650 3850 1700 3850
+Wire Wire Line
+	1700 3950 1650 3950
+$Comp
+L CONN_3 K?
+U 1 1 518418D7
+P 1300 4650
+F 0 "K?" V 1250 4650 50  0000 C CNN
+F 1 "CONN_3" V 1350 4650 40  0000 C CNN
+F 2 "~" H 1300 4650 60  0000 C CNN
+F 3 "~" H 1300 4650 60  0000 C CNN
+	1    1300 4650
+	-1   0    0    1   
+$EndComp
+Text GLabel 1700 4650 2    60   Input ~ 0
+VDD
+Text GLabel 1700 4750 2    60   Input ~ 0
+VSS
+Wire Wire Line
+	1650 4650 1700 4650
+Wire Wire Line
+	1700 4750 1650 4750
+$Comp
+L CONN_3 K?
+U 1 1 518418E1
+P 1300 4250
+F 0 "K?" V 1250 4250 50  0000 C CNN
+F 1 "CONN_3" V 1350 4250 40  0000 C CNN
+F 2 "~" H 1300 4250 60  0000 C CNN
+F 3 "~" H 1300 4250 60  0000 C CNN
+	1    1300 4250
+	-1   0    0    1   
+$EndComp
+Text GLabel 1700 4250 2    60   Input ~ 0
+VDD
+Text GLabel 1700 4350 2    60   Input ~ 0
+VSS
+Wire Wire Line
+	1650 4250 1700 4250
+Wire Wire Line
+	1700 4350 1650 4350
+$Comp
+L CONN_3 K?
+U 1 1 518418EB
+P 1300 5050
+F 0 "K?" V 1250 5050 50  0000 C CNN
+F 1 "CONN_3" V 1350 5050 40  0000 C CNN
+F 2 "~" H 1300 5050 60  0000 C CNN
+F 3 "~" H 1300 5050 60  0000 C CNN
+	1    1300 5050
+	-1   0    0    1   
+$EndComp
+Text GLabel 1700 5050 2    60   Input ~ 0
+VDD
+Text GLabel 1700 5150 2    60   Input ~ 0
+VSS
+Wire Wire Line
+	1650 5050 1700 5050
+Wire Wire Line
+	1700 5150 1650 5150
 $EndSCHEMATC

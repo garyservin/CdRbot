@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Fri 03 May 2013 04:10:01 PM PYT
+EESchema Schematic File Version 2  date Fri 03 May 2013 06:52:44 PM PYT
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -29,6 +29,7 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:open-project
 LIBS:CdRbot-cache
 EELAYER 24 0
 EELAYER END
@@ -262,7 +263,7 @@ OSC2
 Connection ~ 1500 7100
 Connection ~ 800  7100
 Text GLabel 4150 2400 0    60   Input ~ 0
-MCLR
+MCLR/VPP
 Text GLabel 4150 4750 0    60   Input ~ 0
 OSC1
 Text GLabel 4150 4850 0    60   Input ~ 0
@@ -507,4 +508,152 @@ Wire Wire Line
 	1650 5050 1700 5050
 Wire Wire Line
 	1700 5150 1650 5150
+$Comp
+L MICRO-B_USB U?
+U 1 1 5184322D
+P 2050 7200
+F 0 "U?" H 2050 6900 50  0000 C CNN
+F 1 "MICRO-B_USB" H 2050 7500 50  0000 C CNN
+F 2 "~" H 2050 7200 60  0000 C CNN
+F 3 "~" H 2050 7200 60  0000 C CNN
+	1    2050 7200
+	1    0    0    -1  
+$EndComp
+Text GLabel 2300 7100 2    60   Input ~ 0
+D-
+Text GLabel 2300 7200 2    60   Input ~ 0
+D+
+$Comp
+L VSS #PWR?
+U 1 1 5184323C
+P 2300 7450
+F 0 "#PWR?" H 2300 7450 30  0001 C CNN
+F 1 "VSS" H 2300 7380 30  0000 C CNN
+F 2 "" H 2300 7450 60  0000 C CNN
+F 3 "" H 2300 7450 60  0000 C CNN
+	1    2300 7450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2250 7100 2300 7100
+Wire Wire Line
+	2300 7200 2250 7200
+Wire Wire Line
+	2250 7400 2300 7400
+Wire Wire Line
+	2300 7400 2300 7450
+$Comp
+L SW_PUSH SW?
+U 1 1 51843DBA
+P 1450 1600
+F 0 "SW?" H 1600 1710 50  0000 C CNN
+F 1 "RESET" H 1450 1520 50  0000 C CNN
+F 2 "~" H 1450 1600 60  0000 C CNN
+F 3 "~" H 1450 1600 60  0000 C CNN
+	1    1450 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_PUSH SW?
+U 1 1 51843DCD
+P 2900 1600
+F 0 "SW?" H 3050 1710 50  0000 C CNN
+F 1 "PROG" H 2900 1520 50  0000 C CNN
+F 2 "~" H 2900 1600 60  0000 C CNN
+F 3 "~" H 2900 1600 60  0000 C CNN
+	1    2900 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 51843DDC
+P 1800 1250
+F 0 "R?" V 1880 1250 40  0000 C CNN
+F 1 "R" V 1807 1251 40  0000 C CNN
+F 2 "~" V 1730 1250 30  0000 C CNN
+F 3 "~" H 1800 1250 30  0000 C CNN
+	1    1800 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 51843DEB
+P 3250 1250
+F 0 "R?" V 3330 1250 40  0000 C CNN
+F 1 "R" V 3257 1251 40  0000 C CNN
+F 2 "~" V 3180 1250 30  0000 C CNN
+F 3 "~" H 3250 1250 30  0000 C CNN
+	1    3250 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L VDD #PWR?
+U 1 1 51843E0E
+P 1800 950
+F 0 "#PWR?" H 1800 1050 30  0001 C CNN
+F 1 "VDD" H 1800 1060 30  0000 C CNN
+F 2 "" H 1800 950 60  0000 C CNN
+F 3 "" H 1800 950 60  0000 C CNN
+	1    1800 950 
+	1    0    0    -1  
+$EndComp
+$Comp
+L VDD #PWR?
+U 1 1 51843E1D
+P 3250 950
+F 0 "#PWR?" H 3250 1050 30  0001 C CNN
+F 1 "VDD" H 3250 1060 30  0000 C CNN
+F 2 "" H 3250 950 60  0000 C CNN
+F 3 "" H 3250 950 60  0000 C CNN
+	1    3250 950 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1800 1000 1800 950 
+Wire Wire Line
+	3200 1600 3300 1600
+Wire Wire Line
+	3250 1500 3250 1600
+Wire Wire Line
+	1800 1500 1800 1600
+Wire Wire Line
+	1750 1600 1850 1600
+Wire Wire Line
+	3250 950  3250 1000
+$Comp
+L VSS #PWR?
+U 1 1 518441C7
+P 2550 1650
+F 0 "#PWR?" H 2550 1650 30  0001 C CNN
+F 1 "VSS" H 2550 1580 30  0000 C CNN
+F 2 "" H 2550 1650 60  0000 C CNN
+F 3 "" H 2550 1650 60  0000 C CNN
+	1    2550 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L VSS #PWR?
+U 1 1 518441E0
+P 1100 1650
+F 0 "#PWR?" H 1100 1650 30  0001 C CNN
+F 1 "VSS" H 1100 1580 30  0000 C CNN
+F 2 "" H 1100 1650 60  0000 C CNN
+F 3 "" H 1100 1650 60  0000 C CNN
+	1    1100 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1150 1600 1100 1600
+Wire Wire Line
+	1100 1600 1100 1650
+Wire Wire Line
+	2600 1600 2550 1600
+Wire Wire Line
+	2550 1600 2550 1650
+Text GLabel 1850 1600 2    60   Input ~ 0
+MCLR/VPP
+Connection ~ 1800 1600
+Text GLabel 3300 1600 2    60   Input ~ 0
+RB4
+Connection ~ 3250 1600
 $EndSCHEMATC

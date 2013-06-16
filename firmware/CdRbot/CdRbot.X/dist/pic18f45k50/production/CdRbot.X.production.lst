@@ -1,0 +1,912 @@
+
+
+Microchip Technology PIC18 LITE Macro Assembler V1.11 build 48931 
+                                                                                               Thu May 16 18:57:37 2013
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 48931
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 48931"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	18F45K50
+     8  0000                     porta	equ	0F80h
+     9  0000                     portb	equ	0F81h
+    10  0000                     portc	equ	0F82h
+    11  0000                     portd	equ	0F83h
+    12  0000                     porte	equ	0F84h
+    13  0000                     lata	equ	0F89h
+    14  0000                     latb	equ	0F8Ah
+    15  0000                     latc	equ	0F8Bh
+    16  0000                     latd	equ	0F8Ch
+    17  0000                     late	equ	0F8Dh
+    18  0000                     trisa	equ	0F92h
+    19  0000                     trisb	equ	0F93h
+    20  0000                     trisc	equ	0F94h
+    21  0000                     trisd	equ	0F95h
+    22  0000                     trise	equ	0F96h
+    23  0000                     pie1	equ	0F9Dh
+    24  0000                     pir1	equ	0F9Eh
+    25  0000                     ipr1	equ	0F9Fh
+    26  0000                     pie2	equ	0FA0h
+    27  0000                     pir2	equ	0FA1h
+    28  0000                     ipr2	equ	0FA2h
+    29  0000                     t3con	equ	0FB1h
+    30  0000                     tmr3l	equ	0FB2h
+    31  0000                     tmr3h	equ	0FB3h
+    32  0000                     ccp1con	equ	0FBDh
+    33  0000                     ccpr1l	equ	0FBEh
+    34  0000                     ccpr1h	equ	0FBFh
+    35  0000                     adcon1	equ	0FC1h
+    36  0000                     adcon0	equ	0FC2h
+    37  0000                     adresl	equ	0FC3h
+    38  0000                     adresh	equ	0FC4h
+    39  0000                     sspcon2	equ	0FC5h
+    40  0000                     sspcon1	equ	0FC6h
+    41  0000                     sspstat	equ	0FC7h
+    42  0000                     sspadd	equ	0FC8h
+    43  0000                     sspbuf	equ	0FC9h
+    44  0000                     t2con	equ	0FCAh
+    45  0000                     pr2	equ	0FCBh
+    46  0000                     tmr2	equ	0FCCh
+    47  0000                     t1con	equ	0FCDh
+    48  0000                     tmr1l	equ	0FCEh
+    49  0000                     tmr1h	equ	0FCFh
+    50  0000                     rcon	equ	0FD0h
+    51  0000                     wdtcon	equ	0FD1h
+    52  0000                     lvdcon	equ	0FD2h
+    53  0000                     osccon	equ	0FD3h
+    54  0000                     t0con	equ	0FD5h
+    55  0000                     tmr0l	equ	0FD6h
+    56  0000                     tmr0h	equ	0FD7h
+    57  0000                     status	equ	0FD8h
+    58  0000                     fsr2	equ	0FD9h
+    59  0000                     fsr2l	equ	0FD9h
+    60  0000                     fsr2h	equ	0FDAh
+    61  0000                     plusw2	equ	0FDBh
+    62  0000                     preinc2	equ	0FDCh
+    63  0000                     postdec2	equ	0FDDh
+    64  0000                     postinc2	equ	0FDEh
+    65  0000                     indf2	equ	0FDFh
+    66  0000                     bsr	equ	0FE0h
+    67  0000                     fsr1	equ	0FE1h
+    68  0000                     fsr1l	equ	0FE1h
+    69  0000                     fsr1h	equ	0FE2h
+    70  0000                     plusw1	equ	0FE3h
+    71  0000                     preinc1	equ	0FE4h
+    72  0000                     postdec1	equ	0FE5h
+    73  0000                     postinc1	equ	0FE6h
+    74  0000                     indf1	equ	0FE7h
+    75  0000                     wreg	equ	0FE8h
+    76  0000                     fsr0	equ	0FE9h
+    77  0000                     fsr0l	equ	0FE9h
+    78  0000                     fsr0h	equ	0FEAh
+    79  0000                     plusw0	equ	0FEBh
+    80  0000                     preinc0	equ	0FECh
+    81  0000                     postdec0	equ	0FEDh
+    82  0000                     postinc0	equ	0FEEh
+    83  0000                     indf0	equ	0FEFh
+    84  0000                     intcon3	equ	0FF0h
+    85  0000                     intcon2	equ	0FF1h
+    86  0000                     intcon	equ	0FF2h
+    87  0000                     prod	equ	0FF3h
+    88  0000                     prodl	equ	0FF3h
+    89  0000                     prodh	equ	0FF4h
+    90  0000                     tablat	equ	0FF5h
+    91  0000                     tblptr	equ	0FF6h
+    92  0000                     tblptrl	equ	0FF6h
+    93  0000                     tblptrh	equ	0FF7h
+    94  0000                     tblptru	equ	0FF8h
+    95  0000                     pcl	equ	0FF9h
+    96  0000                     pclat	equ	0FFAh
+    97  0000                     pclath	equ	0FFAh
+    98  0000                     pclatu	equ	0FFBh
+    99  0000                     stkptr	equ	0FFCh
+   100  0000                     tosl	equ	0FFDh
+   101  0000                     tosh	equ	0FFEh
+   102  0000                     tosu	equ	0FFFh
+   103                           skipnz macro
+   104                           	btfsc	status,2
+   105  0000                     	endm
+   106                           	global	__ramtop
+   107                           	global	__accesstop
+   108                           # 46 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   109  0000                     SRCON1 equ 0F57h ;# 
+   110                           # 107 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   111  0000                     SRCON0 equ 0F58h ;# 
+   112                           # 177 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   113  0000                     CCPTMRS equ 0F59h ;# 
+   114                           # 203 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   115  0000                     VREGCON equ 0F5Ah ;# 
+   116                           # 222 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   117  0000                     ANSELA equ 0F5Bh ;# 
+   118                           # 266 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   119  0000                     ANSELB equ 0F5Ch ;# 
+   120                           # 315 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   121  0000                     ANSELC equ 0F5Dh ;# 
+   122                           # 348 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   123  0000                     ANSELD equ 0F5Eh ;# 
+   124                           # 409 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   125  0000                     ANSELE equ 0F5Fh ;# 
+   126                           # 440 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   127  0000                     UCON equ 0F60h ;# 
+   128                           # 490 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   129  0000                     USTAT equ 0F61h ;# 
+   130                           # 549 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   131  0000                     UCFG equ 0F62h ;# 
+   132                           # 630 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   133  0000                     UADDR equ 0F63h ;# 
+   134                           # 693 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   135  0000                     UIE equ 0F64h ;# 
+   136                           # 748 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   137  0000                     UIR equ 0F65h ;# 
+   138                           # 803 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   139  0000                     UEIE equ 0F66h ;# 
+   140                           # 853 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   141  0000                     UEIR equ 0F67h ;# 
+   142                           # 903 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   143  0000                     UFRM equ 0F68h ;# 
+   144                           # 909 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   145  0000                     UFRML equ 0F68h ;# 
+   146                           # 986 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   147  0000                     UFRMH equ 0F69h ;# 
+   148                           # 1025 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   149  0000                     UEP0 equ 0F6Ah ;# 
+   150                           # 1156 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   151  0000                     UEP1 equ 0F6Bh ;# 
+   152                           # 1287 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   153  0000                     UEP2 equ 0F6Ch ;# 
+   154                           # 1418 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   155  0000                     UEP3 equ 0F6Dh ;# 
+   156                           # 1549 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   157  0000                     UEP4 equ 0F6Eh ;# 
+   158                           # 1680 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   159  0000                     UEP5 equ 0F6Fh ;# 
+   160                           # 1811 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   161  0000                     UEP6 equ 0F70h ;# 
+   162                           # 1942 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   163  0000                     UEP7 equ 0F71h ;# 
+   164                           # 2073 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   165  0000                     UEP8 equ 0F72h ;# 
+   166                           # 2160 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   167  0000                     UEP9 equ 0F73h ;# 
+   168                           # 2247 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   169  0000                     UEP10 equ 0F74h ;# 
+   170                           # 2334 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   171  0000                     UEP11 equ 0F75h ;# 
+   172                           # 2421 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   173  0000                     UEP12 equ 0F76h ;# 
+   174                           # 2508 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   175  0000                     UEP13 equ 0F77h ;# 
+   176                           # 2595 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   177  0000                     UEP14 equ 0F78h ;# 
+   178                           # 2682 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   179  0000                     UEP15 equ 0F79h ;# 
+   180                           # 2769 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   181  0000                     SLRCON equ 0F7Ah ;# 
+   182                           # 2812 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   183  0000                     VREFCON2 equ 0F7Bh ;# 
+   184                           # 2863 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   185  0000                     VREFCON1 equ 0F7Ch ;# 
+   186                           # 2923 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   187  0000                     VREFCON0 equ 0F7Dh ;# 
+   188                           # 2982 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   189  0000                     PMD0 equ 0F7Eh ;# 
+   190                           # 3066 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   191  0000                     PMD1 equ 0F7Fh ;# 
+   192                           # 3147 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   193  0000                     PORTA equ 0F80h ;# 
+   194                           # 3300 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   195  0000                     PORTB equ 0F81h ;# 
+   196                           # 3409 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   197  0000                     PORTC equ 0F82h ;# 
+   198                           # 3562 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   199  0000                     PORTD equ 0F83h ;# 
+   200                           # 3682 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   201  0000                     PORTE equ 0F84h ;# 
+   202                           # 3926 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   203  0000                     IOCB equ 0F86h ;# 
+   204                           # 3964 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   205  0000                     IOCC equ 0F87h ;# 
+   206                           # 4020 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   207  0000                     CTMUICON equ 0F88h ;# 
+   208                           # 4095 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   209  0000                     LATA equ 0F89h ;# 
+   210                           # 4227 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   211  0000                     LATB equ 0F8Ah ;# 
+   212                           # 4359 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   213  0000                     LATC equ 0F8Bh ;# 
+   214                           # 4486 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   215  0000                     LATD equ 0F8Ch ;# 
+   216                           # 4618 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   217  0000                     LATE equ 0F8Dh ;# 
+   218                           # 4720 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   219  0000                     CTMUCONL equ 0F8Eh ;# 
+   220                           # 4725 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   221  0000                     CTMUCON1 equ 0F8Eh ;# 
+   222                           # 4873 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   223  0000                     CTMUCONH equ 0F8Fh ;# 
+   224                           # 4878 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   225  0000                     CTMUCON0 equ 0F8Fh ;# 
+   226                           # 5028 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   227  0000                     CCPR2 equ 0F90h ;# 
+   228                           # 5034 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   229  0000                     CCPR2L equ 0F90h ;# 
+   230                           # 5053 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   231  0000                     CCPR2H equ 0F91h ;# 
+   232                           # 5072 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   233  0000                     TRISA equ 0F92h ;# 
+   234                           # 5077 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   235  0000                     DDRA equ 0F92h ;# 
+   236                           # 5281 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   237  0000                     TRISB equ 0F93h ;# 
+   238                           # 5286 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   239  0000                     DDRB equ 0F93h ;# 
+   240                           # 5502 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   241  0000                     TRISC equ 0F94h ;# 
+   242                           # 5507 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   243  0000                     DDRC equ 0F94h ;# 
+   244                           # 5697 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   245  0000                     TRISD equ 0F95h ;# 
+   246                           # 5702 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   247  0000                     DDRD equ 0F95h ;# 
+   248                           # 5918 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   249  0000                     TRISE equ 0F96h ;# 
+   250                           # 5923 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   251  0000                     DDRE equ 0F96h ;# 
+   252                           # 6033 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   253  0000                     CCP2CON equ 0F97h ;# 
+   254                           # 6038 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   255  0000                     ECCP2CON equ 0F97h ;# 
+   256                           # 6188 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   257  0000                     CM1CON0 equ 0F98h ;# 
+   258                           # 6310 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   259  0000                     CM2CON0 equ 0F99h ;# 
+   260                           # 6432 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   261  0000                     CM2CON1 equ 0F9Ah ;# 
+   262                           # 6493 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   263  0000                     OSCTUNE equ 0F9Bh ;# 
+   264                           # 6562 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   265  0000                     HLVDCON equ 0F9Ch ;# 
+   266                           # 6631 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   267  0000                     PIE1 equ 0F9Dh ;# 
+   268                           # 6729 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   269  0000                     PIR1 equ 0F9Eh ;# 
+   270                           # 6827 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   271  0000                     IPR1 equ 0F9Fh ;# 
+   272                           # 6925 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   273  0000                     PIE2 equ 0FA0h ;# 
+   274                           # 7023 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   275  0000                     PIR2 equ 0FA1h ;# 
+   276                           # 7121 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   277  0000                     IPR2 equ 0FA2h ;# 
+   278                           # 7219 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   279  0000                     PIE3 equ 0FA3h ;# 
+   280                           # 7300 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   281  0000                     PIR3 equ 0FA4h ;# 
+   282                           # 7346 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   283  0000                     IPR3 equ 0FA5h ;# 
+   284                           # 7392 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   285  0000                     EECON1 equ 0FA6h ;# 
+   286                           # 7457 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   287  0000                     EECON2 equ 0FA7h ;# 
+   288                           # 7476 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   289  0000                     EEDATA equ 0FA8h ;# 
+   290                           # 7482 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   291  0000                     EEADR equ 0FA9h ;# 
+   292                           # 7488 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   293  0000                     RCSTA1 equ 0FABh ;# 
+   294                           # 7493 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   295  0000                     RCSTA equ 0FABh ;# 
+   296                           # 7697 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   297  0000                     TXSTA1 equ 0FACh ;# 
+   298                           # 7702 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   299  0000                     TXSTA equ 0FACh ;# 
+   300                           # 7994 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   301  0000                     TXREG1 equ 0FADh ;# 
+   302                           # 7999 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   303  0000                     TXREG equ 0FADh ;# 
+   304                           # 8031 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   305  0000                     RCREG1 equ 0FAEh ;# 
+   306                           # 8036 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   307  0000                     RCREG equ 0FAEh ;# 
+   308                           # 8068 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   309  0000                     SPBRG1 equ 0FAFh ;# 
+   310                           # 8073 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   311  0000                     SPBRG equ 0FAFh ;# 
+   312                           # 8205 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   313  0000                     SPBRGH1 equ 0FB0h ;# 
+   314                           # 8210 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   315  0000                     SPBRGH equ 0FB0h ;# 
+   316                           # 8342 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   317  0000                     T3CON equ 0FB1h ;# 
+   318                           # 8472 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   319  0000                     TMR3 equ 0FB2h ;# 
+   320                           # 8478 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   321  0000                     TMR3L equ 0FB2h ;# 
+   322                           # 8497 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   323  0000                     TMR3H equ 0FB3h ;# 
+   324                           # 8516 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   325  0000                     T3GCON equ 0FB4h ;# 
+   326                           # 8646 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   327  0000                     ACTCON equ 0FB5h ;# 
+   328                           # 8651 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   329  0000                     STCON equ 0FB5h ;# 
+   330                           # 8851 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   331  0000                     ECCP1AS equ 0FB6h ;# 
+   332                           # 8984 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   333  0000                     PWM1CON equ 0FB7h ;# 
+   334                           # 8989 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   335  0000                     ECCP1DEL equ 0FB7h ;# 
+   336                           # 9133 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   337  0000                     BAUDCON1 equ 0FB8h ;# 
+   338                           # 9138 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   339  0000                     BAUDCON equ 0FB8h ;# 
+   340                           # 9142 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   341  0000                     BAUDCTL equ 0FB8h ;# 
+   342                           # 9684 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   343  0000                     PSTR1CON equ 0FB9h ;# 
+   344                           # 9759 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   345  0000                     T2CON equ 0FBAh ;# 
+   346                           # 9829 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   347  0000                     PR2 equ 0FBBh ;# 
+   348                           # 9848 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   349  0000                     TMR2 equ 0FBCh ;# 
+   350                           # 9867 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   351  0000                     CCP1CON equ 0FBDh ;# 
+   352                           # 9872 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   353  0000                     ECCP1CON equ 0FBDh ;# 
+   354                           # 10058 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   355  0000                     CCPR1 equ 0FBEh ;# 
+   356                           # 10064 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   357  0000                     CCPR1L equ 0FBEh ;# 
+   358                           # 10083 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   359  0000                     CCPR1H equ 0FBFh ;# 
+   360                           # 10102 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   361  0000                     ADCON2 equ 0FC0h ;# 
+   362                           # 10172 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   363  0000                     ADCON1 equ 0FC1h ;# 
+   364                           # 10239 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   365  0000                     ADCON0 equ 0FC2h ;# 
+   366                           # 10324 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   367  0000                     ADRESL equ 0FC3h ;# 
+   368                           # 10330 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   369  0000                     ADRESH equ 0FC4h ;# 
+   370                           # 10336 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   371  0000                     SSP1CON2 equ 0FC5h ;# 
+   372                           # 10341 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   373  0000                     SSPCON2 equ 0FC5h ;# 
+   374                           # 10779 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   375  0000                     SSP1CON1 equ 0FC6h ;# 
+   376                           # 10784 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   377  0000                     SSPCON equ 0FC6h ;# 
+   378                           # 10788 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   379  0000                     SSP1CON equ 0FC6h ;# 
+   380                           # 10792 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   381  0000                     SSPCON1 equ 0FC6h ;# 
+   382                           # 11332 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   383  0000                     SSP1STAT equ 0FC7h ;# 
+   384                           # 11337 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   385  0000                     SSPSTAT equ 0FC7h ;# 
+   386                           # 11991 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   387  0000                     SSP1ADD equ 0FC8h ;# 
+   388                           # 11996 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   389  0000                     SSPADD equ 0FC8h ;# 
+   390                           # 12412 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   391  0000                     SSP1BUF equ 0FC9h ;# 
+   392                           # 12417 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   393  0000                     SSPBUF equ 0FC9h ;# 
+   394                           # 12449 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   395  0000                     SSP1MSK equ 0FCAh ;# 
+   396                           # 12454 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   397  0000                     SSPMSK equ 0FCAh ;# 
+   398                           # 12586 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   399  0000                     SSP1CON3 equ 0FCBh ;# 
+   400                           # 12591 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   401  0000                     SSPCON3 equ 0FCBh ;# 
+   402                           # 12707 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   403  0000                     T1GCON equ 0FCCh ;# 
+   404                           # 12837 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   405  0000                     T1CON equ 0FCDh ;# 
+   406                           # 12949 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   407  0000                     TMR1 equ 0FCEh ;# 
+   408                           # 12955 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   409  0000                     TMR1L equ 0FCEh ;# 
+   410                           # 12974 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   411  0000                     TMR1H equ 0FCFh ;# 
+   412                           # 12993 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   413  0000                     RCON equ 0FD0h ;# 
+   414                           # 13125 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   415  0000                     WDTCON equ 0FD1h ;# 
+   416                           # 13152 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   417  0000                     OSCCON2 equ 0FD2h ;# 
+   418                           # 13213 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   419  0000                     OSCCON equ 0FD3h ;# 
+   420                           # 13295 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   421  0000                     T0CON equ 0FD5h ;# 
+   422                           # 13364 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   423  0000                     TMR0 equ 0FD6h ;# 
+   424                           # 13370 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   425  0000                     TMR0L equ 0FD6h ;# 
+   426                           # 13389 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   427  0000                     TMR0H equ 0FD7h ;# 
+   428                           # 13408 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   429  0000                     STATUS equ 0FD8h ;# 
+   430                           # 13486 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   431  0000                     FSR2 equ 0FD9h ;# 
+   432                           # 13492 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   433  0000                     FSR2L equ 0FD9h ;# 
+   434                           # 13511 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   435  0000                     FSR2H equ 0FDAh ;# 
+   436                           # 13517 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   437  0000                     BSR equ 0FE0h ;# 
+   438                           # 13523 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   439  0000                     FSR1 equ 0FE1h ;# 
+   440                           # 13529 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   441  0000                     FSR1L equ 0FE1h ;# 
+   442                           # 13548 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   443  0000                     FSR1H equ 0FE2h ;# 
+   444                           # 13554 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   445  0000                     WREG equ 0FE8h ;# 
+   446                           # 13573 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   447  0000                     FSR0 equ 0FE9h ;# 
+   448                           # 13579 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   449  0000                     FSR0L equ 0FE9h ;# 
+   450                           # 13598 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   451  0000                     FSR0H equ 0FEAh ;# 
+   452                           # 13604 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   453  0000                     INDF0 equ 0FEFh ;# 
+   454                           # 13623 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   455  0000                     INTCON3 equ 0FF0h ;# 
+   456                           # 13714 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   457  0000                     INTCON2 equ 0FF1h ;# 
+   458                           # 13790 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   459  0000                     INTCON equ 0FF2h ;# 
+   460                           # 13916 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   461  0000                     PROD equ 0FF3h ;# 
+   462                           # 13922 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   463  0000                     PRODL equ 0FF3h ;# 
+   464                           # 13941 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   465  0000                     PRODH equ 0FF4h ;# 
+   466                           # 13960 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   467  0000                     TABLAT equ 0FF5h ;# 
+   468                           # 13981 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   469  0000                     TBLPTR equ 0FF6h ;# 
+   470                           # 13987 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   471  0000                     TBLPTRL equ 0FF6h ;# 
+   472                           # 14006 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   473  0000                     TBLPTRH equ 0FF7h ;# 
+   474                           # 14025 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   475  0000                     TBLPTRU equ 0FF8h ;# 
+   476                           # 14033 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   477  0000                     PCLAT equ 0FF9h ;# 
+   478                           # 14040 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   479  0000                     PC equ 0FF9h ;# 
+   480                           # 14046 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   481  0000                     PCL equ 0FF9h ;# 
+   482                           # 14065 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   483  0000                     PCLATH equ 0FFAh ;# 
+   484                           # 14084 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   485  0000                     PCLATU equ 0FFBh ;# 
+   486                           # 14090 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   487  0000                     STKPTR equ 0FFCh ;# 
+   488                           # 14163 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   489  0000                     TOS equ 0FFDh ;# 
+   490                           # 14169 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   491  0000                     TOSL equ 0FFDh ;# 
+   492                           # 14188 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   493  0000                     TOSH equ 0FFEh ;# 
+   494                           # 14207 "/opt/microchip/xc8/v1.11/include/pic18f45k50.h"
+   495  0000                     TOSU equ 0FFFh ;# 
+   496                           	FNROOT	_main
+   497                           	global	_LATC0
+   498  0000                     _LATC0	set	0x7C58
+   499                           	global	_TRISC0
+   500  0000                     _TRISC0	set	0x7CA0
+   501                           psect	text0,class=CODE,space=0,reloc=2
+   502                           global __ptext0
+   503  007FBA                     __ptext0:
+   504                           ; #config settings
+   505                           	file	"/tmp/cgtn3oMI9"
+   506                           	line	#
+   507                           psect	cinit,class=CODE,delta=1,reloc=2
+   508                           global __pcinit
+   509  007FB4                     __pcinit:
+   510                           global start_initialization
+   511  007FB4                     start_initialization:
+   512                           
+   513                           global __initialization
+   514  007FB4                     __initialization:
+   515                           psect cinit,class=CODE,delta=1
+   516                           global end_of_initialization,__end_of__initialization
+   517                           
+   518                           ;End of C runtime variable initialization code
+   519                           
+   520  007FB4                     end_of_initialization:
+   521  007FB4                     __end_of__initialization:movlb 0
+   522  007FB6  EFDD  F03F         goto _main	;jump to C main() function
+   523                           psect	cstackCOMRAM,class=COMRAM,space=1
+   524                           global __pcstackCOMRAM
+   525  000001                     __pcstackCOMRAM:
+   526  000001                     ?_main:	; 0 bytes @ 0x0
+   527  000001                     ??_main:	; 0 bytes @ 0x0
+   528                           	global	main@i
+   529  000001                     main@i:	; 2 bytes @ 0x0
+   530  000001                     	ds   2
+   531                           ;!
+   532                           ;!Data Sizes:
+   533                           ;!    Strings     0
+   534                           ;!    Constant    0
+   535                           ;!    Data        0
+   536                           ;!    BSS         0
+   537                           ;!    Persistent  0
+   538                           ;!    Stack       0
+   539                           ;!
+   540                           ;!Auto Spaces:
+   541                           ;!    Space          Size  Autos    Used
+   542                           ;!    COMRAM           95      2       2
+   543                           ;!    BANK0           160      0       0
+   544                           ;!    BANK1           256      0       0
+   545                           ;!    BANK2           256      0       0
+   546                           ;!    BANK3           256      0       0
+   547                           ;!    BANK4           256      0       0
+   548                           ;!    BANK5           256      0       0
+   549                           ;!    BANK6           256      0       0
+   550                           ;!    BANK7           256      0       0
+   551                           
+   552                           ;!
+   553                           ;!Pointer List with Targets:
+   554                           ;!
+   555                           ;!    None.
+   556                           
+   557                           
+   558                           ;!
+   559                           ;!Critical Paths under _main in COMRAM
+   560                           ;!
+   561                           ;!    None.
+   562                           ;!
+   563                           ;!Critical Paths under _main in BANK0
+   564                           ;!
+   565                           ;!    None.
+   566                           ;!
+   567                           ;!Critical Paths under _main in BANK1
+   568                           ;!
+   569                           ;!    None.
+   570                           ;!
+   571                           ;!Critical Paths under _main in BANK2
+   572                           ;!
+   573                           ;!    None.
+   574                           ;!
+   575                           ;!Critical Paths under _main in BANK3
+   576                           ;!
+   577                           ;!    None.
+   578                           ;!
+   579                           ;!Critical Paths under _main in BANK4
+   580                           ;!
+   581                           ;!    None.
+   582                           ;!
+   583                           ;!Critical Paths under _main in BANK5
+   584                           ;!
+   585                           ;!    None.
+   586                           ;!
+   587                           ;!Critical Paths under _main in BANK6
+   588                           ;!
+   589                           ;!    None.
+   590                           ;!
+   591                           ;!Critical Paths under _main in BANK7
+   592                           ;!
+   593                           ;!    None.
+   594                           
+   595 ;;
+   596 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   597 ;;
+   598                           
+   599                           ;!
+   600                           ;!Call Graph Tables:
+   601                           ;!
+   602                           ;! ---------------------------------------------------------------------------------
+   603                           ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   604                           ;! ---------------------------------------------------------------------------------
+   605                           ;! (0) _main                                                 2     2      0      30
+   606                           ;!                                              0 COMRAM     2     2      0
+   607                           ;! ---------------------------------------------------------------------------------
+   608                           ;! Estimated maximum stack depth 0
+   609                           ;! ---------------------------------------------------------------------------------
+   610                           ;!
+   611                           ;! Call Graph Graphs:
+   612                           ;!
+   613                           ;! _main (ROOT)
+   614                           ;!
+   615                           
+   616                           ;! Address spaces:
+   617                           
+   618                           ;!Name               Size   Autos  Total    Cost      Usage
+   619                           ;!BITCOMRAM           5F      0       0       0        0.0%
+   620                           ;!EEDATA             100      0       0       0        0.0%
+   621                           ;!NULL                 0      0       0       0        0.0%
+   622                           ;!CODE                 0      0       0       0        0.0%
+   623                           ;!COMRAM              5F      2       2       1        2.1%
+   624                           ;!STACK                0      0       0       2        0.0%
+   625                           ;!DATA                 0      0       0       3        0.0%
+   626                           ;!BITBANK0            A0      0       0       4        0.0%
+   627                           ;!BANK0               A0      0       0       5        0.0%
+   628                           ;!ABS                  0      0       0       6        0.0%
+   629                           ;!BITBANK1           100      0       0       7        0.0%
+   630                           ;!BANK1              100      0       0       8        0.0%
+   631                           ;!BITBANK2           100      0       0       9        0.0%
+   632                           ;!BANK2              100      0       0      10        0.0%
+   633                           ;!BITBANK3           100      0       0      11        0.0%
+   634                           ;!BANK3              100      0       0      12        0.0%
+   635                           ;!BITBANK4           100      0       0      13        0.0%
+   636                           ;!BANK4              100      0       0      14        0.0%
+   637                           ;!BITBANK5           100      0       0      15        0.0%
+   638                           ;!BANK5              100      0       0      16        0.0%
+   639                           ;!BITBANK6           100      0       0      17        0.0%
+   640                           ;!BANK6              100      0       0      18        0.0%
+   641                           ;!BITBANK7           100      0       0      19        0.0%
+   642                           ;!BANK7              100      0       0      20        0.0%
+   643                           ;!BIGRAM             7FF      0       0      21        0.0%
+   644                           ;!BITSFR_1             0      0       0      40        0.0%
+   645                           ;!SFR_1                0      0       0      40        0.0%
+   646                           ;!BITSFR               0      0       0      40        0.0%
+   647                           ;!SFR                  0      0       0      40        0.0%
+   648                           
+   649                           	global	_main
+   650                           
+   651 ;; *************** function _main *****************
+   652 ;; Defined at:
+   653 ;;		line 11 in file "../main.c"
+   654 ;; Parameters:    Size  Location     Type
+   655 ;;		None
+   656 ;; Auto vars:     Size  Location     Type
+   657 ;;  i               2    0[COMRAM] int 
+   658 ;; Return value:  Size  Location     Type
+   659 ;;		None               void
+   660 ;; Registers used:
+   661 ;;		wreg, status,2, status,0
+   662 ;; Tracked objects:
+   663 ;;		On entry : 0/0
+   664 ;;		On exit  : 0/0
+   665 ;;		Unchanged: 0/0
+   666 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+   667 ;;      Params:         0       0       0       0       0       0       0       0       0
+   668 ;;      Locals:         2       0       0       0       0       0       0       0       0
+   669 ;;      Temps:          0       0       0       0       0       0       0       0       0
+   670 ;;      Totals:         2       0       0       0       0       0       0       0       0
+   671 ;;Total ram usage:        2 bytes
+   672 ;; This function calls:
+   673 ;;		Nothing
+   674 ;; This function is called by:
+   675 ;;		Startup code after reset
+   676 ;; This function uses a non-reentrant model
+   677 ;;
+   678                           psect	text0
+   679                           psect	text0
+   680                           	file	"../main.c"
+   681                           	line	11
+   682                           	global	__size_of_main
+   683  0000                     	__size_of_main	equ	__end_of_main-_main
+   684                           	
+   685  007FBA                     _main:
+   686                           	opt	stack 31
+   687                           	line	13
+   688                           	
+   689  007FBA                     l590:
+   690                           ;main.c: 12: int i;
+   691                           ;main.c: 13: LATC0 = 0;
+   692  007FBA  908B               	bcf	c:(31832/8),(31832)&7	;volatile
+   693                           	line	14
+   694                           ;main.c: 14: TRISC0 = 0;
+   695  007FBC  9094               	bcf	c:(31904/8),(31904)&7	;volatile
+   696                           	line	16
+   697                           ;main.c: 16: for(;;){
+   698                           	
+   699  007FBE                     l7:
+   700                           	line	17
+   701                           ;main.c: 17: LATC0 = !LATC0;
+   702  007FBE  708B               	btg	c:(31832/8),(31832)&7	;volatile
+   703                           	line	18
+   704                           	
+   705  007FC0                     l592:
+   706                           ;main.c: 18: for (i=0;i<30000;i++){
+   707  007FC0  0E00               	movlw	high(0)
+   708  007FC2  6E02               	movwf	((c:main@i+1)),c
+   709  007FC4  0E00               	movlw	low(0)
+   710  007FC6  6E01               	movwf	((c:main@i)),c
+   711                           	
+   712  007FC8                     l594:
+   713  007FC8  5002               	movf	((c:main@i+1)),c,w
+   714  007FCA  0A80               	xorlw	80h
+   715  007FCC  0F0B               	addlw	-((075h)^80h)
+   716  007FCE  0E30               	movlw	030h
+   717  007FD0  B4D8               	btfsc	status,2
+   718  007FD2  5C01               	subwf	((c:main@i)),c,w
+   719  007FD4  A0D8               	btfss	status,0
+   720  007FD6  D001               	goto	u11
+   721  007FD8  D001               	goto	u10
+   722  007FDA                     u11:
+   723  007FDA  D002               	goto	l598
+   724  007FDC                     u10:
+   725  007FDC  D7F0               	goto	l7
+   726                           	
+   727  007FDE                     l596:
+   728  007FDE  D7EF               	goto	l7
+   729                           	
+   730  007FE0                     l8:
+   731                           	
+   732  007FE0                     l598:
+   733  007FE0  4A01               	infsnz	((c:main@i)),c
+   734  007FE2  2A02               	incf	((c:main@i+1)),c
+   735                           	
+   736  007FE4                     l600:
+   737  007FE4  5002               	movf	((c:main@i+1)),c,w
+   738  007FE6  0A80               	xorlw	80h
+   739  007FE8  0F0B               	addlw	-((075h)^80h)
+   740  007FEA  0E30               	movlw	030h
+   741  007FEC  B4D8               	btfsc	status,2
+   742  007FEE  5C01               	subwf	((c:main@i)),c,w
+   743  007FF0  A0D8               	btfss	status,0
+   744  007FF2  D001               	goto	u21
+   745  007FF4  D001               	goto	u20
+   746  007FF6                     u21:
+   747  007FF6  D7F4               	goto	l598
+   748  007FF8                     u20:
+   749  007FF8  D7E2               	goto	l7
+   750                           	
+   751  007FFA                     l9:
+   752                           	line	20
+   753                           ;main.c: 19: }
+   754                           ;main.c: 20: }
+   755  007FFA  D7E1               	goto	l7
+   756                           	
+   757  007FFC                     l10:
+   758                           	line	22
+   759                           	
+   760  007FFC                     l11:
+   761                           	global	start
+   762  007FFC  EF00  F000         	goto	start
+   763                           	opt stack 0
+   764                           GLOBAL	__end_of_main
+   765  008000                     	__end_of_main:
+   766                           	signat	_main,88
+   767                           	GLOBAL	__activetblptr
+   768  0000                     __activetblptr	EQU	0
+   769                           	psect	intsave_regs,class=BIGRAM,space=1
+   770                           psect	text1,class=CODE,space=0,reloc=2
+   771                           global __ptext1
+   772  000000                     __ptext1:
+   773                           	PSECT	rparam,class=COMRAM,space=1
+   774                           	GLOBAL	__Lrparam
+   775                           	FNCONF	rparam,??,?
+   776                           GLOBAL	__Lparam, __Hparam
+   777                           GLOBAL	__Lrparam, __Hrparam
+   778  0000                     __Lparam	EQU	__Lrparam
+   779  0000                     __Hparam	EQU	__Hrparam
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      2       2
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0      30
+                                              0 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      2       2       1        2.1%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+ABS                  0      0       0       6        0.0%
+BITBANK1           100      0       0       7        0.0%
+BANK1              100      0       0       8        0.0%
+BITBANK2           100      0       0       9        0.0%
+BANK2              100      0       0      10        0.0%
+BITBANK3           100      0       0      11        0.0%
+BANK3              100      0       0      12        0.0%
+BITBANK4           100      0       0      13        0.0%
+BANK4              100      0       0      14        0.0%
+BITBANK5           100      0       0      15        0.0%
+BANK5              100      0       0      16        0.0%
+BITBANK6           100      0       0      17        0.0%
+BANK6              100      0       0      18        0.0%
+BITBANK7           100      0       0      19        0.0%
+BANK7              100      0       0      20        0.0%
+BIGRAM             7FF      0       0      21        0.0%
+BITSFR_1             0      0       0      40        0.0%
+SFR_1                0      0       0      40        0.0%
+BITSFR               0      0       0      40        0.0%
+SFR                  0      0       0      40        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V1.11 build 48931 
+Symbol Table                                                                                   Thu May 16 18:57:37 2013
+
+                      l7 7FBE                        l8 7FE0                        l9 7FFA  
+                     l10 7FFC                       l11 7FFC                       u10 7FDC  
+                     u11 7FDA                       u20 7FF8                       u21 7FF6  
+                    l600 7FE4                      l590 7FBA                      l592 7FC0  
+                    l594 7FC8                      l596 7FDE                      l598 7FE0  
+                   _main 7FBA                     start 0000                    ?_main 0001  
+                  _LATC0 007C58                    main@i 0001                    status 000FD8  
+        __initialization 7FB4             __end_of_main 8000                   ??_main 0001  
+          __activetblptr 000000                   _TRISC0 007CA0               __accesstop 0060  
+__end_of__initialization 7FB4           __pcstackCOMRAM 0001                  __Hparam 0000  
+                __Lparam 0000                  __pcinit 7FB4                  __ramtop 0800  
+                __ptext0 7FBA                  __ptext1 0000     end_of_initialization 7FB4  
+    start_initialization 7FB4                 __Hrparam 0000                 __Lrparam 0000  
+          __size_of_main 0046  

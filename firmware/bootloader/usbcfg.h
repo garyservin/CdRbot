@@ -37,23 +37,22 @@
 /** D E F I N I T I O N S *******************************************/
 #define MAX_NUM_INT             1   // For tracking Alternate Setting
 #define EP0_BUFF_SIZE           8   // Valid Options: 8, 16, 32, or 64 bytes.
-// There is little advantage in using 
-// more than 8 bytes on EP0 IN/OUT in most cases.
+									// There is little advantage in using 
+									// more than 8 bytes on EP0 IN/OUT in most cases.
 
 /* Parameter definitions are defined in usbdrv.h */
-#define MODE_PP                 _PPBM0  //pingpong mode disabled on all endpoint
+#define MODE_PP                 _PPBM0
 #define UCFG_VAL                _PUEN|_TRINT|_FS|MODE_PP
 
-#define CDRBOT
 
-#if defined(CDRBOT)
-//#define USE_SELF_POWER_SENSE_IO	//See MCHPFSUSB Firmware User's Guide
-//#define USE_USB_BUS_SENSE_IO		//(DS51679) for more details about these features.
-
-#else
-#error Not a supported board (yet), See __FILE__, line __LINE__, or double click on this text.
-//See above commented section.  You need to select the features your hardware will be using.
+/* Make sure the proper hardware platform is being used*/
+#if defined(__18F2550)
+	#define CDRBOT_2550
 #endif
+#if defined(__18F25K50)
+    #define CDRBOT_25K50
+#endif
+
 
 /** D E V I C E  C L A S S  U S A G E *******************************/
 #define USB_USE_HID
@@ -87,13 +86,13 @@
 #define mUSBGetHIDDscAdr(ptr)               \
 {                                           \
     if(usb_active_cfg == 1)                 \
-        ptr = (const byte*)&cfg01.hid_i00a00; \
+        ptr = (rom byte*)&cfg01.hid_i00a00; \
 }
 
 #define mUSBGetHIDRptDscAdr(ptr)            \
 {                                           \
     if(usb_active_cfg == 1)                 \
-        ptr = (const byte*)&hid_rpt01;        \
+        ptr = (rom byte*)&hid_rpt01;        \
 }
 
 #define mUSBGetHIDRptDscSize(count)         \

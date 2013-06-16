@@ -55,7 +55,7 @@ typedef union _BYTE
         unsigned b6:1;
         unsigned b7:1;
     };
-} BYTE_t;
+} BYTE;
 
 typedef union _WORD
 {
@@ -67,19 +67,19 @@ typedef union _WORD
     };
     struct
     {
-        BYTE_t Byte0;
-        BYTE_t Byte1;
+        BYTE Byte0;
+        BYTE Byte1;
     };
     struct
     {
-        BYTE_t LowB;
-        BYTE_t HighB;
+        BYTE LowB;
+        BYTE HighB;
     };
     struct
     {
         byte v[2];
     };
-} WORD_t;
+} WORD;
 #define LSB(a)      ((a).v[0])
 #define MSB(a)      ((a).v[1])
 
@@ -100,21 +100,21 @@ typedef union _DWORD
     };
     struct
     {
-        BYTE_t Byte0;
-        BYTE_t Byte1;
-        BYTE_t Byte2;
-        BYTE_t Byte3;
+        BYTE Byte0;
+        BYTE Byte1;
+        BYTE Byte2;
+        BYTE Byte3;
     };
     struct
     {
-        WORD_t Word0;
-        WORD_t Word1;
+        WORD Word0;
+        WORD Word1;
     };
     struct
     {
         byte v[4];
     };
-} DWORD_t;
+} DWORD;
 #define LOWER_LSB(a)    ((a).v[0])
 #define LOWER_MSB(a)    ((a).v[1])
 #define UPPER_LSB(a)    ((a).v[2])
@@ -139,17 +139,17 @@ typedef union _POINTER
     word* wRam;                         // Ram word poitner: 2 bytes poitner pointing
                                         // to 2 bytes of data
 
-    const byte* bRom;                     // Size depends on compiler setting
-    const word* wRom;
+    rom byte* bRom;                     // Size depends on compiler setting
+    rom word* wRom;
     //rom near byte* nbRom;               // Near = 2 bytes pointer
     //rom near word* nwRom;
     //rom far byte* fbRom;                // Far = 3 bytes pointer
     //rom far word* fwRom;
-} POINTER_t;
-/*
+} POINTER;
+
 typedef enum _BOOL { FALSE = 0, TRUE } BOOL;
 
 #define OK      TRUE
 #define FAIL    FALSE
-*/
+
 #endif //TYPEDEFS_H

@@ -39,19 +39,18 @@
  ********************************************************************/
 
 /** I N C L U D E S **********************************************************/
-//#include <p18cxxx.h>
-#include <xc.h>
+#include <p18cxxx.h>
 #include "typedefs.h"
 #include "usb.h"
 
 /** V A R I A B L E S ********************************************************/
-//#pragma udata
+#pragma udata
 byte ctrl_trf_state;                // Control Transfer State
 byte ctrl_trf_session_owner;        // Current transfer session owner
 
-POINTER_t pSrc;                       // Data source pointer
-POINTER_t pDst;                       // Data destination pointer
-WORD_t wCount;                        // Data counter
+POINTER pSrc;                       // Data source pointer
+POINTER pDst;                       // Data destination pointer
+WORD wCount;                        // Data counter
 
 /********************************************************************
 Bug Fix: May 14, 2007 (#F7)
@@ -75,7 +74,7 @@ void USBCtrlTrfOutHandler(void);
 void USBCtrlTrfInHandler(void);
 
 /** D E C L A R A T I O N S **************************************************/
-//#pragma code
+#pragma code
 /******************************************************************************
  * Function:        void USBCtrlEPService(void)
  *
@@ -101,11 +100,11 @@ Bug Fix: May 14, 2007
 ********************************************************************/
 byte USBCtrlEPService(void)
 {
-    if(USTAT == EP00_OUT)	//Poll 4-byte USTATfifo.
-							//Here came ISR for endpoint:0, direction: OUT
-    {        UIRbits.TRNIF = 0;	//Clear interrupt flag of UIR(hope it will not clear other pending ISRs)
+    if(USTAT == EP00_OUT)
+    {
+        UIRbits.TRNIF = 0;
 
-		//Get the PID of this frame. If the current EP0 OUT buffer has a SETUP packet
+		//If the current EP0 OUT buffer has a SETUP packet
         if(ep0Bo.Stat.PID == SETUP_TOKEN)
         {
 	        //Check if the SETUP transaction data went into the CtrlTrfData buffer.
@@ -369,7 +368,7 @@ If not, then the original endpoint setup code will be executed.
  *****************************************************************************/
 void USBCtrlTrfTxService(void)
 {
-    WORD_t byte_to_send;
+    WORD byte_to_send;
 
     /*
      * First, have to figure out how many byte of data to send.
@@ -407,7 +406,7 @@ if a short packet has been sent or not.
     /*
      * Next, load the number of bytes to send to BC9..0 in buffer descriptor
      */
-    ep0Bi.Stat.BC9 = 0;		//Perform longish bitfield write with OR
+    ep0Bi.Stat.BC9 = 0;
     ep0Bi.Stat.BC8 = 0;
     ep0Bi.Stat._byte |= MSB(byte_to_send);
     ep0Bi.Cnt = LSB(byte_to_send);
@@ -464,7 +463,7 @@ if a short packet has been sent or not.
  *****************************************************************************/
 void USBCtrlTrfRxService(void)
 {
-    WORD_t byte_to_read;
+    WORD byte_to_read;
 
     MSB(byte_to_read) = 0x03 & ep0Bo.Stat._byte;    // Filter out last 2 bits
     LSB(byte_to_read) = ep0Bo.Cnt;

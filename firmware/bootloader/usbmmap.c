@@ -153,7 +153,7 @@
 #include "usb.h"
 
 /** U S B  G L O B A L  V A R I A B L E S ************************************/
-//#pragma udata
+#pragma udata
 byte usb_device_state;          // Device States: DETACHED, ATTACHED, ...
 USB_DEVICE_STATUS usb_stat;     // Global USB flags
 byte usb_active_cfg;            // Value of current configuration
@@ -163,9 +163,8 @@ byte usb_alt_intf[MAX_NUM_INT]; // Array to keep track of the current alternate
 /** U S B  F I X E D  L O C A T I O N  V A R I A B L E S *********************/
 #if defined(__18F14K50) || defined(__18F13K50) || defined(__18LF14K50) || defined(__18LF13K50)
 	#pragma udata usbram2=0x200     //See Linker Script, dual port SRAM memory on these devices is:0x200-0x2FF(256-byte)
-        #error
 #else
-	//#pragma udata usb4=0x400     //See Linker Script,usb4:0x400-0x4FF(256-byte)
+	#pragma udata usb4=0x400     //See Linker Script,usb4:0x400-0x4FF(256-byte)
 #endif
 
 /******************************************************************************
@@ -176,17 +175,13 @@ byte usb_alt_intf[MAX_NUM_INT]; // Array to keep track of the current alternate
  *****************************************************************************/
 
 #if(0 <= MAX_EP_NUMBER)
-volatile BDT //__section("usb4")
-ep0Bo     @0x400 ;   //Endpoint #0 BD Out
-volatile BDT //__section("usb4")
-ep0Bi		@0x404;         //Endpoint #0 BD In
+volatile far BDT ep0Bo;         //Endpoint #0 BD Out
+volatile far BDT ep0Bi;         //Endpoint #0 BD In
 #endif
 
 #if(1 <= MAX_EP_NUMBER)
-volatile  BDT //__section("usb4")
-ep1Bo	@0x408;         //Endpoint #1 BD Out
-volatile  BDT //__section("usb4")
-ep1Bi	@0x40C;         //Endpoint #1 BD In
+volatile far BDT ep1Bo;         //Endpoint #1 BD Out
+volatile far BDT ep1Bi;         //Endpoint #1 BD In
 #endif
 
 #if(2 <= MAX_EP_NUMBER)
@@ -274,10 +269,8 @@ volatile far BDT ep15Bi;        //Endpoint #15 BD In
  *
  * - Both data types are defined in system\usb\usbdefs\usbdefs_ep0_buff.h
  *****************************************************************************/
-volatile  CTRL_TRF_SETUP //__section("usb4")
-SetupPkt	@0x500;
-volatile  CTRL_TRF_DATA  //__section("usb4")
-CtrlTrfData	@0x600;
+volatile far CTRL_TRF_SETUP SetupPkt;
+volatile far CTRL_TRF_DATA CtrlTrfData;
 
 /******************************************************************************
  * Section C: HID Buffer
@@ -285,10 +278,10 @@ CtrlTrfData	@0x600;
  *
  *****************************************************************************/
 #if defined(USB_USE_HID)
-volatile  unsigned char   hid_report_out[HID_INT_OUT_EP_SIZE] @0x700;
-volatile  unsigned char   hid_report_in[HID_INT_IN_EP_SIZE] @0x740;
+volatile far unsigned char hid_report_out[HID_INT_OUT_EP_SIZE];
+volatile far unsigned char hid_report_in[HID_INT_IN_EP_SIZE];
 #endif
 
-//#pragma udata
+#pragma udata
 
 /** EOF usbmmap.c ************************************************************/

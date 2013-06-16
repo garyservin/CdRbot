@@ -23,7 +23,7 @@
  * license.
  *
  * THIS SOFTWARE IS PROVIDED IN AN “AS IS” CONDITION. NO WARRANTIES,
- * WHETHER EXPRESS, 0.2822IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
+ * WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
  * TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
  * PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
  * IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
@@ -130,12 +130,11 @@ extern USB_DEVICE_STATUS usb_stat;
 extern byte usb_active_cfg;
 extern byte usb_alt_intf[MAX_NUM_INT];
 
-extern volatile  BDT ep0Bo;          //Endpoint #0 BD Out
-extern volatile  BDT ep0Bi;          //Endpoint #0 BD In
-extern volatile  BDT ep1Bo;          //Endpoint #1 BD Out
-extern volatile  BDT ep1Bi;          //Endpoint #1 BD In
-/*
- * extern volatile far BDT ep2Bo;          //Endpoint #2 BD Out
+extern volatile far BDT ep0Bo;          //Endpoint #0 BD Out
+extern volatile far BDT ep0Bi;          //Endpoint #0 BD In
+extern volatile far BDT ep1Bo;          //Endpoint #1 BD Out
+extern volatile far BDT ep1Bi;          //Endpoint #1 BD In
+extern volatile far BDT ep2Bo;          //Endpoint #2 BD Out
 extern volatile far BDT ep2Bi;          //Endpoint #2 BD In
 extern volatile far BDT ep3Bo;          //Endpoint #3 BD Out
 extern volatile far BDT ep3Bi;          //Endpoint #3 BD In
@@ -163,15 +162,13 @@ extern volatile far BDT ep14Bo;         //Endpoint #14 BD Out
 extern volatile far BDT ep14Bi;         //Endpoint #14 BD In
 extern volatile far BDT ep15Bo;         //Endpoint #15 BD Out
 extern volatile far BDT ep15Bi;         //Endpoint #15 BD In
-*/
-extern volatile 
-CTRL_TRF_SETUP SetupPkt;
-extern volatile 
-CTRL_TRF_DATA CtrlTrfData;
+
+extern volatile far CTRL_TRF_SETUP SetupPkt;
+extern volatile far CTRL_TRF_DATA CtrlTrfData;
 
 #if defined(USB_USE_HID)
-extern volatile  unsigned char hid_report_out[HID_INT_OUT_EP_SIZE];
-extern volatile  unsigned char hid_report_in[HID_INT_IN_EP_SIZE];
+extern volatile far unsigned char hid_report_out[HID_INT_OUT_EP_SIZE];
+extern volatile far unsigned char hid_report_in[HID_INT_IN_EP_SIZE];
 #endif
 
 #endif //USBMMAP_H

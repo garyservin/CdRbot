@@ -11,10 +11,10 @@ UsedLibrary="/opt/eagle/lbr/dimensions.lbr"
 UsedLibrary="/opt/eagle/lbr/holes.lbr"
 UsedLibrary="/opt/eagle/lbr/jump-0r-smd.lbr"
 UsedLibrary="/opt/eagle/lbr/jumper.lbr"
-UsedLibrary="/home/gary/Dropbox/work/eagle/lbr/adafruit.lbr"
 UsedLibrary="/home/gary/Dropbox/work/eagle/lbr/dp_devices.lbr"
 UsedLibrary="/home/gary/Dropbox/work/eagle/lbr/gary.lbr"
 UsedLibrary="/home/gary/Dropbox/Apps/CircuitHub/parts/eagle/CircuitHub.lbr"
+UsedLibrary="/home/gary/src/Adafruit-Eagle-Library/adafruit.lbr"
 
 [Win_1]
 Type="Control Panel"

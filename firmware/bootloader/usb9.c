@@ -36,14 +36,13 @@
  ********************************************************************/
 
 /** I N C L U D E S **********************************************************/
-//#include <p18cxxx.h>
-#include <xc.h>
+#include <p18cxxx.h>
 #include "typedefs.h"
 #include "usb.h"
 #include "io_cfg.h"                     // Required for self_power status
 
 /** V A R I A B L E S ********************************************************/
-//#pragma udata
+#pragma udata
 
 /** P R I V A T E  P R O T O T Y P E S ***************************************/
 void USBStdGetDscHandler(void);
@@ -52,7 +51,7 @@ void USBStdGetStatusHandler(void);
 void USBStdFeatureReqHandler(void);
 
 /** D E C L A R A T I O N S **************************************************/
-//#pragma code
+#pragma code
 /******************************************************************************
  * Function:        void USBCheckStdRequest(void)
  *
@@ -71,7 +70,7 @@ void USBStdFeatureReqHandler(void);
  *****************************************************************************/
 void USBCheckStdRequest(void)
 {   
-    if(SetupPkt.RequestType != STANDARD) return;	//verifies only two bits of bmRequestType.Type != 0b00
+    if(SetupPkt.RequestType != STANDARD) return;
     
     switch(SetupPkt.bRequest)
     {
@@ -137,13 +136,13 @@ void USBCheckStdRequest(void)
  *****************************************************************************/
 void USBStdGetDscHandler(void)
 {
-    if(SetupPkt.bmRequestType == 0x80)	//Device to host, standard Request and device is recepient
+    if(SetupPkt.bmRequestType == 0x80)
     {
         switch(SetupPkt.bDscType)
         {
             case DSC_DEV:
                 ctrl_trf_session_owner = MUID_USB9;
-                pSrc.bRom = (const byte*)&device_dsc;
+                pSrc.bRom = (rom byte*)&device_dsc;
                 wCount._word = sizeof(device_dsc);          // Set data count
                 break;
             case DSC_CFG:

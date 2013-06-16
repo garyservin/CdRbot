@@ -31,7 +31,7 @@ DEFAULTCONF=pic18f25k50
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=pic18f25k50 pic18f45k50 pic18f14k50 pic18f4550 
+ALLCONFS=pic18f25k50 
 
 
 # build
@@ -46,18 +46,12 @@ ALLCONFS=pic18f25k50 pic18f45k50 pic18f14k50 pic18f4550
 # clobber
 .clobber-impl: .clobber-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=pic18f25k50 clean
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=pic18f45k50 clean
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=pic18f14k50 clean
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=pic18f4550 clean
 
 
 
 # all
 .all-impl: .all-pre .depcheck-impl
 	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=pic18f25k50 build
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=pic18f45k50 build
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=pic18f14k50 build
-	    ${MAKE} SUBPROJECTS=${SUBPROJECTS} CONF=pic18f4550 build
 
 
 

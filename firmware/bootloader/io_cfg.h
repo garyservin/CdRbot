@@ -47,39 +47,57 @@
 #define INPUT_PIN           1
 #define OUTPUT_PIN          0
 
-// CdRbot Board
-#if defined(CDRBOT)
 /** U S B ***********************************************************/
-// Se necesita para que no genere error
+#define tris_usb_bus_sense  TRISAbits.TRISA1    // Input
+
+#if defined(USE_USB_BUS_SENSE_IO)
+#define usb_bus_sense       PORTAbits.RA1
+#else
 #define usb_bus_sense       1
+#endif
+
+#define tris_self_power     TRISAbits.TRISA2    // Input
+
+#if defined(USE_SELF_POWER_SENSE_IO)
+#define self_power          PORTAbits.RA2
+#else
 #define self_power          1
+#endif
+
+// External Transceiver Interface
+#define tris_usb_vpo        TRISBbits.TRISB3    // Output
+#define tris_usb_vmo        TRISBbits.TRISB2    // Output
+#define tris_usb_rcv        TRISAbits.TRISA4    // Input
+#define tris_usb_vp         TRISCbits.TRISC5    // Input
+#define tris_usb_vm         TRISCbits.TRISC4    // Input
+#define tris_usb_oe         TRISCbits.TRISC1    // Output
+
+#define tris_usb_suspnd     TRISAbits.TRISA3    // Output
 
 /** L E D ***********************************************************/
-#define mInitAllLEDs()		LATC &= 0xFE; TRISC &= 0xFE;  //RC0
-#define mLED_1			LATCbits.LATC0
+#define mInitAllLEDs()      LATC &= 0xF0; TRISC &= 0xF0;
 
-#define mLED_1_On()		mLED_1 = 1;
-#define mLED_1_Off()		mLED_1 = 0;
-#define mLED_1_Toggle()		mLED_1 = !mLED_1;
-
+#define mLED_1              LATCbits.LATC0
+#define mLED_1_On()         mLED_1 = 1;
+#define mLED_1_Off()        mLED_1 = 0;
+#define mLED_1_Toggle()     mLED_1 = !mLED_1;
 /** S W I T C H *****************************************************/
-#if defined(__PIC18F25K50)
-#define programSwitch		PORTAbits.RA7
-#elif defined(__PIC18F45K50)
-#define programSwitch		PORTBbits.RB7
-#endif
-
-#else
-#error Not a supported board (yet), add I/O pin mapping in __FILE__, line __LINE__
-#endif
+#define mInitAllSwitches()  TRISBbits.TRISB4=1;TRISBbits.TRISB5=1;
+#define mInitSwitch2()      TRISBbits.TRISB4=1;
+#define mInitSwitch3()      TRISBbits.TRISB5=1;
+#define sw2                 PORTBbits.RB4
+#define sw3                 PORTBbits.RB5
+/********************************************************************/
+/********************************************************************/
+/********************************************************************/
 
 
 //Special register re-definitions, for accessing the USBIF and USBIE interrupt 
 //related bits.  These bits are located in PIR3/PIE3 on PIC18F45K50 Family devices,
 //but this fimware expects them to be in PIR2/PIE2 instead, like on previous devices.
-#if defined(CDRBOT)
-#define PIR2bits  PIR3bits
-#define PIE2bits  PIE3bits
+#if defined(CDRBOT_25K50)
+    #define PIR2bits  PIR3bits
+    #define PIE2bits  PIE3bits
 #endif
 
 

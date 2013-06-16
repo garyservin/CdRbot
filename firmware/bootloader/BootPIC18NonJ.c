@@ -45,11 +45,11 @@
 /** C O N S T A N T S **********************************************************/
 
 //Section defining the address range to erase for the erase device command, along with the valid programming range to be reported by the QUERY_DEVICE command.
-#define ProgramMemStart					0x004000 //Beginning of application program memory (not occupied by bootloader).  **THIS VALUE MUST BE ALIGNED WITH 64 BYTE BLOCK BOUNDRY** Also, in order to work correctly, make sure the StartPageToErase is set to erase this section.
+#define ProgramMemStart					0x001000 //Beginning of application program memory (not occupied by bootloader).  **THIS VALUE MUST BE ALIGNED WITH 64 BYTE BLOCK BOUNDRY** Also, in order to work correctly, make sure the StartPageToErase is set to erase this section.
 
 #if defined(__18F4550)||defined(__18F2550)||defined(__18F45K50)||defined(__18LF45K50)||defined(__18F25K50)||defined(__18LF25K50)
-	#define StartPageToErase			256		 //this is for 8k bootloader //The 4096 byte section from 0x000-0xFFF contains the bootloader and will not be erased
-	#define MaxPageToErase				511		//502		//511 without bootloader //Last 64 byte page of flash on the PIC18F4550
+	#define StartPageToErase			64		 //The 4096 byte section from 0x000-0xFFF contains the bootloader and will not be erased
+	#define MaxPageToErase				511		 //Last 64 byte page of flash on the PIC18F4550
 	#define ProgramMemStop				0x008000 //**MUST BE WORD ALIGNED (EVEN) ADDRESS.  This address does not get updated, but the one just below it does: IE: If AddressToStopPopulating = 0x200, 0x1FF is the last programmed address (0x200 not programmed)**	
 	#define ConfigWordsStartAddress		0x300000 //0x300000 is CONFIG space for PIC18F4550/PIC18F4553/PIC18F4450 family devices
 	#define ConfigWordsSectionLength	14   	 //14 bytes worth of Configuration words on the PIC18F4550/PIC18F4553/PIC18F4450 family devices
@@ -171,8 +171,7 @@
 #define BufferSize 					0x40
 
 /** I N C L U D E S **********************************************************/
-//#include <p18cxxx.h>
-#include <xc.h>
+#include <p18cxxx.h>
 #include "typedefs.h"
 #include "usb.h"
 #include "io_cfg.h"             // I/O pin mapping
@@ -225,7 +224,7 @@ typedef union
 	
 
 /** V A R I A B L E S ********************************************************/
-//#pragma udata SomeSectionName1
+#pragma udata SomeSectionName1
 unsigned short long ProgramMemStopAddress;
 unsigned char BootState;
 unsigned int ErasePageTracker;
@@ -234,9 +233,9 @@ unsigned short long ProgrammedPointer;
 unsigned char ConfigsLockValue;
 unsigned char ProgrammingBuffer[BufferSize];
 
-//#pragma udata SomeSectionName2
+#pragma udata SomeSectionName2
 PacketToFromPC PacketFromPC;
-//#pragma udata SomeSectionName3
+#pragma udata SomeSectionName3
 PacketToFromPC PacketToPC;
 
 /** P R I V A T E  P R O T O T Y P E S ***************************************/
@@ -252,7 +251,7 @@ void TableReadPostIncrement(void);
 
 
 /** D E C L A R A T I O N S **************************************************/
-//#pragma code
+#pragma code
 void UserInit(void)
 {
     mInitAllLEDs();		//Init them off.
@@ -494,7 +493,10 @@ void ResetDeviceCleanly(void)
 		while(WREG)
 		{
 			WREG--;
-			Nop();Nop();Nop();Nop();
+			_asm
+			bra	0	//Equivalent to bra $+2, which takes half as much code as 2 nop instructions
+			bra	0	//Equivalent to bra $+2, which takes half as much code as 2 nop instructions
+			_endasm	
 		}
 	}
 	Reset();    
@@ -545,26 +547,26 @@ void WriteFlashBlock(void)		//Use to write blocks of data to flash.
 			if(BufferedDataIndex != 0)	//If the buffer isn't empty
 			{
 				TABLAT = ProgrammingBuffer[BytesTakenFromBuffer];
-				asm("tblwtpostinc");
+				_asm tblwtpostinc _endasm
 				BytesTakenFromBuffer++;
 				BufferedDataIndex--;	//Used up a byte from the buffer.
 			}
 			else	//No more data in buffer, need to write 0xFF to fill the rest of the programming latch locations
 			{
 				TABLAT = 0xFF;
-				asm("tblwtpostinc");
+				_asm tblwtpostinc _endasm				
 			}
 		}
 		else
 		{
 			TABLAT = 0xFF;
-			asm("tblwtpostinc");
+			_asm tblwtpostinc _endasm
 			CorrectionFactor--;
 		}
 	}
 
-	TBLPTR--;		//Need to make table pointer point to the region which will be programmed before initiating the programming operation
-//	asm("tblwtpostinc");	//Do this instead of TBLPTR--; since it takes less code space.
+//	TBLPTR--;		//Need to make table pointer point to the region which will be programmed before initiating the programming operation
+	_asm tblrdpostdec _endasm	//Do this instead of TBLPTR--; since it takes less code space.
 		
 	EECON1 = 0b10100100;	//flash programming mode
 	UnlockAndActivate(CORRECT_UNLOCK_KEY);
@@ -587,12 +589,16 @@ void WriteConfigBits(void)	//Also used to write the Device ID
 	for(i = 0; i < PacketFromPC.Size; i++)
 	{
 		TABLAT = PacketFromPC.Data[i+(RequestDataBlockSize-PacketFromPC.Size)];
-		asm("tblwt");
+		_asm
+		tblwt
+		_endasm
 
 		EECON1 = 0b11000100;	//Config bits programming mode
 		UnlockAndActivate(CORRECT_UNLOCK_KEY);
 
-		asm("tblrdpostinc");
+		_asm
+		tblrdpostinc
+		_endasm
 	}
 }
 
@@ -638,15 +644,15 @@ void UnlockAndActivate(unsigned char UnlockKey)
         }    
         Reset();
     }    
-	//Now unlock sequence to set WR (make sure interrupts are disabled before executing this)
     
-	
-	asm("MOVLW 0x55");
-	asm("MOVWF EECON2, 0");
-	asm("MOVLW 0xAA");
-	asm("MOVWF EECON2, 0");
-	asm("BSF EECON1, 1, 0");
-	
+	_asm
+	//Now unlock sequence to set WR (make sure interrupts are disabled before executing this)
+	MOVLW 0x55
+	MOVWF EECON2, 0
+	MOVLW 0xAA
+	MOVWF EECON2, 0
+	BSF EECON1, 1, 0		//Performs write
+	_endasm	
 	while(EECON1bits.WR);	//Wait until complete (relevant when programming EEPROM, not important when programming flash since processor stalls during flash program)	
 	EECON1bits.WREN = 0;  	//Good practice now to clear the WREN bit, as further protection against any accidental activation of self write/erase operations.
 }	
@@ -672,7 +678,7 @@ void ClearWatchdog(void)
 }    
 void TableReadPostIncrement(void)
 {
-	asm("tblrdpostinc");
+	_asm tblrdpostinc _endasm    
 }    
 
 

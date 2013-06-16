@@ -62,7 +62,7 @@
  * has two endpoints (in and out), and interface 1 has one endpoint(in).
  * Then the CFG01 structure in the usbdsc.h should be:
  *
- * #define CFG01 const struct                            \
+ * #define CFG01 rom struct                            \
  * {   USB_CFG_DSC             cd01;                   \
  *     USB_INTF_DSC            i00a00;                 \
  *     USB_EP_DSC              ep01o_i00a00;           \
@@ -117,7 +117,7 @@
  * -------------------------------------------------------------------
  * A string descriptor array should have the following format:
  *
- * const struct{byte bLength;byte bDscType;word string[size];}sdxxx={
+ * rom struct{byte bLength;byte bDscType;word string[size];}sdxxx={
  * sizeof(sdxxx),DSC_STR,<text>};
  *
  * The above structure provides a means for the C compiler to
@@ -131,13 +131,13 @@
  * declaration. Let's study this through an example:
  * if the string is "USB" , then the string descriptor should be:
  * (Using index 02)
- * const struct{byte bLength;byte bDscType;word string[3];}sd002={
+ * rom struct{byte bLength;byte bDscType;word string[3];}sd002={
  * sizeof(sd002),DSC_STR,'U','S','B'};
  *
  * A USB project may have multiple strings and the firmware supports
  * the management of multiple strings through a look-up table.
  * The look-up table is defined as:
- * const unsigned char *const USB_SD_Ptr[]={&sd000,&sd001,&sd002};
+ * rom const unsigned char *rom USB_SD_Ptr[]={&sd000,&sd001,&sd002};
  *
  * The above declaration has 3 strings, sd000, sd001, and sd002.
  * Strings can be removed or added. sd000 is a specialized string
@@ -174,10 +174,10 @@
 #include "usb.h"
 
 /** C O N S T A N T S ************************************************/
-//#pragma romdata
+#pragma romdata
 
 /* Device Descriptor */
-const USB_DEV_DSC device_dsc=
+rom USB_DEV_DSC device_dsc=
 {
     sizeof(USB_DEV_DSC),    // Size of this descriptor in bytes
     DSC_DEV,                // DEVICE descriptor type
@@ -196,7 +196,7 @@ const USB_DEV_DSC device_dsc=
 };
 
 /* Configuration 1 Descriptor */
-CFG01_t cfg01={
+CFG01={
     /* Configuration Descriptor */
     sizeof(USB_CFG_DSC),    // Size of this descriptor in bytes
     DSC_CFG,                // CONFIGURATION descriptor type
@@ -232,20 +232,20 @@ CFG01_t cfg01={
     sizeof(USB_EP_DSC),DSC_EP,_EP01_OUT,_INT,HID_INT_OUT_EP_SIZE,0x01
 };
 
-const struct{byte bLength;byte bDscType;word string[1];}sd000={
+rom struct{byte bLength;byte bDscType;word string[1];}sd000={
 sizeof(sd000),DSC_STR,0x0409};
 
-const struct{byte bLength;byte bDscType;word string[25];}sd001={
+rom struct{byte bLength;byte bDscType;word string[22];}sd001={
 sizeof(sd001),DSC_STR,
-'M','i','c','r','o','c','h','i','p',' ',
-'T','e','c','h','n','o','l','o','g','y',' ','I','n','c','.'};
+'C','l','u','b',' ','d','e',' ','R','o','b','o','t','i','c','a',
+' ','F','P','U','N','A'};
 
-const struct{byte bLength;byte bDscType;word string[18];}sd002={
+rom struct{byte bLength;byte bDscType;word string[17];}sd002={
 sizeof(sd002),DSC_STR,
-'H','I','D',' ','U','S','B',' ','B','o','o',
-'t','l','o','a','d','e','r'};
+'C','d','R','B','o','t',' ',
+'B','o','o','t','l','o','a','d','e','r'};
 
-HID_RPT01_t hid_rpt01={
+rom struct{byte report[HID_RPT01_SIZE];}hid_rpt01={
 //	First byte is the "Item".  First byte's two LSbs are the number of data bytes that
 //  follow, but encoded (0=0, 1=1, 2=2, 3=4 bytes).
 //  bSize should match number of bytes that follow, or REPORT descriptor parser won't work.  The bytes
@@ -268,23 +268,23 @@ HID_RPT01_t hid_rpt01={
     0xC0}                   // End Collection
 };    
 
-const unsigned char *const USB_CD_Ptr[]=
+rom const unsigned char *rom USB_CD_Ptr[]=
 {
-    (const unsigned char *const)&cfg01,
-    (const unsigned char *const)&cfg01
+    (rom const unsigned char *rom)&cfg01,
+    (rom const unsigned char *rom)&cfg01
 };
-const unsigned char *const USB_SD_Ptr[]=
+rom const unsigned char *rom USB_SD_Ptr[]=
 {
-    (const unsigned char *const)&sd000,
-    (const unsigned char *const)&sd001,
-    (const unsigned char *const)&sd002
+    (rom const unsigned char *rom)&sd000,
+    (rom const unsigned char *rom)&sd001,
+    (rom const unsigned char *rom)&sd002
 };
 
-const pFunc ClassReqHandler[1]=
+rom pFunc ClassReqHandler[1]=
 {
     &USBCheckHIDRequest
 };
 
-//#pragma code
+#pragma code
 
 /** EOF usbdsc.c ****************************************************/

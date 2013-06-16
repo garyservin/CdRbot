@@ -35,15 +35,14 @@
  ********************************************************************/
 
 /** I N C L U D E S **********************************************************/
-//#include <p18cxxx.h>
-#include <xc.h>
+#include <p18cxxx.h>
 #include "typedefs.h"
 #include "usb.h"
 
 #ifdef USB_USE_HID
 
 /** V A R I A B L E S ********************************************************/
-//#pragma udata
+#pragma udata
 byte idle_rate;
 byte active_protocol;               // [0] Boot Protocol [1] Report Protocol
 byte hid_rpt_rx_len;
@@ -53,7 +52,7 @@ void HIDGetReportHandler(void);
 void HIDSetReportHandler(void);
 
 /** D E C L A R A T I O N S **************************************************/
-//#pragma code
+#pragma code
 
 /** C L A S S  S P E C I F I C  R E Q ****************************************/
 /******************************************************************************

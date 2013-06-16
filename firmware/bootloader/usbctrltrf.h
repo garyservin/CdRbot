@@ -87,9 +87,9 @@ decide if it should stall future extra IN transactions or not.
 /** E X T E R N S ************************************************************/
 extern byte ctrl_trf_session_owner;
 
-extern POINTER_t pSrc;
-extern POINTER_t pDst;
-extern WORD_t wCount;
+extern POINTER pSrc;
+extern POINTER pDst;
+extern WORD wCount;
 
 /** P U B L I C  P R O T O T Y P E S *****************************************/
 byte USBCtrlEPService(void);			// Bug Fix - Work around, void->byte

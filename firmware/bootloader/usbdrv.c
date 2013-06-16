@@ -42,15 +42,13 @@
  ********************************************************************/
 
 /** I N C L U D E S **********************************************************/
-//#include <p18cxxx.h>
-#include <xc.h>
-//#include <assert.h>
+#include <p18cxxx.h>
 #include "typedefs.h"
 #include "usb.h"
 #include "io_cfg.h"             // Required for USBCheckBusStatus()
 
 /** V A R I A B L E S ********************************************************/
-//#pragma udata
+#pragma udata
 byte bTRNIFCount;               // Bug fix - Work around.
 
 /** P R I V A T E  P R O T O T Y P E S ***************************************/
@@ -66,7 +64,7 @@ void USBStallHandler(void);
 void USBErrorHandler(void);
 
 /** D E C L A R A T I O N S **************************************************/
-//#pragma code
+#pragma code
 /******************************************************************************
  * Function:        void USBCheckBusStatus(void)
  *
@@ -700,10 +698,11 @@ TRNIF. If no additional data is preset, TRNIF will remain clear.
 Additional nops were added in this fix to guarantee that TRNIF is
 properly updated before being checked again.
 ********************************************************************/
-
-		//bra	0	//Equivalent to bra $+2, which takes half as much code as 2 nop instructions
-		//bra	0	//Equivalent to bra $+2, which takes half as much code as 2 nop instructions
-		Nop();Nop();Nop();Nop();Nop();
+		_asm
+		bra	0	//Equivalent to bra $+2, which takes half as much code as 2 nop instructions
+		bra	0	//Equivalent to bra $+2, which takes half as much code as 2 nop instructions
+		_endasm		
+		Nop();
     }
 
     UCONbits.PKTDIS = 0;            // Make sure packet processing is enabled
@@ -722,14 +721,14 @@ properly updated before being checked again.
 /* Auxiliary Function */
 void ClearArray(byte* startAdr,byte count)
 {
-	
-	//assert( count>0 );
-
-	do{
-        //asm(" clrf POSTINC0 , 0 "); //extended instruction set unsupported by XC8
-        *startAdr = 0;
-        startAdr++;
-    }while(--count);
+    *startAdr;
+    while(count)
+    {
+        _asm
+        clrf POSTINC0,0
+        _endasm
+        count--;
+    }//end while
 }//end ClearArray
 
 /** EOF usbdrv.c *************************************************************/

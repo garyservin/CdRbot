@@ -1,4 +1,15 @@
-_main: CODE, 32674 0 94
-__initialization: CODE, 32644 0 0
-_Delay10KTCYx: CODE, 32650 0 24
-Total: 118
+_moveRobot: CODE, 5356 0 22
+_ISR: CODE, 4104 0 118
+_main: CODE, 4978 0 158
+_moveRobotSpeed: CODE, 4510 0 268
+_mInitMotors: CODE, 5378 0 20
+_InitRobot: CODE, 5308 0 24
+_WriteTimer0: CODE, 5416 0 18
+__initialization: CODE, 5198 0 44
+_setServoSpeed: CODE, 4778 0 200
+_initClockCDRBot: CODE, 5282 0 26
+_OpenTimer0: CODE, 5248 0 34
+_servoInterrupt: CODE, 4226 0 284
+_Delay10KTCYx: CODE, 5332 0 24
+___wmul: CODE, 5136 0 62
+Total: 1302

@@ -5,25 +5,37 @@
  * Created on April 15, 2013, 9:59 PM
  */
 
-//#include "cdrbot.h"
+/** I N C L U D E S **********************************************************/
+#include "cdrbot.h"
 
-#include <xc.h>
-#include <delays.h>
+/** P R I V A T E  P R O T O T Y P E S ***************************************/
+
+/** D E C L A R A T I O N S **************************************************/
 
 void main ( void )
 {
-	OSCTUNE = 0x80; //3X PLL ratio mode selected
-	OSCCON = 0x70; //Switch to 16MHz HFINTOSC
-	OSCCON2 = 0x10; //Enable PLL, SOSC, PRI OSC drivers turned off
-	while ( OSCCON2bits.PLLRDY != 1 ); //Wait for PLL lock
+	char i = 4;
+	int prueba[5] = { FORWARD, REVERSE, LEFT, RIGHT, HALT };
 
-	TRISCbits.RC0 = 0;
-	LATCbits.LATC0 = 0;
+	InitRobot();
+
 	for (;; )
 	{
-		LATCbits.LATC0 = !LATCbits.LATC0;
+		if ( !swPrg )
+		{
+			if ( ++i > 4 )
+				i = 0;
+
+		}
+		moveRobot(prueba[i]);
+		mLED_1_Toggle();
 		Delay10KTCYx(200);
 		Delay10KTCYx(200);
 		Delay10KTCYx(200);
 	}
+}
+
+void interrupt ISR ( void )
+{
+	servoInterrupt();
 }

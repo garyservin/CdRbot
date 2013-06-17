@@ -5,6 +5,8 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>../cdrbot.h</itemPath>
+      <itemPath>../io_cfg.h</itemPath>
+      <itemPath>../motors.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -16,6 +18,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>../main.c</itemPath>
+      <itemPath>../cdrbot.c</itemPath>
+      <itemPath>../motors.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -68,7 +72,8 @@
       </item>
       <HI-TECH-COMP>
         <property key="define-macros" value=""/>
-        <property key="extra-include-directories" value=""/>
+        <property key="extra-include-directories"
+                  value="/opt/microchip/xc8/v1.11/include/plib"/>
         <property key="identifier-length" value="255"/>
         <property key="operation-mode" value="free"/>
         <property key="opt-xc8-compiler-strict_ansi" value="false"/>

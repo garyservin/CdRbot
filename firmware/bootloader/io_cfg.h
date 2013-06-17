@@ -75,12 +75,13 @@
 #define tris_usb_suspnd     TRISAbits.TRISA3    // Output
 
 /** L E D ***********************************************************/
-#define mInitAllLEDs()      LATC &= 0xF0; TRISC &= 0xF0;
+#define mInitAllLEDs()      LATC &= 0xFE; TRISC &= 0xFE;
 
 #define mLED_1              LATCbits.LATC0
 #define mLED_1_On()         mLED_1 = 1;
 #define mLED_1_Off()        mLED_1 = 0;
 #define mLED_1_Toggle()     mLED_1 = !mLED_1;
+
 /** S W I T C H *****************************************************/
 #define mInitAllSwitches()  TRISBbits.TRISB4=1;TRISBbits.TRISB5=1;
 #define mInitSwitch2()      TRISBbits.TRISB4=1;

@@ -58,6 +58,7 @@ build: .build-post
 
 .build-post: .build-impl
 # Add your post 'build' code here...
+	hid_bootloader ${CND_ARTIFACT_PATH_pic18f25k50}
 
 
 # clean

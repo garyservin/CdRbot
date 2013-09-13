@@ -1,47 +1,21 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"88 ../cdrbot.h
+"91 ../cdrbot.h
 [v _InitRobot `(v ~T0 @X0 0 ef ]
-[s S225 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S225 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-[s S226 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S226 . INT0 INT1 INT2 . PGM PGC PGD ]
-[s S227 :3 `uc 1 :1 `uc 1 ]
-[n S227 . . CCP2_PA2 ]
-[u S224 `S225 1 `S226 1 `S227 1 ]
-[n S224 . . . . ]
-"3224 /opt/microchip/xc8/v1.11/include/pic18f25k50.h
-[v _PORTBbits `VS224 ~T0 @X0 0 e@3969 ]
-"89 ../cdrbot.h
+"26 ../tsop.h
+[v _processSensor `(uc ~T0 @X0 0 ef ]
+"206 /opt/microchip/xc8/v1.12/include/stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"92 ../cdrbot.h
 [v _moveRobot `(v ~T0 @X0 0 ef1`ui ]
-[s S290 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S290 . LATC0 LATC1 LATC2 . LATC4 LATC5 LATC6 LATC7 ]
-[s S291 :1 `uc 1 ]
-[n S291 . LC0 ]
-[s S292 :1 `uc 1 :1 `uc 1 ]
-[n S292 . . LC1 ]
-[s S293 :2 `uc 1 :1 `uc 1 ]
-[n S293 . . LC2 ]
-[s S294 :3 `uc 1 :1 `uc 1 ]
-[n S294 . . LC3 ]
-[s S295 :4 `uc 1 :1 `uc 1 ]
-[n S295 . . LC4 ]
-[s S296 :5 `uc 1 :1 `uc 1 ]
-[n S296 . . LC5 ]
-[s S297 :6 `uc 1 :1 `uc 1 ]
-[n S297 . . LC6 ]
-[s S298 :7 `uc 1 :1 `uc 1 ]
-[n S298 . . LC7 ]
-[u S289 `S290 1 `S291 1 `S292 1 `S293 1 `S294 1 `S295 1 `S296 1 `S297 1 `S298 1 ]
-[n S289 . . . . . . . . . . ]
-"4170 /opt/microchip/xc8/v1.11/include/pic18f25k50.h
-[v _LATCbits `VS289 ~T0 @X0 0 e@3979 ]
-"36 /opt/microchip/xc8/v1.11/include/delays.h
-[v _Delay10KTCYx `(v ~T0 @X0 0 ef1`uc ]
+"20 ../serial.h
+[v _serialInterrupt `(v ~T0 @X0 0 ef ]
 "27 ../motors.h
 [v _servoInterrupt `(v ~T0 @X0 0 ef ]
+"25 ../tsop.h
+[v _tsopInterrupt `(v ~T0 @X0 0 ef ]
 [; ;pic18f25k50.h: 44: extern volatile unsigned char SRCON1 @ 0xF57;
-"46 /opt/microchip/xc8/v1.11/include/pic18f25k50.h
+"46 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
 [; ;pic18f25k50.h: 46: asm("SRCON1 equ 0F57h");
 [; <" SRCON1 equ 0F57h ;# ">
 [; ;pic18f25k50.h: 49: typedef union {
@@ -6518,186 +6492,211 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;math.h: 26: extern double fmod(double, double);
 [; ;math.h: 27: extern double trunc(double);
 [; ;math.h: 28: extern double round(double);
-"35 ../cdrbot.h
+"38 ../cdrbot.h
 [p x PLLSEL=PLL3X ]
-"36
-[p x CFGPLLEN=OFF ]
-"37
-[p x CPUDIV=NOCLKDIV ]
-"38
-[p x LS48MHZ=SYS48X8 ]
 "39
-[p x FOSC=INTOSCIO ]
+[p x CFGPLLEN=OFF ]
 "40
-[p x PCLKEN=OFF ]
+[p x CPUDIV=NOCLKDIV ]
 "41
-[p x FCMEN=OFF ]
+[p x LS48MHZ=SYS48X8 ]
 "42
-[p x IESO=OFF ]
+[p x FOSC=INTOSCIO ]
 "43
-[p x nPWRTEN=OFF ]
+[p x PCLKEN=OFF ]
 "44
-[p x BOREN=OFF ]
+[p x FCMEN=OFF ]
 "45
-[p x BORV=220 ]
+[p x IESO=OFF ]
 "46
-[p x nLPBOR=OFF ]
+[p x nPWRTEN=OFF ]
 "47
-[p x WDTEN=OFF ]
+[p x BOREN=OFF ]
 "48
-[p x WDTPS=32768 ]
+[p x BORV=220 ]
 "49
-[p x CCP2MX=RC1 ]
+[p x nLPBOR=OFF ]
 "50
-[p x PBADEN=OFF ]
+[p x WDTEN=OFF ]
 "51
-[p x T3CMX=RC0 ]
+[p x WDTPS=32768 ]
 "52
-[p x SDOMX=RC7 ]
+[p x CCP2MX=RB3 ]
 "53
-[p x MCLRE=ON ]
+[p x PBADEN=OFF ]
 "54
-[p x STVREN=OFF ]
+[p x T3CMX=RC0 ]
 "55
-[p x LVP=OFF ]
+[p x SDOMX=RC7 ]
 "56
-[p x ICPRT=OFF ]
+[p x MCLRE=ON ]
 "57
-[p x XINST=OFF ]
+[p x STVREN=OFF ]
 "58
-[p x CP0=OFF ]
+[p x LVP=OFF ]
 "59
-[p x CP1=OFF ]
+[p x ICPRT=OFF ]
 "60
-[p x CP2=OFF ]
+[p x XINST=OFF ]
 "61
-[p x CP3=OFF ]
+[p x CP0=OFF ]
 "62
-[p x CPB=OFF ]
+[p x CP1=OFF ]
 "63
-[p x CPD=OFF ]
+[p x CP2=OFF ]
 "64
-[p x WRT0=OFF ]
+[p x CP3=OFF ]
 "65
-[p x WRT1=OFF ]
+[p x CPB=OFF ]
 "66
-[p x WRT2=OFF ]
+[p x CPD=OFF ]
 "67
-[p x WRT3=OFF ]
+[p x WRT0=OFF ]
 "68
-[p x WRTC=OFF ]
+[p x WRT1=OFF ]
 "69
-[p x WRTB=OFF ]
+[p x WRT2=OFF ]
 "70
-[p x WRTD=OFF ]
+[p x WRT3=OFF ]
 "71
-[p x EBTR0=OFF ]
+[p x WRTC=OFF ]
 "72
-[p x EBTR1=OFF ]
+[p x WRTB=OFF ]
 "73
-[p x EBTR2=OFF ]
+[p x WRTD=OFF ]
 "74
-[p x EBTR3=OFF ]
+[p x EBTR0=OFF ]
 "75
+[p x EBTR1=OFF ]
+"76
+[p x EBTR2=OFF ]
+"77
+[p x EBTR3=OFF ]
+"78
 [p x EBTRB=OFF ]
-[; ;cdrbot.h: 88: void InitRobot ( void );
-[; ;cdrbot.h: 89: void moveRobot ( unsigned int direction );
-[; ;cdrbot.h: 90: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+[; ;serial.h: 19: void mInitSerialPort ( void );
+[; ;serial.h: 20: void serialInterrupt ( void );
+[; ;serial.h: 21: void putch ( unsigned char byte );
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+[; ;tsop.h: 24: void mInitTsop ( void );
+[; ;tsop.h: 25: void tsopInterrupt ( void );
+[; ;tsop.h: 26: char processSensor ( void );
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
 [; ;motors.h: 26: void mInitMotors ( void );
 [; ;motors.h: 27: void servoInterrupt ( void );
 [; ;motors.h: 28: void setServoSpeed ( unsigned int servoID, int speed );
-[; ;cdrbot.h: 88: void InitRobot ( void );
-[; ;cdrbot.h: 89: void moveRobot ( unsigned int direction );
-[; ;cdrbot.h: 90: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
-"16 ../main.c
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+"15 ../main.c
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 15: void main ( void )
-[; ;main.c: 16: {
+[; ;main.c: 14: void main ( void )
+[; ;main.c: 15: {
 [e :U _main ]
 [f ]
-"17
-[v _i `uc ~T0 @X0 1 a ]
-[; ;main.c: 17: char i = 4;
-[e = _i -> -> 4 `i `uc ]
 "18
-[v F7180 `i ~T0 @X0 -> 5 `i s ]
-[i F7180
+[v F7198 `i ~T0 @X0 -> 16 `i s ]
+[i F7198
 :U ..
+-> -> 115 `ui `i
+-> -> 115 `ui `i
+-> -> 115 `ui `i
+-> -> 115 `ui `i
+"19
+-> -> 115 `ui `i
 -> -> 102 `ui `i
--> -> 98 `ui `i
+-> -> 115 `ui `i
+-> -> 115 `ui `i
+"20
 -> -> 108 `ui `i
+-> -> 115 `ui `i
 -> -> 114 `ui `i
+-> -> 115 `ui `i
+"21
+-> -> 115 `ui `i
+-> -> 98 `ui `i
+-> -> 115 `ui `i
 -> -> 115 `ui `i
 ..
 ]
-[v _prueba `i ~T0 @X0 -> 5 `i a ]
-[; ;main.c: 18: int prueba[5] = { 'f', 'b', 'l', 'r', 's' };
-[e = _prueba F7180 ]
-[; ;main.c: 20: InitRobot();
-"20
-[e ( _InitRobot ..  ]
-[; ;main.c: 22: for (;; )
-"22
-{
+[v _cont `i ~T0 @X0 -> 16 `i a ]
+[; ;main.c: 18: int cont[16] = { 's', 's', 's', 's',
+[; ;main.c: 19: 's', 'f', 's', 's',
+[; ;main.c: 20: 'l', 's', 'r', 's',
+[; ;main.c: 21: 's', 'b', 's', 's' };
+[e = _cont F7198 ]
 "23
-[e :U 911 ]
-[; ;main.c: 23: {
-{
-[; ;main.c: 24: if ( !PORTBbits.RB4 )
-"24
-[e $ ! ! != -> . . _PORTBbits 0 4 `i -> -> -> 0 `i `Vuc `i 914  ]
-[; ;main.c: 25: {
+[v _sensors `uc ~T0 @X0 1 a ]
+[; ;main.c: 23: char sensors = 0;
+[e = _sensors -> -> 0 `i `uc ]
+[; ;main.c: 25: InitRobot();
 "25
-{
-[; ;main.c: 26: if ( ++i > 4 )
-"26
-[e $ ! > -> =+ _i -> -> 1 `i `uc `i -> 4 `i 915  ]
-[; ;main.c: 27: i = 0;
+[e ( _InitRobot ..  ]
+[; ;main.c: 27: for (;; )
 "27
-[e = _i -> -> 0 `i `uc ]
-[e :U 915 ]
+{
+"28
+[e :U 911 ]
+[; ;main.c: 28: {
+{
+[; ;main.c: 29: sensors = processSensor();
 "29
+[e = _sensors ( _processSensor ..  ]
+[; ;main.c: 30: if ( sensors )
+"30
+[e $ ! != -> _sensors `i -> -> -> 0 `i `uc `i 914  ]
+[; ;main.c: 31: {
+"31
+{
+[; ;main.c: 32: printf("%u\r\n", sensors);
+"32
+[e ( _printf , (. :s 1C -> _sensors `i ]
+[; ;main.c: 33: moveRobot(cont[sensors]);
+"33
+[e ( _moveRobot (1 -> *U + &U _cont * -> _sensors `ux -> -> # *U &U _cont `ui `ux `ui ]
+"34
 }
 [e :U 914 ]
-[; ;main.c: 29: }
-[; ;main.c: 30: moveRobot(prueba[i]);
-"30
-[e ( _moveRobot (1 -> *U + &U _prueba * -> _i `ux -> -> # *U &U _prueba `ui `ux `ui ]
-[; ;main.c: 31: LATCbits.LATC0 = !LATCbits.LATC0;;
-"31
-[e = . . _LATCbits 0 0 -> -> ! != -> . . _LATCbits 0 0 `i -> -> -> 0 `i `Vuc `i `i `uc ]
-[; ;main.c: 32: Delay10KTCYx(200);
-"32
-[e ( _Delay10KTCYx (1 -> -> 200 `i `uc ]
-[; ;main.c: 33: Delay10KTCYx(200);
-"33
-[e ( _Delay10KTCYx (1 -> -> 200 `i `uc ]
-[; ;main.c: 34: Delay10KTCYx(200);
-"34
-[e ( _Delay10KTCYx (1 -> -> 200 `i `uc ]
-"35
+"42
 }
-[; ;main.c: 35: }
+[; ;main.c: 34: }
+[; ;main.c: 42: }
 [e $U 911  ]
 [e :U 912 ]
 }
-[; ;main.c: 36: }
-"36
+[; ;main.c: 43: }
+"43
 [e :UE 910 ]
 }
-"39
-[v F7183 `(v ~T0 @X0 1 tf ]
-[v _ISR `IF7183 ~T0 @X0 1 e ]
+"46
+[v F7202 `(v ~T0 @X0 1 tf ]
+[v _ISR `IF7202 ~T0 @X0 1 e ]
 {
-[; ;main.c: 38: void interrupt ISR ( void )
-[; ;main.c: 39: {
+[; ;main.c: 45: void interrupt ISR ( void )
+[; ;main.c: 46: {
 [e :U _ISR ]
 [f ]
-[; ;main.c: 40: servoInterrupt();
-"40
+[; ;main.c: 47: serialInterrupt();
+"47
+[e ( _serialInterrupt ..  ]
+[; ;main.c: 48: servoInterrupt();
+"48
 [e ( _servoInterrupt ..  ]
-[; ;main.c: 41: }
-"41
-[e :UE 916 ]
+[; ;main.c: 49: tsopInterrupt();
+"49
+[e ( _tsopInterrupt ..  ]
+[; ;main.c: 50: }
+"50
+[e :UE 915 ]
 }
+[p f _printf 8389632 ]
+[a 1C 37 117 13 10 0 ]
+

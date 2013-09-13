@@ -18,19 +18,19 @@ PATH_TO_IDE_BIN=/opt/microchip/mplabx/mplab_ide/mplab_ide/modules/../../bin/
 # Adding MPLAB X bin directory to path.
 PATH:=/opt/microchip/mplabx/mplab_ide/mplab_ide/modules/../../bin/:$(PATH)
 # Path to java used to run MPLAB X when this makefile was created
-MP_JAVA_PATH="/opt/microchip/mplabx/sys/java/jre1.6.0_33/bin/"
+MP_JAVA_PATH="/opt/microchip/mplabx/sys/java/jre1.7.0_17/bin/"
 OS_CURRENT="$(shell uname -s)"
-MP_CC="/opt/microchip/xc8/v1.11/bin/xc8"
+MP_CC="/opt/microchip/mplabc18/v3.46/bin/mcc18.exe"
 # MP_CPPC is not defined
 # MP_BC is not defined
-# MP_AS is not defined
-# MP_LD is not defined
-# MP_AR is not defined
+MP_AS="/opt/microchip/mplabc18/v3.46/bin/../mpasm/MPASMWIN.exe"
+MP_LD="/opt/microchip/mplabc18/v3.46/bin/mplink.exe"
+MP_AR="/opt/microchip/mplabc18/v3.46/bin/mplib.exe"
 DEP_GEN=${MP_JAVA_PATH}java -jar "/opt/microchip/mplabx/mplab_ide/mplab_ide/modules/../../bin/extractobjectdependencies.jar" 
-MP_CC_DIR="/opt/microchip/xc8/v1.11/bin"
+MP_CC_DIR="/opt/microchip/mplabc18/v3.46/bin"
 # MP_CPPC_DIR is not defined
 # MP_BC_DIR is not defined
-# MP_AS_DIR is not defined
-# MP_LD_DIR is not defined
-# MP_AR_DIR is not defined
+MP_AS_DIR="/opt/microchip/mplabc18/v3.46/bin/../mpasm"
+MP_LD_DIR="/opt/microchip/mplabc18/v3.46/bin"
+MP_AR_DIR="/opt/microchip/mplabc18/v3.46/bin"
 # MP_BC_DIR is not defined

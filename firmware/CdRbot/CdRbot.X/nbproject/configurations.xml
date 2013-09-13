@@ -7,6 +7,7 @@
       <itemPath>../cdrbot.h</itemPath>
       <itemPath>../io_cfg.h</itemPath>
       <itemPath>../motors.h</itemPath>
+      <itemPath>../tsop.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -20,6 +21,8 @@
       <itemPath>../main.c</itemPath>
       <itemPath>../cdrbot.c</itemPath>
       <itemPath>../motors.c</itemPath>
+      <itemPath>../tsop.c</itemPath>
+      <itemPath>../serial.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -28,7 +31,8 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>../Linkers</Elem>
+    <Elem>..</Elem>
+    <Elem>/opt/microchip/xc8/v1.12/sources/pic18/plib/PWM</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -38,9 +42,9 @@
         <targetDevice>PIC18F25K50</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PICkit3PlatformTool</platformTool>
+        <platformTool>Simulator</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>1.11</languageToolchainVersion>
+        <languageToolchainVersion>1.12</languageToolchainVersion>
         <platform>2</platform>
       </toolsSet>
       <compileType>
@@ -71,9 +75,10 @@
         </XC8-config-global>
       </item>
       <HI-TECH-COMP>
-        <property key="define-macros" value=""/>
+        <property key="asmlist" value="true"/>
+        <property key="define-macros" value="__18F25K50"/>
         <property key="extra-include-directories"
-                  value="/opt/microchip/xc8/v1.11/include/plib"/>
+                  value="/opt/microchip/xc8/v1.12/include/plib"/>
         <property key="identifier-length" value="255"/>
         <property key="operation-mode" value="free"/>
         <property key="opt-xc8-compiler-strict_ansi" value="false"/>
@@ -130,37 +135,43 @@
         <property key="opt-xc8-linker-serial" value=""/>
         <property key="program-the-device-with-default-config-words" value="true"/>
       </HI-TECH-LINK>
-      <PICkit3PlatformTool>
-        <property key="AutoSelectMemRanges" value="auto"/>
-        <property key="Freeze Peripherals" value="true"/>
-        <property key="SecureSegment.SegmentProgramming" value="FullChipProgramming"/>
-        <property key="ToolFirmwareFilePath"
-                  value="Press to browse for a specific firmware version"/>
-        <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="hwtoolclock.frcindebug" value="false"/>
-        <property key="memories.aux" value="false"/>
-        <property key="memories.bootflash" value="false"/>
-        <property key="memories.configurationmemory" value="false"/>
-        <property key="memories.eeprom" value="false"/>
-        <property key="memories.flashdata" value="true"/>
-        <property key="memories.id" value="false"/>
-        <property key="memories.programmemory" value="true"/>
-        <property key="memories.programmemory.end" value="0x7fff"/>
-        <property key="memories.programmemory.start" value="0x0"/>
-        <property key="poweroptions.powerenable" value="false"/>
-        <property key="programmertogo.imagename" value=""/>
-        <property key="programoptions.eraseb4program" value="true"/>
-        <property key="programoptions.pgmspeed" value="2"/>
-        <property key="programoptions.preserveeeprom" value="false"/>
-        <property key="programoptions.preserveprogramrange" value="false"/>
-        <property key="programoptions.preserveprogramrange.end" value="0x7fff"/>
-        <property key="programoptions.preserveprogramrange.start" value="0x0"/>
-        <property key="programoptions.preserveuserid" value="false"/>
-        <property key="programoptions.usehighvoltageonmclr" value="false"/>
-        <property key="programoptions.uselvpprogramming" value="false"/>
-        <property key="voltagevalue" value="5.0"/>
-      </PICkit3PlatformTool>
+      <Simulator>
+        <property key="breakoptions.coreerrors" value="Ignore"/>
+        <property key="breakoptions.corewarnings" value="Ignore"/>
+        <property key="breakoptions.peripheralerrors" value="Ignore"/>
+        <property key="breakoptions.peripheralwarnings" value="Ignore"/>
+        <property key="breakoptions.stimulusmessages.notes" value="Ignore"/>
+        <property key="breakoptions.stimulusmessags.errors" value="Ignore"/>
+        <property key="breakoptions.stimulusmessags.warnings" value="Ignore"/>
+        <property key="breakoptions.wdtwarnings" value="Ignore"/>
+        <property key="codecoverage.enabled" value="Disable"/>
+        <property key="codecoverage.enableoutputtofile" value="false"/>
+        <property key="codecoverage.outputfile" value=""/>
+        <property key="oscillator.auxfrequency" value="120"/>
+        <property key="oscillator.auxfrequencyunit" value="Mega"/>
+        <property key="oscillator.frequency" value="1"/>
+        <property key="oscillator.frequencyunit" value="Mega"/>
+        <property key="oscillator.rcfrequency" value="250"/>
+        <property key="oscillator.rcfrequencyunit" value="Kilo"/>
+        <property key="performancedata.show" value="false"/>
+        <property key="periphADC1.altscl" value="false"/>
+        <property key="periphADC1.minTacq" value=""/>
+        <property key="periphADC1.tacqunits" value="microseconds"/>
+        <property key="periphADC2.altscl" value="false"/>
+        <property key="periphADC2.minTacq" value=""/>
+        <property key="periphADC2.tacqunits" value="microseconds"/>
+        <property key="tracecontrol.include.timestamp" value="false"/>
+        <property key="tracecontrol.select" value="0"/>
+        <property key="tracecontrol.timestamp" value="2"/>
+        <property key="tracecontrol.tracebufmax" value="54600"/>
+        <property key="tracecontrol.tracefile" value="/home/gary/mpdeftrace.log"/>
+        <property key="tracecontrol.traceresetonrun" value="false"/>
+        <property key="uart1io.output" value="window"/>
+        <property key="uart1io.outputfile" value=""/>
+        <property key="uart1io.uartioenabled" value="false"/>
+      </Simulator>
       <XC8-config-global>
+        <property key="output-file-format" value="-mcof,+elf"/>
       </XC8-config-global>
     </conf>
   </confs>

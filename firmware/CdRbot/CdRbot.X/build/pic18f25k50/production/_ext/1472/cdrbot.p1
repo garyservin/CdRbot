@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"5686 /opt/microchip/xc8/v1.11/include/pic18f25k50.h
+"5686 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
 [v _OSCTUNE `Vuc ~T0 @X0 0 e@3995 ]
 "12406
 [v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
@@ -23,16 +23,54 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S321 . . . ]
 "4842
 [v _TRISBbits `VS321 ~T0 @X0 0 e@3987 ]
-"3990
-[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
-"4810
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+[s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S13 . ANSB0 ANSB1 ANSB2 ANSB3 ANSB4 ANSB5 ]
+[u S12 `S13 1 ]
+[n S12 . . ]
+"279
+[v _ANSELBbits `VS12 ~T0 @X0 0 e@3932 ]
 "26 ../motors.h
 [v _mInitMotors `(v ~T0 @X0 0 ef ]
-"28
+"24 ../tsop.h
+[v _mInitTsop `(v ~T0 @X0 0 ef ]
+"19 ../serial.h
+[v _mInitSerialPort `(v ~T0 @X0 0 ef ]
+[s S801 :1 `uc 1 ]
+[n S801 . NOT_BOR ]
+[s S802 :1 `uc 1 :1 `uc 1 ]
+[n S802 . . NOT_POR ]
+[s S803 :2 `uc 1 :1 `uc 1 ]
+[n S803 . . NOT_PD ]
+[s S804 :3 `uc 1 :1 `uc 1 ]
+[n S804 . . NOT_TO ]
+[s S805 :4 `uc 1 :1 `uc 1 ]
+[n S805 . . NOT_RI ]
+[s S806 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S806 . nBOR nPOR nPD nTO nRI . SBOREN IPEN ]
+[s S807 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S807 . BOR POR PD TO RI ]
+[u S800 `S801 1 `S802 1 `S803 1 `S804 1 `S805 1 `S806 1 `S807 1 ]
+[n S800 . . . . . . . . ]
+"12229 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
+[v _RCONbits `VS800 ~T0 @X0 0 e@4048 ]
+[s S847 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S847 . IOCIF INT0IF TMR0IF IOCIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+[s S848 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S848 . . PEIE GIE ]
+[s S849 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S849 . . GIEL GIEH ]
+[s S850 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S850 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+[s S851 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S851 . . GIEL GIEH ]
+[u S846 `S847 1 `S848 1 `S849 1 `S850 1 `S851 1 ]
+[n S846 . . . . . . ]
+"13025
+[v _INTCONbits `VS846 ~T0 @X0 0 e@4082 ]
+"28 ../motors.h
 [v _setServoSpeed `(v ~T0 @X0 0 ef2`ui`i ]
 [; ;pic18f25k50.h: 44: extern volatile unsigned char SRCON1 @ 0xF57;
-"46 /opt/microchip/xc8/v1.11/include/pic18f25k50.h
+"46 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
 [; ;pic18f25k50.h: 46: asm("SRCON1 equ 0F57h");
 [; <" SRCON1 equ 0F57h ;# ">
 [; ;pic18f25k50.h: 49: typedef union {
@@ -6509,241 +6547,265 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;math.h: 26: extern double fmod(double, double);
 [; ;math.h: 27: extern double trunc(double);
 [; ;math.h: 28: extern double round(double);
-"35 ../cdrbot.h
+"38 ../cdrbot.h
 [p x PLLSEL=PLL3X ]
-"36
-[p x CFGPLLEN=OFF ]
-"37
-[p x CPUDIV=NOCLKDIV ]
-"38
-[p x LS48MHZ=SYS48X8 ]
 "39
-[p x FOSC=INTOSCIO ]
+[p x CFGPLLEN=OFF ]
 "40
-[p x PCLKEN=OFF ]
+[p x CPUDIV=NOCLKDIV ]
 "41
-[p x FCMEN=OFF ]
+[p x LS48MHZ=SYS48X8 ]
 "42
-[p x IESO=OFF ]
+[p x FOSC=INTOSCIO ]
 "43
-[p x nPWRTEN=OFF ]
+[p x PCLKEN=OFF ]
 "44
-[p x BOREN=OFF ]
+[p x FCMEN=OFF ]
 "45
-[p x BORV=220 ]
+[p x IESO=OFF ]
 "46
-[p x nLPBOR=OFF ]
+[p x nPWRTEN=OFF ]
 "47
-[p x WDTEN=OFF ]
+[p x BOREN=OFF ]
 "48
-[p x WDTPS=32768 ]
+[p x BORV=220 ]
 "49
-[p x CCP2MX=RC1 ]
+[p x nLPBOR=OFF ]
 "50
-[p x PBADEN=OFF ]
+[p x WDTEN=OFF ]
 "51
-[p x T3CMX=RC0 ]
+[p x WDTPS=32768 ]
 "52
-[p x SDOMX=RC7 ]
+[p x CCP2MX=RB3 ]
 "53
-[p x MCLRE=ON ]
+[p x PBADEN=OFF ]
 "54
-[p x STVREN=OFF ]
+[p x T3CMX=RC0 ]
 "55
-[p x LVP=OFF ]
+[p x SDOMX=RC7 ]
 "56
-[p x ICPRT=OFF ]
+[p x MCLRE=ON ]
 "57
-[p x XINST=OFF ]
+[p x STVREN=OFF ]
 "58
-[p x CP0=OFF ]
+[p x LVP=OFF ]
 "59
-[p x CP1=OFF ]
+[p x ICPRT=OFF ]
 "60
-[p x CP2=OFF ]
+[p x XINST=OFF ]
 "61
-[p x CP3=OFF ]
+[p x CP0=OFF ]
 "62
-[p x CPB=OFF ]
+[p x CP1=OFF ]
 "63
-[p x CPD=OFF ]
+[p x CP2=OFF ]
 "64
-[p x WRT0=OFF ]
+[p x CP3=OFF ]
 "65
-[p x WRT1=OFF ]
+[p x CPB=OFF ]
 "66
-[p x WRT2=OFF ]
+[p x CPD=OFF ]
 "67
-[p x WRT3=OFF ]
+[p x WRT0=OFF ]
 "68
-[p x WRTC=OFF ]
+[p x WRT1=OFF ]
 "69
-[p x WRTB=OFF ]
+[p x WRT2=OFF ]
 "70
-[p x WRTD=OFF ]
+[p x WRT3=OFF ]
 "71
-[p x EBTR0=OFF ]
+[p x WRTC=OFF ]
 "72
-[p x EBTR1=OFF ]
+[p x WRTB=OFF ]
 "73
-[p x EBTR2=OFF ]
+[p x WRTD=OFF ]
 "74
-[p x EBTR3=OFF ]
+[p x EBTR0=OFF ]
 "75
+[p x EBTR1=OFF ]
+"76
+[p x EBTR2=OFF ]
+"77
+[p x EBTR3=OFF ]
+"78
 [p x EBTRB=OFF ]
-[; ;cdrbot.h: 88: void InitRobot ( void );
-[; ;cdrbot.h: 89: void moveRobot ( unsigned int direction );
-[; ;cdrbot.h: 90: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+[; ;serial.h: 19: void mInitSerialPort ( void );
+[; ;serial.h: 20: void serialInterrupt ( void );
+[; ;serial.h: 21: void putch ( unsigned char byte );
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+[; ;tsop.h: 24: void mInitTsop ( void );
+[; ;tsop.h: 25: void tsopInterrupt ( void );
+[; ;tsop.h: 26: char processSensor ( void );
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
 [; ;motors.h: 26: void mInitMotors ( void );
 [; ;motors.h: 27: void servoInterrupt ( void );
 [; ;motors.h: 28: void setServoSpeed ( unsigned int servoID, int speed );
-[; ;cdrbot.h: 88: void InitRobot ( void );
-[; ;cdrbot.h: 89: void moveRobot ( unsigned int direction );
-[; ;cdrbot.h: 90: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
-[; ;cdrbot.c: 5: void initClockCDRBot ( void );
-"25 ../cdrbot.c
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+[; ;cdrbot.c: 6: void initClockCDRBot ( void );
+"26 ../cdrbot.c
 [v _initClockCDRBot `(v ~T0 @X0 1 ef ]
 {
-[; ;cdrbot.c: 24: void initClockCDRBot ( void )
-[; ;cdrbot.c: 25: {
+[; ;cdrbot.c: 25: void initClockCDRBot ( void )
+[; ;cdrbot.c: 26: {
 [e :U _initClockCDRBot ]
 [f ]
-[; ;cdrbot.c: 26: OSCTUNE = 0x80;
-"26
-[e = _OSCTUNE -> -> 128 `i `uc ]
-[; ;cdrbot.c: 27: OSCCON = 0x70;
+[; ;cdrbot.c: 27: OSCTUNE = 0x80;
 "27
-[e = _OSCCON -> -> 112 `i `uc ]
-[; ;cdrbot.c: 28: OSCCON2 = 0x10;
+[e = _OSCTUNE -> -> 128 `i `uc ]
+[; ;cdrbot.c: 28: OSCCON = 0x70;
 "28
-[e = _OSCCON2 -> -> 16 `i `uc ]
-[; ;cdrbot.c: 29: while ( OSCCON2bits.PLLRDY != 1 );
+[e = _OSCCON -> -> 112 `i `uc ]
+[; ;cdrbot.c: 29: OSCCON2 = 0x10;
 "29
+[e = _OSCCON2 -> -> 16 `i `uc ]
+[; ;cdrbot.c: 30: while ( OSCCON2bits.PLLRDY != 1 );
+"30
 [e $U 911  ]
 [e :U 912 ]
 [e :U 911 ]
 [e $ != -> . . _OSCCON2bits 0 7 `i -> 1 `i 912  ]
 [e :U 913 ]
-[; ;cdrbot.c: 30: }
-"30
+[; ;cdrbot.c: 31: }
+"31
 [e :UE 910 ]
 }
-"48
+"49
 [v _InitRobot `(v ~T0 @X0 1 ef ]
 {
-[; ;cdrbot.c: 47: void InitRobot ( void )
-[; ;cdrbot.c: 48: {
+[; ;cdrbot.c: 48: void InitRobot ( void )
+[; ;cdrbot.c: 49: {
 [e :U _InitRobot ]
 [f ]
-[; ;cdrbot.c: 49: initClockCDRBot();
-"49
-[e ( _initClockCDRBot ..  ]
-[; ;cdrbot.c: 50: LATC &= 0xFE; TRISC &= 0xFE;;
+[; ;cdrbot.c: 50: initClockCDRBot();
 "50
+[e ( _initClockCDRBot ..  ]
+[; ;cdrbot.c: 51: LATC &= 0xFE; TRISC &= 0xFE;;
+"51
 [e =& _LATC -> -> 254 `i `uc ]
 [e =& _TRISC -> -> 254 `i `uc ]
-[; ;cdrbot.c: 51: TRISBbits.TRISB4 = 1;;
-"51
-[e = . . _TRISBbits 0 4 -> -> 1 `i `uc ]
-[; ;cdrbot.c: 52: LATB &= 0xFC; TRISB &= 0xFC;;
+[; ;cdrbot.c: 52: TRISBbits.TRISB4 = 1; ANSELBbits.ANSB4 = 0;;
 "52
-[e =& _LATB -> -> 252 `i `uc ]
-[e =& _TRISB -> -> 252 `i `uc ]
+[e = . . _TRISBbits 0 4 -> -> 1 `i `uc ]
+[e = . . _ANSELBbits 0 4 -> -> 0 `i `uc ]
 [; ;cdrbot.c: 53: mInitMotors();
 "53
 [e ( _mInitMotors ..  ]
-[; ;cdrbot.c: 54: }
+[; ;cdrbot.c: 54: mInitTsop();
 "54
+[e ( _mInitTsop ..  ]
+[; ;cdrbot.c: 55: mInitSerialPort();
+"55
+[e ( _mInitSerialPort ..  ]
+[; ;cdrbot.c: 57: RCONbits.IPEN = 0;
+"57
+[e = . . _RCONbits 5 7 -> -> 0 `i `uc ]
+[; ;cdrbot.c: 58: INTCONbits.PEIE = 1;
+"58
+[e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]
+[; ;cdrbot.c: 59: INTCONbits.GIE = 1;
+"59
+[e = . . _INTCONbits 1 2 -> -> 1 `i `uc ]
+[; ;cdrbot.c: 60: }
+"60
 [e :UE 914 ]
 }
-"57
+"63
 [v _moveRobotSpeed `(v ~T0 @X0 1 ef2`ui`ui ]
 {
-[; ;cdrbot.c: 56: void moveRobotSpeed ( unsigned int direction, unsigned int speed )
-[; ;cdrbot.c: 57: {
+[; ;cdrbot.c: 62: void moveRobotSpeed ( unsigned int direction, unsigned int speed )
+[; ;cdrbot.c: 63: {
 [e :U _moveRobotSpeed ]
 [v _direction `ui ~T0 @X0 1 r1 ]
 [v _speed `ui ~T0 @X0 1 r2 ]
 [f ]
-"58
-[v _speedLeftServo `i ~T0 @X0 1 a ]
-[; ;cdrbot.c: 58: int speedLeftServo = 0;
-[e = _speedLeftServo -> 0 `i ]
-"59
-[v _speedRightServo `i ~T0 @X0 1 a ]
-[; ;cdrbot.c: 59: int speedRightServo = 0;
-[e = _speedRightServo -> 0 `i ]
-[; ;cdrbot.c: 61: switch ( direction )
-"61
-[e $U 917  ]
-[; ;cdrbot.c: 62: {
-"62
-{
-[; ;cdrbot.c: 63: case 'f':
-"63
-[e :U 918 ]
-[; ;cdrbot.c: 64: speedLeftServo = speed;
 "64
-[e = _speedLeftServo -> _speed `i ]
-[; ;cdrbot.c: 65: speedRightServo = -speed;
-"65
-[e = _speedRightServo -> -U _speed `i ]
-[; ;cdrbot.c: 66: break;
-"66
-[e $U 916  ]
-[; ;cdrbot.c: 67: case 'b':
-"67
-[e :U 919 ]
-[; ;cdrbot.c: 68: speedLeftServo = -speed;
-"68
-[e = _speedLeftServo -> -U _speed `i ]
-[; ;cdrbot.c: 69: speedRightServo = speed;
-"69
-[e = _speedRightServo -> _speed `i ]
-[; ;cdrbot.c: 70: break;
-"70
-[e $U 916  ]
-[; ;cdrbot.c: 71: case 'l':
-"71
-[e :U 920 ]
-[; ;cdrbot.c: 72: speedLeftServo = -speed;
-"72
-[e = _speedLeftServo -> -U _speed `i ]
-[; ;cdrbot.c: 73: speedRightServo = -speed;
-"73
-[e = _speedRightServo -> -U _speed `i ]
-[; ;cdrbot.c: 74: break;
-"74
-[e $U 916  ]
-[; ;cdrbot.c: 75: case 'r':
-"75
-[e :U 921 ]
-[; ;cdrbot.c: 76: speedLeftServo = speed;
-"76
-[e = _speedLeftServo -> _speed `i ]
-[; ;cdrbot.c: 77: speedRightServo = speed;
-"77
-[e = _speedRightServo -> _speed `i ]
-[; ;cdrbot.c: 78: break;
-"78
-[e $U 916  ]
-[; ;cdrbot.c: 79: case 's':
-"79
-[e :U 922 ]
-[; ;cdrbot.c: 80: speedLeftServo = 0;
-"80
+[v _speedLeftServo `i ~T0 @X0 1 a ]
+[; ;cdrbot.c: 64: int speedLeftServo = 0;
 [e = _speedLeftServo -> 0 `i ]
-[; ;cdrbot.c: 81: speedRightServo = 0;
-"81
+"65
+[v _speedRightServo `i ~T0 @X0 1 a ]
+[; ;cdrbot.c: 65: int speedRightServo = 0;
 [e = _speedRightServo -> 0 `i ]
-[; ;cdrbot.c: 82: break;
+[; ;cdrbot.c: 67: switch ( direction )
+"67
+[e $U 917  ]
+[; ;cdrbot.c: 68: {
+"68
+{
+[; ;cdrbot.c: 69: case 'f':
+"69
+[e :U 918 ]
+[; ;cdrbot.c: 70: speedLeftServo = speed;
+"70
+[e = _speedLeftServo -> _speed `i ]
+[; ;cdrbot.c: 71: speedRightServo = -speed;
+"71
+[e = _speedRightServo -> -U _speed `i ]
+[; ;cdrbot.c: 72: break;
+"72
+[e $U 916  ]
+[; ;cdrbot.c: 73: case 'b':
+"73
+[e :U 919 ]
+[; ;cdrbot.c: 74: speedLeftServo = -speed;
+"74
+[e = _speedLeftServo -> -U _speed `i ]
+[; ;cdrbot.c: 75: speedRightServo = speed;
+"75
+[e = _speedRightServo -> _speed `i ]
+[; ;cdrbot.c: 76: break;
+"76
+[e $U 916  ]
+[; ;cdrbot.c: 77: case 'l':
+"77
+[e :U 920 ]
+[; ;cdrbot.c: 78: speedLeftServo = -speed;
+"78
+[e = _speedLeftServo -> -U _speed `i ]
+[; ;cdrbot.c: 79: speedRightServo = -speed;
+"79
+[e = _speedRightServo -> -U _speed `i ]
+[; ;cdrbot.c: 80: break;
+"80
+[e $U 916  ]
+[; ;cdrbot.c: 81: case 'r':
+"81
+[e :U 921 ]
+[; ;cdrbot.c: 82: speedLeftServo = speed;
 "82
-[e $U 916  ]
+[e = _speedLeftServo -> _speed `i ]
+[; ;cdrbot.c: 83: speedRightServo = speed;
+"83
+[e = _speedRightServo -> _speed `i ]
+[; ;cdrbot.c: 84: break;
 "84
-}
-[; ;cdrbot.c: 84: }
 [e $U 916  ]
-"61
+[; ;cdrbot.c: 85: case 's':
+"85
+[e :U 922 ]
+[; ;cdrbot.c: 86: speedLeftServo = 0;
+"86
+[e = _speedLeftServo -> 0 `i ]
+[; ;cdrbot.c: 87: speedRightServo = 0;
+"87
+[e = _speedRightServo -> 0 `i ]
+[; ;cdrbot.c: 88: break;
+"88
+[e $U 916  ]
+"90
+}
+[; ;cdrbot.c: 90: }
+[e $U 916  ]
+"67
 [e :U 917 ]
 [e [\ _direction , $ -> 102 `ui 918
  , $ -> 98 `ui 919
@@ -6751,30 +6813,30 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> 114 `ui 921
  , $ -> 115 `ui 922
  916 ]
-"84
+"90
 [e :U 916 ]
-[; ;cdrbot.c: 86: setServoSpeed(0, speedLeftServo);
-"86
+[; ;cdrbot.c: 92: setServoSpeed(0, speedLeftServo);
+"92
 [e ( _setServoSpeed (2 , -> -> 0 `i `ui _speedLeftServo ]
-[; ;cdrbot.c: 87: setServoSpeed(1, speedRightServo);
-"87
+[; ;cdrbot.c: 93: setServoSpeed(1, speedRightServo);
+"93
 [e ( _setServoSpeed (2 , -> -> 1 `i `ui _speedRightServo ]
-[; ;cdrbot.c: 88: }
-"88
+[; ;cdrbot.c: 94: }
+"94
 [e :UE 915 ]
 }
-"91
+"97
 [v _moveRobot `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;cdrbot.c: 90: void moveRobot ( unsigned int direction )
-[; ;cdrbot.c: 91: {
+[; ;cdrbot.c: 96: void moveRobot ( unsigned int direction )
+[; ;cdrbot.c: 97: {
 [e :U _moveRobot ]
 [v _direction `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;cdrbot.c: 92: moveRobotSpeed(direction, 255);
-"92
+[; ;cdrbot.c: 98: moveRobotSpeed(direction, 255);
+"98
 [e ( _moveRobotSpeed (2 , _direction -> -> 255 `i `ui ]
-[; ;cdrbot.c: 93: }
-"93
+[; ;cdrbot.c: 99: }
+"99
 [e :UE 923 ]
 }

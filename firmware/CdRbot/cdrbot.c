@@ -1,5 +1,6 @@
 #include <xc.h>
 #include "cdrbot.h"
+#include "serial.h"
 
 /** P R I V A T E  P R O T O T Y P E S ***************************************/
 void initClockCDRBot ( void );
@@ -49,8 +50,13 @@ void InitRobot ( void )
 	initClockCDRBot();
 	mInitLED();
 	mInitSwitchPrg();
-	mInitServos();
 	mInitMotors();
+	mInitTsop();
+	mInitSerialPort();
+
+	RCONbits.IPEN = 0; // Interruption Priority Disabled
+	INTCONbits.PEIE = 1; // Peripherial Interrupt Enabled
+	INTCONbits.GIE = 1; // Global Interrupt Enable
 }
 
 void moveRobotSpeed ( unsigned int direction, unsigned int speed )

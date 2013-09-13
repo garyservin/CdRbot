@@ -1,26 +1,12 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [s S910 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S910 . L R Phase ]
-"118 /opt/microchip/xc8/v1.11/include/plib/timers.h
+"3990 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
+[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
+"4810
+[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"118 /opt/microchip/xc8/v1.12/include/plib/timers.h
 [v _OpenTimer0 `(v ~T0 @X0 0 ef1`uc ]
-[s S801 :1 `uc 1 ]
-[n S801 . NOT_BOR ]
-[s S802 :1 `uc 1 :1 `uc 1 ]
-[n S802 . . NOT_POR ]
-[s S803 :2 `uc 1 :1 `uc 1 ]
-[n S803 . . NOT_PD ]
-[s S804 :3 `uc 1 :1 `uc 1 ]
-[n S804 . . NOT_TO ]
-[s S805 :4 `uc 1 :1 `uc 1 ]
-[n S805 . . NOT_RI ]
-[s S806 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S806 . nBOR nPOR nPD nTO nRI . SBOREN IPEN ]
-[s S807 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S807 . BOR POR PD TO RI ]
-[u S800 `S801 1 `S802 1 `S803 1 `S804 1 `S805 1 `S806 1 `S807 1 ]
-[n S800 . . . . . . . . ]
-"12229 /opt/microchip/xc8/v1.11/include/pic18f25k50.h
-[v _RCONbits `VS800 ~T0 @X0 0 e@4048 ]
 [s S847 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S847 . IOCIF INT0IF TMR0IF IOCIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
 [s S848 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -33,7 +19,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S851 . . GIEL GIEH ]
 [u S846 `S847 1 `S848 1 `S849 1 `S850 1 `S851 1 ]
 [n S846 . . . . . . ]
-"13025
+"13025 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
 [v _INTCONbits `VS846 ~T0 @X0 0 e@4082 ]
 [s S280 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S280 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
@@ -57,10 +43,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S279 . . . . . . . . . . ]
 "4038
 [v _LATBbits `VS279 ~T0 @X0 0 e@3978 ]
-"121 /opt/microchip/xc8/v1.11/include/plib/timers.h
+"121 /opt/microchip/xc8/v1.12/include/plib/timers.h
 [v _WriteTimer0 `(v ~T0 @X0 0 ef1`ui ]
 [; ;pic18f25k50.h: 44: extern volatile unsigned char SRCON1 @ 0xF57;
-"46 /opt/microchip/xc8/v1.11/include/pic18f25k50.h
+"46 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
 [; ;pic18f25k50.h: 46: asm("SRCON1 equ 0F57h");
 [; <" SRCON1 equ 0F57h ;# ">
 [; ;pic18f25k50.h: 49: typedef union {
@@ -6537,91 +6523,103 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;math.h: 26: extern double fmod(double, double);
 [; ;math.h: 27: extern double trunc(double);
 [; ;math.h: 28: extern double round(double);
-"35 ../cdrbot.h
+"38 ../cdrbot.h
 [p x PLLSEL=PLL3X ]
-"36
-[p x CFGPLLEN=OFF ]
-"37
-[p x CPUDIV=NOCLKDIV ]
-"38
-[p x LS48MHZ=SYS48X8 ]
 "39
-[p x FOSC=INTOSCIO ]
+[p x CFGPLLEN=OFF ]
 "40
-[p x PCLKEN=OFF ]
+[p x CPUDIV=NOCLKDIV ]
 "41
-[p x FCMEN=OFF ]
+[p x LS48MHZ=SYS48X8 ]
 "42
-[p x IESO=OFF ]
+[p x FOSC=INTOSCIO ]
 "43
-[p x nPWRTEN=OFF ]
+[p x PCLKEN=OFF ]
 "44
-[p x BOREN=OFF ]
+[p x FCMEN=OFF ]
 "45
-[p x BORV=220 ]
+[p x IESO=OFF ]
 "46
-[p x nLPBOR=OFF ]
+[p x nPWRTEN=OFF ]
 "47
-[p x WDTEN=OFF ]
+[p x BOREN=OFF ]
 "48
-[p x WDTPS=32768 ]
+[p x BORV=220 ]
 "49
-[p x CCP2MX=RC1 ]
+[p x nLPBOR=OFF ]
 "50
-[p x PBADEN=OFF ]
+[p x WDTEN=OFF ]
 "51
-[p x T3CMX=RC0 ]
+[p x WDTPS=32768 ]
 "52
-[p x SDOMX=RC7 ]
+[p x CCP2MX=RB3 ]
 "53
-[p x MCLRE=ON ]
+[p x PBADEN=OFF ]
 "54
-[p x STVREN=OFF ]
+[p x T3CMX=RC0 ]
 "55
-[p x LVP=OFF ]
+[p x SDOMX=RC7 ]
 "56
-[p x ICPRT=OFF ]
+[p x MCLRE=ON ]
 "57
-[p x XINST=OFF ]
+[p x STVREN=OFF ]
 "58
-[p x CP0=OFF ]
+[p x LVP=OFF ]
 "59
-[p x CP1=OFF ]
+[p x ICPRT=OFF ]
 "60
-[p x CP2=OFF ]
+[p x XINST=OFF ]
 "61
-[p x CP3=OFF ]
+[p x CP0=OFF ]
 "62
-[p x CPB=OFF ]
+[p x CP1=OFF ]
 "63
-[p x CPD=OFF ]
+[p x CP2=OFF ]
 "64
-[p x WRT0=OFF ]
+[p x CP3=OFF ]
 "65
-[p x WRT1=OFF ]
+[p x CPB=OFF ]
 "66
-[p x WRT2=OFF ]
+[p x CPD=OFF ]
 "67
-[p x WRT3=OFF ]
+[p x WRT0=OFF ]
 "68
-[p x WRTC=OFF ]
+[p x WRT1=OFF ]
 "69
-[p x WRTB=OFF ]
+[p x WRT2=OFF ]
 "70
-[p x WRTD=OFF ]
+[p x WRT3=OFF ]
 "71
-[p x EBTR0=OFF ]
+[p x WRTC=OFF ]
 "72
-[p x EBTR1=OFF ]
+[p x WRTB=OFF ]
 "73
-[p x EBTR2=OFF ]
+[p x WRTD=OFF ]
 "74
-[p x EBTR3=OFF ]
+[p x EBTR0=OFF ]
 "75
+[p x EBTR1=OFF ]
+"76
+[p x EBTR2=OFF ]
+"77
+[p x EBTR3=OFF ]
+"78
 [p x EBTRB=OFF ]
-[; ;cdrbot.h: 88: void InitRobot ( void );
-[; ;cdrbot.h: 89: void moveRobot ( unsigned int direction );
-[; ;cdrbot.h: 90: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+[; ;serial.h: 19: void mInitSerialPort ( void );
+[; ;serial.h: 20: void serialInterrupt ( void );
+[; ;serial.h: 21: void putch ( unsigned char byte );
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+[; ;tsop.h: 24: void mInitTsop ( void );
+[; ;tsop.h: 25: void tsopInterrupt ( void );
+[; ;tsop.h: 26: char processSensor ( void );
+[; ;cdrbot.h: 91: void InitRobot ( void );
+[; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
+[; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
 [; ;motors.h: 26: void mInitMotors ( void );
 [; ;motors.h: 27: void servoInterrupt ( void );
 [; ;motors.h: 28: void setServoSpeed ( unsigned int servoID, int speed );
@@ -6688,143 +6686,138 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;motors.c: 23: {
 [e :U _mInitMotors ]
 [f ]
-[; ;motors.c: 24: OpenTimer0(0b11111111 &
-[; ;motors.c: 25: 0b10111111 &
-[; ;motors.c: 26: 0b11011111 &
-[; ;motors.c: 27: 0b11111111);
-"27
-[e ( _OpenTimer0 (1 -> & & & -> 255 `i -> 191 `i -> 223 `i -> 255 `i `uc ]
-[; ;motors.c: 29: RCONbits.IPEN = 0;
+[; ;motors.c: 24: LATB &= 0x3F; TRISB &= 0x3F;;
+"24
+[e =& _LATB -> -> 63 `i `uc ]
+[e =& _TRISB -> -> 63 `i `uc ]
+[; ;motors.c: 26: OpenTimer0(0b11111111 &
+[; ;motors.c: 27: 0b10111111 &
+[; ;motors.c: 28: 0b11011111 &
+[; ;motors.c: 29: 0b11111111);
 "29
-[e = . . _RCONbits 5 7 -> -> 0 `i `uc ]
-[; ;motors.c: 30: INTCONbits.PEIE = 1;
+[e ( _OpenTimer0 (1 -> & & & -> 255 `i -> 191 `i -> 223 `i -> 255 `i `uc ]
+[; ;motors.c: 30: }
 "30
-[e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]
-[; ;motors.c: 31: INTCONbits.GIE = 1;
-"31
-[e = . . _INTCONbits 1 2 -> -> 1 `i `uc ]
-[; ;motors.c: 32: }
-"32
 [e :UE 911 ]
 }
-"35
+"33
 [v _servoInterrupt `(v ~T0 @X0 1 ef ]
 {
-[; ;motors.c: 34: void servoInterrupt ( void )
-[; ;motors.c: 35: {
+[; ;motors.c: 32: void servoInterrupt ( void )
+[; ;motors.c: 33: {
 [e :U _servoInterrupt ]
 [f ]
-[; ;motors.c: 36: if ( INTCONbits.TMR0IF && INTCONbits.TMR0IE )
-"36
+[; ;motors.c: 34: if ( INTCONbits.TMR0IF && INTCONbits.TMR0IE )
+"34
 [e $ ! && != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i != -> . . _INTCONbits 0 5 `i -> -> -> 0 `i `Vuc `i 913  ]
-[; ;motors.c: 37: {
+[; ;motors.c: 35: {
+"35
+{
+[; ;motors.c: 36: INTCONbits.TMR0IF = 0;
+"36
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;motors.c: 37: if ( !Servo.Phase )
 "37
-{
-[; ;motors.c: 38: if ( !Servo.Phase )
-"38
 [e $ ! ! != -> . _Servo 2 `i -> -> -> 0 `i `Vuc `i 914  ]
-[; ;motors.c: 39: {
+[; ;motors.c: 38: {
+"38
+{
+[; ;motors.c: 39: if ( Servo_Idx == 0 && enableServo[0] ) LATBbits.LATB6 = 1;
 "39
-{
-[; ;motors.c: 40: if ( Servo_Idx == 0 && enableServo[0] ) LATBbits.LATB0 = 1;
-"40
 [e $ ! && == -> _Servo_Idx `i -> 0 `i != *U + &U _enableServo * -> -> -> 0 `i `ui `ux -> -> # *U &U _enableServo `ui `ux -> -> 0 `i `ui 915  ]
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
+[e = . . _LATBbits 0 6 -> -> 1 `i `uc ]
 [e :U 915 ]
-[; ;motors.c: 41: if ( Servo_Idx == 1 && enableServo[1] ) LATBbits.LATB1 = 1;
-"41
+[; ;motors.c: 40: if ( Servo_Idx == 1 && enableServo[1] ) LATBbits.LATB7 = 1;
+"40
 [e $ ! && == -> _Servo_Idx `i -> 1 `i != *U + &U _enableServo * -> -> -> 1 `i `ui `ux -> -> # *U &U _enableServo `ui `ux -> -> 0 `i `ui 916  ]
-[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
+[e = . . _LATBbits 0 7 -> -> 1 `i `uc ]
 [e :U 916 ]
-[; ;motors.c: 42: Ticks4NextInterrupt = 65535 - Servo_PWM[Servo_Idx];
-"42
+[; ;motors.c: 41: Ticks4NextInterrupt = 65535 - Servo_PWM[Servo_Idx];
+"41
 [e = _Ticks4NextInterrupt -> - -> 65535 `l -> *U + &U _Servo_PWM * -> _Servo_Idx `ux -> -> # *U &U _Servo_PWM `ui `ux `l `ui ]
-[; ;motors.c: 43: WriteTimer0(Ticks4NextInterrupt);
+[; ;motors.c: 42: WriteTimer0(Ticks4NextInterrupt);
+"42
+[e ( _WriteTimer0 (1 _Ticks4NextInterrupt ]
 "43
-[e ( _WriteTimer0 (1 _Ticks4NextInterrupt ]
-"44
 }
-[; ;motors.c: 44: }
+[; ;motors.c: 43: }
 [e $U 917  ]
-"45
+"44
 [e :U 914 ]
-[; ;motors.c: 45: else
-[; ;motors.c: 46: {
-"46
+[; ;motors.c: 44: else
+[; ;motors.c: 45: {
+"45
 {
-[; ;motors.c: 47: if ( Servo_Idx == 0 && enableServo[0] ) LATBbits.LATB0 = 0;
-"47
+[; ;motors.c: 46: if ( Servo_Idx == 0 && enableServo[0] ) LATBbits.LATB6 = 0;
+"46
 [e $ ! && == -> _Servo_Idx `i -> 0 `i != *U + &U _enableServo * -> -> -> 0 `i `ui `ux -> -> # *U &U _enableServo `ui `ux -> -> 0 `i `ui 918  ]
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[e = . . _LATBbits 0 6 -> -> 0 `i `uc ]
 [e :U 918 ]
-[; ;motors.c: 48: if ( Servo_Idx == 1 && enableServo[1] ) LATBbits.LATB1 = 0;
-"48
+[; ;motors.c: 47: if ( Servo_Idx == 1 && enableServo[1] ) LATBbits.LATB7 = 0;
+"47
 [e $ ! && == -> _Servo_Idx `i -> 1 `i != *U + &U _enableServo * -> -> -> 1 `i `ui `ux -> -> # *U &U _enableServo `ui `ux -> -> 0 `i `ui 919  ]
-[e = . . _LATBbits 0 1 -> -> 0 `i `uc ]
+[e = . . _LATBbits 0 7 -> -> 0 `i `uc ]
 [e :U 919 ]
-[; ;motors.c: 49: Ticks4NextInterrupt = 65535 - 5000UL * (48000000UL/4000000UL) + Servo_PWM[Servo_Idx];
-"49
+[; ;motors.c: 48: Ticks4NextInterrupt = 65535 - 5000UL * (48000000UL/4000000UL) + Servo_PWM[Servo_Idx];
+"48
 [e = _Ticks4NextInterrupt -> + - -> -> 65535 `l `ul * -> 5000 `ul / -> 48000000 `ul -> 4000000 `ul -> *U + &U _Servo_PWM * -> _Servo_Idx `ux -> -> # *U &U _Servo_PWM `ui `ux `ul `ui ]
-[; ;motors.c: 50: WriteTimer0(Ticks4NextInterrupt);
-"50
+[; ;motors.c: 49: WriteTimer0(Ticks4NextInterrupt);
+"49
 [e ( _WriteTimer0 (1 _Ticks4NextInterrupt ]
-[; ;motors.c: 51: if ( ++Servo_Idx > 3 ) Servo_Idx = 0;
-"51
+[; ;motors.c: 50: if ( ++Servo_Idx > 3 ) Servo_Idx = 0;
+"50
 [e $ ! > -> =+ _Servo_Idx -> -> 1 `i `uc `i -> 3 `i 920  ]
 [e = _Servo_Idx -> -> 0 `i `uc ]
 [e :U 920 ]
-"52
+"51
 }
 [e :U 917 ]
-[; ;motors.c: 52: }
-[; ;motors.c: 53: Servo.Phase = !Servo.Phase;
-"53
+[; ;motors.c: 51: }
+[; ;motors.c: 52: Servo.Phase = !Servo.Phase;
+"52
 [e = . _Servo 2 -> -> ! != -> . _Servo 2 `i -> -> -> 0 `i `Vuc `i `i `uc ]
-[; ;motors.c: 54: INTCONbits.TMR0IF = 0;
-"54
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"55
+"53
 }
 [e :U 913 ]
-[; ;motors.c: 55: }
-[; ;motors.c: 56: }
-"56
+[; ;motors.c: 53: }
+[; ;motors.c: 54: }
+"54
 [e :UE 912 ]
 }
-"59
+"57
 [v _setServoSpeed `(v ~T0 @X0 1 ef2`ui`i ]
 {
-[; ;motors.c: 58: void setServoSpeed ( unsigned int servoID, int speed )
-[; ;motors.c: 59: {
+[; ;motors.c: 56: void setServoSpeed ( unsigned int servoID, int speed )
+[; ;motors.c: 57: {
 [e :U _setServoSpeed ]
 [v _servoID `ui ~T0 @X0 1 r1 ]
 [v _speed `i ~T0 @X0 1 r2 ]
 [f ]
-[; ;motors.c: 60: if ( speed > 255 )
-"60
+[; ;motors.c: 58: if ( speed > 255 )
+"58
 [e $ ! > _speed -> 255 `i 922  ]
-[; ;motors.c: 61: speed = 255;
-"61
+[; ;motors.c: 59: speed = 255;
+"59
 [e = _speed -> 255 `i ]
 [e :U 922 ]
-[; ;motors.c: 63: Servo_PWM[servoID] = zeroServo[servoID] + (speed * 38);
-"63
+[; ;motors.c: 61: Servo_PWM[servoID] = zeroServo[servoID] + (speed * 38);
+"61
 [e = *U + &U _Servo_PWM * -> _servoID `ux -> -> # *U &U _Servo_PWM `ui `ux + *U + &U _zeroServo * -> _servoID `ux -> -> # *U &U _zeroServo `ui `ux -> * _speed -> 38 `i `ui ]
-[; ;motors.c: 65: if ( !speed )
-"65
+[; ;motors.c: 63: if ( !speed )
+"63
 [e $ ! ! != _speed -> 0 `i 923  ]
-[; ;motors.c: 66: enableServo[servoID] = 0;
-"66
+[; ;motors.c: 64: enableServo[servoID] = 0;
+"64
 [e = *U + &U _enableServo * -> _servoID `ux -> -> # *U &U _enableServo `ui `ux -> -> 0 `i `ui ]
 [e $U 924  ]
-"67
+"65
 [e :U 923 ]
-[; ;motors.c: 67: else
-[; ;motors.c: 68: enableServo[servoID] = 1;
-"68
+[; ;motors.c: 65: else
+[; ;motors.c: 66: enableServo[servoID] = 1;
+"66
 [e = *U + &U _enableServo * -> _servoID `ux -> -> # *U &U _enableServo `ui `ux -> -> 1 `i `ui ]
 [e :U 924 ]
-[; ;motors.c: 69: }
-"69
+[; ;motors.c: 67: }
+"67
 [e :UE 921 ]
 }

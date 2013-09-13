@@ -24,26 +24,25 @@
 #define mLED_1_Toggle()		mLED_1 = !mLED_1;
 
 /** S W I T C H **************************************************************/
-#define mInitSwitchPrg()	TRISBbits.TRISB4 = 1;
+#define mInitSwitchPrg()	TRISBbits.TRISB4 = 1; ANSELBbits.ANSB4 = 0;
 
 #define swPrg			PORTBbits.RB4
 
 /** S E R V O S **************************************************************/
-#define mInitServos()		LATB &= 0xFC; TRISB &= 0xFC;
+#define mInitServos()		LATB &= 0x3F; TRISB &= 0x3F;
 
-#define mServo_L		LATBbits.LATB0		// Left Servo
-#define mServo_R		LATBbits.LATB1		// Right Servo
+#define mServo_L		LATBbits.LATB6		// Left Servo
+#define mServo_R		LATBbits.LATB7		// Right Servo
 
 /** L I N E  S E N S O R S ***************************************************/
 #define mInitLineSensors()	TRISAbits.TRISA0=TRISAbits.TRISA1=1;ADCON0=0x01;ADCON2=0x3C;
 
-#define mLineSensor_L		LATAbits.LATA0		// Left Sensor
-#define mLineSensor_R		LATAbits.LATA1		// Right Sensor
+#define mLineSensor_L		PORTAbits.RA0		// Left Sensor
+#define mLineSensor_R		PORTAbits.RA1		// Right Sensor
 
 /** O P O N E N T  S E N S O R ***********************************************/
-#define mInitOponentSensor()	LATA &= 0xFB; TRISA &= 0xFB;
-
-#define mOponentSenor		LATAbits.LATA2
+#define mInitOponentSensor()	TRISBbits.TRISB0 = 1; ANSELBbits.ANSB0 = 0; TRISBbits.RB3 = 0; ANSELBbits.ANSB3 = 0;
+#define mOponentSenor		PORTBbits.RB0
 
 #endif	/* IO_CFG_H */
 

@@ -21,20 +21,19 @@ unsigned int enableServo[2] = { 0, 0 };
 /** D E C L A R A T I O N S **************************************************/
 void mInitMotors ( void )
 {
+	mInitServos();
+	
 	OpenTimer0(TIMER_INT_ON &
 		T0_16BIT &
 		T0_SOURCE_INT &
 		T0_PS_1_1);
-
-	RCONbits.IPEN = 0; // Interruption Priority Disabled
-	INTCONbits.PEIE = 1; // Peripherial Interrupt Enabled
-	INTCONbits.GIE = 1; // Global Interrupt Enable
 }
 
 void servoInterrupt ( void )
 {
 	if ( INTCONbits.TMR0IF && INTCONbits.TMR0IE )
 	{
+		INTCONbits.TMR0IF = 0;
 		if ( !Servo.Phase )
 		{
 			if ( Servo_Idx == 0 && enableServo[0] ) mServo_L = 1;
@@ -51,7 +50,6 @@ void servoInterrupt ( void )
 			if ( ++Servo_Idx > 3 ) Servo_Idx = 0;
 		}
 		Servo.Phase = !Servo.Phase;
-		INTCONbits.TMR0IF = 0;
 	}
 }
 
@@ -67,3 +65,4 @@ void setServoSpeed ( unsigned int servoID, int speed )
 	else
 		enableServo[servoID] = 1;
 }
+

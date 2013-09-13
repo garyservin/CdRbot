@@ -1,7 +1,7 @@
 
 # 1 "../cdrbot.c"
 
-# 44 "/opt/microchip/xc8/v1.11/include/pic18f25k50.h"
+# 44 "/opt/microchip/xc8/v1.12/include/pic18f25k50.h"
 extern volatile unsigned char SRCON1 @ 0xF57;
 
 asm("SRCON1 equ 0F57h");
@@ -7281,7 +7281,7 @@ extern volatile __bit nW @ (((unsigned) &SSP1STAT)*8) + 2;
 
 extern volatile __bit nWRITE @ (((unsigned) &SSP1STAT)*8) + 2;
 
-# 2008 "/opt/microchip/xc8/v1.11/include/plib/adc.h"
+# 2008 "/opt/microchip/xc8/v1.12/include/plib/adc.h"
 union ADCResult
 {
 int lr;
@@ -7308,13 +7308,13 @@ void SetChanADC(unsigned char );
 # 2100
 void SelChanConvADC( unsigned char );
 
-# 90 "/opt/microchip/xc8/v1.11/include/plib/ancomp.h"
+# 90 "/opt/microchip/xc8/v1.12/include/plib/ancomp.h"
 void Close_ancomp1( void );
 void Open_ancomp1(unsigned char config);
 void Close_ancomp2( void );
 void Open_ancomp2(unsigned char config);
 
-# 236 "/opt/microchip/xc8/v1.11/include/plib/spi.h"
+# 236 "/opt/microchip/xc8/v1.12/include/plib/spi.h"
 void OpenSPI1( unsigned char sync_mode,
 unsigned char bus_mode,
 unsigned char smp_phase );
@@ -7327,7 +7327,7 @@ void putsSPI1( unsigned char *wrptr );
 
 unsigned char ReadSPI1( void );
 
-# 414 "/opt/microchip/xc8/v1.11/include/plib/can2510.h"
+# 414 "/opt/microchip/xc8/v1.12/include/plib/can2510.h"
 void CAN2510Initialize(  unsigned int configuration,
  unsigned char brp,
  unsigned char interruptFlags,
@@ -7434,7 +7434,7 @@ unsigned char CAN2510DataRead(  unsigned char bufferNum,
  unsigned char *numBytes,
  unsigned char *data );
 
-# 64 "/opt/microchip/xc8/v1.11/include/plib/capture.h"
+# 64 "/opt/microchip/xc8/v1.12/include/plib/capture.h"
 union capstatus
 {
 
@@ -7473,7 +7473,7 @@ void OpenECapture1 ( unsigned char config);
 unsigned int ReadECapture1 (void);
 void CloseECapture1 (void);
 
-# 392 "/opt/microchip/xc8/v1.11/include/plib/compare.h"
+# 392 "/opt/microchip/xc8/v1.12/include/plib/compare.h"
 void OpenCompare2(unsigned char config, unsigned int period);
 void CloseCompare2(void);
 
@@ -7481,19 +7481,19 @@ void CloseCompare2(void);
 void OpenECompare1(unsigned char config,unsigned int period);
 void CloseECompare1(void);
 
-# 374 "/opt/microchip/xc8/v1.11/include/plib/ctmu.h"
+# 374 "/opt/microchip/xc8/v1.12/include/plib/ctmu.h"
 void OpenCTMU(unsigned char config1,unsigned char config2,unsigned char config3);
 
 # 379
 void CurrentControlCTMU(unsigned char config);
 void CloseCTMU(void);
 
-# 36 "/opt/microchip/xc8/v1.11/include/plib/EEP.h"
+# 36 "/opt/microchip/xc8/v1.12/include/plib/EEP.h"
 void Busy_eep ( void );
 unsigned char Read_b_eep( unsigned int badd );
 void Write_b_eep( unsigned int badd, unsigned char bdata );
 
-# 2 "/opt/microchip/xc8/v1.11/include/stddef.h"
+# 2 "/opt/microchip/xc8/v1.12/include/stddef.h"
 typedef int ptrdiff_t;
 typedef unsigned size_t;
 typedef unsigned short wchar_t;
@@ -7501,7 +7501,7 @@ typedef unsigned short wchar_t;
 # 13
 extern int errno;
 
-# 65 "/opt/microchip/xc8/v1.11/include/GenericTypeDefs.h"
+# 65 "/opt/microchip/xc8/v1.12/include/GenericTypeDefs.h"
 typedef enum _BOOL { FALSE = 0, TRUE } BOOL;
 
 
@@ -7936,7 +7936,7 @@ struct
 } bits;
 } QWORD_VAL;
 
-# 113 "/opt/microchip/xc8/v1.11/include/plib/flash.h"
+# 113 "/opt/microchip/xc8/v1.12/include/plib/flash.h"
 extern void ReadFlash(unsigned long startaddr, unsigned int num_bytes, unsigned char *flash_array);
 
 # 120
@@ -7946,7 +7946,7 @@ extern void WriteBlockFlash(unsigned long startaddr, unsigned char num_blocks, u
 
 extern void WriteBytesFlash(unsigned long startaddr, unsigned int num_bytes, unsigned char *flash_array);
 
-# 244 "/opt/microchip/xc8/v1.11/include/plib/i2c.h"
+# 244 "/opt/microchip/xc8/v1.12/include/plib/i2c.h"
 void OpenI2C1( unsigned char sync_mode, unsigned char slew );
 
 # 264
@@ -7986,7 +7986,7 @@ unsigned char address,
 unsigned char *rdptr,
 unsigned char length );
 
-# 200 "/opt/microchip/xc8/v1.11/include/plib/mwire.h"
+# 200 "/opt/microchip/xc8/v1.12/include/plib/mwire.h"
 void OpenMwire1( unsigned char sync_mode );
 
 
@@ -7999,7 +7999,7 @@ signed char WriteMwire1( unsigned char data_out );
 # 234
 void getsMwire1( unsigned char *rdptr, unsigned char length );
 
-# 126 "/opt/microchip/xc8/v1.11/include/plib/portb.h"
+# 126 "/opt/microchip/xc8/v1.12/include/plib/portb.h"
 void OpenPORTB( unsigned char config);
 
 # 176
@@ -8011,7 +8011,7 @@ void OpenRB1INT( unsigned char config);
 # 211
 void OpenRB2INT( unsigned char config);
 
-# 85 "/opt/microchip/xc8/v1.11/include/plib/pwm.h"
+# 85 "/opt/microchip/xc8/v1.12/include/plib/pwm.h"
 union PWMDC
 {
 unsigned int lpwm;
@@ -8037,7 +8037,7 @@ void SetOutputEPWM1 ( unsigned char output_config,
 unsigned char pwm_mode);
 void CloseEPWM1 (void);
 
-# 16 "/opt/microchip/xc8/v1.11/include/plib/reset.h"
+# 16 "/opt/microchip/xc8/v1.12/include/plib/reset.h"
 char isMCLR(void);
 void StatusReset(void);
 char isPOR(void);
@@ -8055,12 +8055,12 @@ char isWDTWU(void);
 
 char isLVD(void);
 
-# 687 "/opt/microchip/xc8/v1.11/include/plib/rtcc.h"
+# 687 "/opt/microchip/xc8/v1.12/include/plib/rtcc.h"
 void Open_RTCC(void);
 void Close_RTCC(void);
 unsigned char update_RTCC(void);
 
-# 97 "/opt/microchip/xc8/v1.11/include/plib/sw_i2c.h"
+# 97 "/opt/microchip/xc8/v1.12/include/plib/sw_i2c.h"
 void SWStopI2C ( void );
 void SWStartI2C ( void );
 void SWRestartI2C ( void );
@@ -8073,7 +8073,7 @@ signed char SWWriteI2C(  unsigned char data_out );
 signed char SWGetsI2C(  unsigned char *rdptr,  unsigned char length );
 signed char SWPutsI2C(  unsigned char *wrptr );
 
-# 84 "/opt/microchip/xc8/v1.11/include/plib/sw_spi.h"
+# 84 "/opt/microchip/xc8/v1.12/include/plib/sw_spi.h"
 void OpenSWSPI(void);
 
 
@@ -8085,7 +8085,7 @@ void SetCSSWSPI(void);
 
 void ClearCSSWSPI(void);
 
-# 47 "/opt/microchip/xc8/v1.11/include/plib/sw_uart.h"
+# 47 "/opt/microchip/xc8/v1.12/include/plib/sw_uart.h"
 void OpenUART(void);
 
 unsigned char ReadUART(void);
@@ -8101,7 +8101,7 @@ extern void DelayRXBitUART (void);
 extern void DelayRXHalfBitUART(void);
 extern void DelayTXBitUART (void);
 
-# 36 "/opt/microchip/xc8/v1.11/include/plib/timers.h"
+# 36 "/opt/microchip/xc8/v1.12/include/plib/timers.h"
 union Timers
 {
 unsigned int lt;
@@ -8130,7 +8130,7 @@ void CloseTimer3 (void);
 unsigned int ReadTimer3 (void);
 void WriteTimer3 ( unsigned int timer3);
 
-# 200 "/opt/microchip/xc8/v1.11/include/plib/usart.h"
+# 200 "/opt/microchip/xc8/v1.12/include/plib/usart.h"
 union USART1
 {
 unsigned char val;
@@ -8157,7 +8157,7 @@ void putrs1USART ( const  char *data);
 # 660
 void baud1USART ( unsigned char baudconfig);
 
-# 87 "/opt/microchip/xc8/v1.11/include/plib/xlcd.h"
+# 87 "/opt/microchip/xc8/v1.12/include/plib/xlcd.h"
 void OpenXLCD( unsigned char);
 
 # 92
@@ -8192,7 +8192,7 @@ extern void DelayFor18TCY(void);
 extern void DelayPORXLCD(void);
 extern void DelayXLCD(void);
 
-# 18 "/opt/microchip/xc8/v1.11/include/pic18.h"
+# 18 "/opt/microchip/xc8/v1.12/include/pic18.h"
 __attribute__((__unsupported__("The flash_write routine is no longer supported. Please use the peripheral library functions: WriteBytesFlash, WriteBlockFlash or WriteWordFlash"))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 
 
@@ -8204,7 +8204,7 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 18 "/opt/microchip/xc8/v1.11/include/delays.h"
+# 18 "/opt/microchip/xc8/v1.12/include/delays.h"
 void Delay10TCYx(unsigned char);
 
 # 24
@@ -8216,7 +8216,7 @@ void Delay1KTCYx(unsigned char);
 # 36
 void Delay10KTCYx(unsigned char);
 
-# 7 "/opt/microchip/xc8/v1.11/include/stdarg.h"
+# 7 "/opt/microchip/xc8/v1.12/include/stdarg.h"
 typedef void * va_list[1];
 
 #pragma intrinsic(__va_start)
@@ -8225,7 +8225,7 @@ extern void * __va_start(void);
 #pragma intrinsic(__va_arg)
 extern void * __va_arg(void *, ...);
 
-# 23 "/opt/microchip/xc8/v1.11/include/stdio.h"
+# 23 "/opt/microchip/xc8/v1.12/include/stdio.h"
 extern int errno;
 
 # 54
@@ -8235,7 +8235,7 @@ char * ptr;
 void (* func)(char);
 };
 
-# 17 "/opt/microchip/xc8/v1.11/include/conio.h"
+# 17 "/opt/microchip/xc8/v1.12/include/conio.h"
 extern int errno;
 
 
@@ -8252,7 +8252,7 @@ extern __bit kbhit(void);
 extern char * cgets(char *);
 extern void cputs(const char *);
 
-# 99 "/opt/microchip/xc8/v1.11/include/stdio.h"
+# 99 "/opt/microchip/xc8/v1.12/include/stdio.h"
 extern int cprintf(char *, ...);
 #pragma printf_check(cprintf)
 
@@ -8279,7 +8279,7 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 3 "/opt/microchip/xc8/v1.11/include/math.h"
+# 3 "/opt/microchip/xc8/v1.12/include/math.h"
 extern double fabs(double);
 extern double floor(double);
 extern double ceil(double);
@@ -8308,7 +8308,7 @@ extern double trunc(double);
 extern double round(double);
 
 
-# 35 "../cdrbot.h"
+# 38 "../cdrbot.h"
 #pragma config PLLSEL = PLL3X
 #pragma config CFGPLLEN = OFF
 #pragma config CPUDIV = NOCLKDIV
@@ -8323,7 +8323,7 @@ extern double round(double);
 #pragma config nLPBOR = OFF
 #pragma config WDTEN = OFF
 #pragma config WDTPS = 32768
-#pragma config CCP2MX = RC1
+#pragma config CCP2MX = RB3
 #pragma config PBADEN = OFF
 #pragma config T3CMX = RC0
 #pragma config SDOMX = RC7
@@ -8351,7 +8351,115 @@ extern double round(double);
 #pragma config EBTR3 = OFF
 #pragma config EBTRB = OFF
 
-# 88
+# 91
+void InitRobot ( void );
+void moveRobot ( unsigned int direction );
+void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+
+# 19 "../serial.h"
+void mInitSerialPort ( void );
+void serialInterrupt ( void );
+void putch ( unsigned char byte );
+
+
+# 38 "../cdrbot.h"
+#pragma config PLLSEL = PLL3X
+#pragma config CFGPLLEN = OFF
+#pragma config CPUDIV = NOCLKDIV
+#pragma config LS48MHZ = SYS48X8
+#pragma config FOSC = INTOSCIO
+#pragma config PCLKEN = OFF
+#pragma config FCMEN = OFF
+#pragma config IESO = OFF
+#pragma config nPWRTEN = OFF
+#pragma config BOREN = OFF
+#pragma config BORV = 2V5
+#pragma config nLPBOR = OFF
+#pragma config WDTEN = OFF
+#pragma config WDTPS = 32768
+#pragma config CCP2MX = RB3
+#pragma config PBADEN = OFF
+#pragma config T3CMX = RC0
+#pragma config SDOMX = RC7
+#pragma config MCLRE = ON
+#pragma config STVREN = OFF
+#pragma config LVP = OFF
+#pragma config ICPRT = OFF
+#pragma config XINST = OFF
+#pragma config CP0 = OFF
+#pragma config CP1 = OFF
+#pragma config CP2 = OFF
+#pragma config CP3 = OFF
+#pragma config CPB = OFF
+#pragma config CPD = OFF
+#pragma config WRT0 = OFF
+#pragma config WRT1 = OFF
+#pragma config WRT2 = OFF
+#pragma config WRT3 = OFF
+#pragma config WRTC = OFF
+#pragma config WRTB = OFF
+#pragma config WRTD = OFF
+#pragma config EBTR0 = OFF
+#pragma config EBTR1 = OFF
+#pragma config EBTR2 = OFF
+#pragma config EBTR3 = OFF
+#pragma config EBTRB = OFF
+
+# 91
+void InitRobot ( void );
+void moveRobot ( unsigned int direction );
+void moveRobotSpeed ( unsigned int direction, unsigned int speed );
+
+# 24 "../tsop.h"
+void mInitTsop ( void );
+void tsopInterrupt ( void );
+char processSensor ( void );
+
+
+# 38 "../cdrbot.h"
+#pragma config PLLSEL = PLL3X
+#pragma config CFGPLLEN = OFF
+#pragma config CPUDIV = NOCLKDIV
+#pragma config LS48MHZ = SYS48X8
+#pragma config FOSC = INTOSCIO
+#pragma config PCLKEN = OFF
+#pragma config FCMEN = OFF
+#pragma config IESO = OFF
+#pragma config nPWRTEN = OFF
+#pragma config BOREN = OFF
+#pragma config BORV = 2V5
+#pragma config nLPBOR = OFF
+#pragma config WDTEN = OFF
+#pragma config WDTPS = 32768
+#pragma config CCP2MX = RB3
+#pragma config PBADEN = OFF
+#pragma config T3CMX = RC0
+#pragma config SDOMX = RC7
+#pragma config MCLRE = ON
+#pragma config STVREN = OFF
+#pragma config LVP = OFF
+#pragma config ICPRT = OFF
+#pragma config XINST = OFF
+#pragma config CP0 = OFF
+#pragma config CP1 = OFF
+#pragma config CP2 = OFF
+#pragma config CP3 = OFF
+#pragma config CPB = OFF
+#pragma config CPD = OFF
+#pragma config WRT0 = OFF
+#pragma config WRT1 = OFF
+#pragma config WRT2 = OFF
+#pragma config WRT3 = OFF
+#pragma config WRTC = OFF
+#pragma config WRTB = OFF
+#pragma config WRTD = OFF
+#pragma config EBTR0 = OFF
+#pragma config EBTR1 = OFF
+#pragma config EBTR2 = OFF
+#pragma config EBTR3 = OFF
+#pragma config EBTRB = OFF
+
+# 91
 void InitRobot ( void );
 void moveRobot ( unsigned int direction );
 void moveRobotSpeed ( unsigned int direction, unsigned int speed );
@@ -8362,7 +8470,7 @@ void servoInterrupt ( void );
 void setServoSpeed ( unsigned int servoID, int speed );
 
 
-# 35 "../cdrbot.h"
+# 38 "../cdrbot.h"
 #pragma config PLLSEL = PLL3X
 #pragma config CFGPLLEN = OFF
 #pragma config CPUDIV = NOCLKDIV
@@ -8377,7 +8485,7 @@ void setServoSpeed ( unsigned int servoID, int speed );
 #pragma config nLPBOR = OFF
 #pragma config WDTEN = OFF
 #pragma config WDTPS = 32768
-#pragma config CCP2MX = RC1
+#pragma config CCP2MX = RB3
 #pragma config PBADEN = OFF
 #pragma config T3CMX = RC0
 #pragma config SDOMX = RC7
@@ -8405,15 +8513,15 @@ void setServoSpeed ( unsigned int servoID, int speed );
 #pragma config EBTR3 = OFF
 #pragma config EBTRB = OFF
 
-# 88
+# 91
 void InitRobot ( void );
 void moveRobot ( unsigned int direction );
 void moveRobotSpeed ( unsigned int direction, unsigned int speed );
 
-# 5 "../cdrbot.c"
+# 6 "../cdrbot.c"
 void initClockCDRBot ( void );
 
-# 24
+# 25
 void initClockCDRBot ( void )
 {
 OSCTUNE = 0x80;
@@ -8422,14 +8530,19 @@ OSCCON2 = 0x10;
 while ( OSCCON2bits.PLLRDY != 1 );
 }
 
-# 47
+# 48
 void InitRobot ( void )
 {
 initClockCDRBot();
 LATC &= 0xFE; TRISC &= 0xFE;;
-TRISBbits.TRISB4 = 1;;
-LATB &= 0xFC; TRISB &= 0xFC;;
+TRISBbits.TRISB4 = 1; ANSELBbits.ANSB4 = 0;;
 mInitMotors();
+mInitTsop();
+mInitSerialPort();
+
+RCONbits.IPEN = 0;
+INTCONbits.PEIE = 1;
+INTCONbits.GIE = 1;
 }
 
 void moveRobotSpeed ( unsigned int direction, unsigned int speed )

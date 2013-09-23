@@ -1,0 +1,42 @@
+## GIT IGNORE FILE
+
+*.hex
+*.o
+*.err
+*.cof
+*.lst
+*.map
+*.cod
+*~
+
+# Compilacion y linkeado
+firmware/CdRbot/CdRbot.X/build
+firmware/CdRbot/CdRbot.X/dist
+firmware/CdRbot/CdRbot.X/*.i
+
+firmware/bootloader/MPLAB.X/build
+firmware/bootloader/MPLAB.X/dist
+firmware/bootloader/MPLAB.X/*.i
+
+firmware/bootloaderXC8/MPLAB.X/build
+firmware/bootloaderXC8/MPLAB.X/dist
+firmware/bootloaderXC8/MPLAB.X/*.i
+
+#Makefiles autogenerados
+firmware/CdRbot/CdRbot.X/nbproject/Makefile-pic18f25k50.mk
+firmware/CdRbot/CdRbot.X/nbproject/Makefile-genesis.properties
+firmware/CdRbot/CdRbot.X/nbproject/Makefile-impl.mk
+firmware/CdRbot/CdRbot.X/nbproject/Makefile-variables.mk
+firmware/CdRbot/CdRbot.X/nbproject/Makefile-local-pic18f25k50.mk
+
+firmware/bootloader/MPLAB.X/nbproject/Makefile-pic18f25k50.mk
+firmware/bootloader/MPLAB.X/nbproject/Makefile-genesis.properties
+firmware/bootloader/MPLAB.X/nbproject/Makefile-impl.mk
+firmware/bootloader/MPLAB.X/nbproject/Makefile-variables.mk
+firmware/bootloader/MPLAB.X/nbproject/Makefile-local-pic18f25k50.mk
+
+firmware/bootloaderXC8/MPLAB.X/nbproject/Makefile-pic18f25k50.mk
+firmware/bootloaderXC8/MPLAB.X/nbproject/Makefile-genesis.properties
+firmware/bootloaderXC8/MPLAB.X/nbproject/Makefile-impl.mk
+firmware/bootloaderXC8/MPLAB.X/nbproject/Makefile-variables.mk
+firmware/bootloaderXC8/MPLAB.X/nbproject/Makefile-local-pic18f25k50.mk

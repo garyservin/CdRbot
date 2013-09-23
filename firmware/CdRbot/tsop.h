@@ -24,6 +24,8 @@
 void mInitTsop ( void );
 void tsopInterrupt ( void );
 char processSensor ( void );
+void sendCarrier ( int time );
+void sentIR ( int data );
 
 #endif	/* TSOP_H */
 

@@ -8468,45 +8468,37 @@ void moveRobotSpeed ( unsigned int direction, unsigned int speed );
 void mInitTsop ( void );
 void tsopInterrupt ( void );
 char processSensor ( void );
+void sendCarrier ( int time );
+void sentIR ( int data );
 
 # 4 "../tsop.c"
 volatile struct
 {
-UINT32_VAL Buffer;
-unsigned char pos;
-unsigned char timer;
 unsigned Ready : 1;
 unsigned NewData : 1;
-} tsop = { 0, 0, 0, 0, 1 };
+} tsop = { 0, 1 };
 
+volatile UINT32_VAL Buffer = 0;
+volatile unsigned char pos = 0;
+volatile unsigned char timer = 0;
 
 
 
 void mInitTsop ( void )
 {
-OpenTimer1(0b10011111 &
-0b11100111 &
-0b11111011 &
-0b11111111 &
-0b11111110 &
-0b01111111,
-0x00);
 
-T1CONbits.TMR1ON = 0;
+# 26
+OpenTimer0(0b01111111 &
+0b11111111 &
+0b11111111 &
+0b11110001);
+
+
+
 
 TRISBbits.TRISB0 = 1; ANSELBbits.ANSB0 = 0; TRISBbits.RB3 = 0; ANSELBbits.ANSB3 = 0;;
 
-# 46
-TRISCbits.TRISC1 = 1;
-OpenPWM2(( 48000000UL / (4 * 4 * 38000UL) ) - 1, 0b11111111);
-SetDCPWM2(0xA0);
-OpenTimer2(0b10000111 &
-0b11111101 &
-0b01111111);
-
-while ( !PIR1bits.TMR2IF ) continue;
-TRISCbits.TRISC1 = 0;
-
+# 63
 INTCON2bits.INTEDG0 = 0;
 INTCONbits.INT0IF = 0;
 INTCONbits.INT0IE = 1;
@@ -8522,48 +8514,77 @@ tsop.Ready = 0;
 
 
 
-value = tsop.Buffer.byte.UB;
+value = Buffer.byte.UB;
 }
 return (char) value;
 }
 
-void tsopInterrupt ( void )
+void sentIR ( int data )
 {
-if ( INTCONbits.INT0IE && INTCONbits.INT0IF )
+char i = 0;
+int bitTime = 0;
+
+sendCarrier(9000);
+Delay10TCYx(4500);
+
+for ( i = 0; i < 16; i++ )
 {
-LATCbits.LATC0 = !LATCbits.LATC0;
-if ( tsop.NewData )
+sendCarrier(bitTime);
+if ( data & 0x80000 )
 {
-tsop.NewData = 0;
-T1CONbits.TMR1ON = 1;
-WriteTimer1(0);
-tsop.pos = 0;
-tsop.Buffer.Val = 0;
+Delay10TCYx(3 * bitTime);
 }
 else
 {
-tsop.timer = ReadTimer1();
-WriteTimer1(0);
+Delay10TCYx(bitTime);
+}
+data <<= 1;
+}
+sendCarrier(bitTime);
+}
 
-
-
-if ( tsop.timer >= 10 && tsop.timer < 80 )
-tsop.Buffer.Val &= (((unsigned long) 1 << tsop.pos++) ^ 0xFFFFFFFF);
-else if ( tsop.timer >= 80 && tsop.timer < 140 )
-tsop.Buffer.Val |= ((unsigned long) 1 << tsop.pos++);
-else if ( tsop.timer >= 140 )
-tsop.pos = 0;
-
-if ( tsop.pos >= 32 )
+void sendCarrier ( int time )
 {
-tsop.NewData = 1;
-tsop.Ready = 1;
-T1CONbits.TMR1ON = 0;
-
-
-
+SetDCPWM2(0xA0);
+Delay10TCYx(time);
+SetDCPWM2(0x00);
 }
+
+void tsopInterrupt ( void )
+{
+LATCbits.LATC0 = !LATCbits.LATC0;;
+if ( INTCONbits.INT0IE && INTCONbits.INT0IF )
+{
+T0CONbits.T0CS = 0;
+
+timer = ReadTimer0();
+WriteTimer0(0);
+
+printf("%3u|", timer);
+
+
+if ( timer > 0 && timer <= 15 )
+{
+
+Buffer.Val &= (((unsigned long) 1 << pos++) ^ 0xFFFFFFFF);
 }
+else if ( timer > 15 && timer <= 30 )
+{
+
+Buffer.Val |= ((unsigned long) 1 << pos++);
+}
+
+if ( pos >= 32 )
+{
+
+T0CONbits.T0CS = 1;
+pos = 0;
+WriteTimer0(0);
+
+
+printf("\r\n");
+}
+
 INTCONbits.INT0IF = 0;
 }
 }

@@ -8,10 +8,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "92 ../cdrbot.h
 [v _moveRobot `(v ~T0 @X0 0 ef1`ui ]
-"20 ../serial.h
-[v _serialInterrupt `(v ~T0 @X0 0 ef ]
-"27 ../motors.h
-[v _servoInterrupt `(v ~T0 @X0 0 ef ]
 "25 ../tsop.h
 [v _tsopInterrupt `(v ~T0 @X0 0 ef ]
 [; ;pic18f25k50.h: 44: extern volatile unsigned char SRCON1 @ 0xF57;
@@ -6586,6 +6582,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tsop.h: 24: void mInitTsop ( void );
 [; ;tsop.h: 25: void tsopInterrupt ( void );
 [; ;tsop.h: 26: char processSensor ( void );
+[; ;tsop.h: 27: void sendCarrier ( int time );
+[; ;tsop.h: 28: void sentIR ( int data );
 [; ;cdrbot.h: 91: void InitRobot ( void );
 [; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
 [; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
@@ -6603,8 +6601,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "18
-[v F7198 `i ~T0 @X0 -> 16 `i s ]
-[i F7198
+[v F7202 `i ~T0 @X0 -> 16 `i s ]
+[i F7202
 :U ..
 -> -> 115 `ui `i
 -> -> 115 `ui `i
@@ -6632,7 +6630,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 19: 's', 'f', 's', 's',
 [; ;main.c: 20: 'l', 's', 'r', 's',
 [; ;main.c: 21: 's', 'b', 's', 's' };
-[e = _cont F7198 ]
+[e = _cont F7202 ]
 "23
 [v _sensors `uc ~T0 @X0 1 a ]
 [; ;main.c: 23: char sensors = 0;
@@ -6677,21 +6675,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 910 ]
 }
 "46
-[v F7202 `(v ~T0 @X0 1 tf ]
-[v _ISR `IF7202 ~T0 @X0 1 e ]
+[v F7206 `(v ~T0 @X0 1 tf ]
+[v _ISR `IF7206 ~T0 @X0 1 e ]
 {
 [; ;main.c: 45: void interrupt ISR ( void )
 [; ;main.c: 46: {
 [e :U _ISR ]
 [f ]
-[; ;main.c: 47: serialInterrupt();
+[; ;main.c: 47: tsopInterrupt();
 "47
-[e ( _serialInterrupt ..  ]
-[; ;main.c: 48: servoInterrupt();
-"48
-[e ( _servoInterrupt ..  ]
-[; ;main.c: 49: tsopInterrupt();
-"49
 [e ( _tsopInterrupt ..  ]
 [; ;main.c: 50: }
 "50

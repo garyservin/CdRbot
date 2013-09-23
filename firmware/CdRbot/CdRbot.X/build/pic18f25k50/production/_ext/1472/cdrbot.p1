@@ -29,8 +29,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S12 . . ]
 "279
 [v _ANSELBbits `VS12 ~T0 @X0 0 e@3932 ]
-"26 ../motors.h
-[v _mInitMotors `(v ~T0 @X0 0 ef ]
 "24 ../tsop.h
 [v _mInitTsop `(v ~T0 @X0 0 ef ]
 "19 ../serial.h
@@ -6641,6 +6639,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tsop.h: 24: void mInitTsop ( void );
 [; ;tsop.h: 25: void tsopInterrupt ( void );
 [; ;tsop.h: 26: char processSensor ( void );
+[; ;tsop.h: 27: void sendCarrier ( int time );
+[; ;tsop.h: 28: void sentIR ( int data );
 [; ;cdrbot.h: 91: void InitRobot ( void );
 [; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
 [; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
@@ -6696,18 +6696,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "52
 [e = . . _TRISBbits 0 4 -> -> 1 `i `uc ]
 [e = . . _ANSELBbits 0 4 -> -> 0 `i `uc ]
-[; ;cdrbot.c: 53: mInitMotors();
-"53
-[e ( _mInitMotors ..  ]
 [; ;cdrbot.c: 54: mInitTsop();
 "54
 [e ( _mInitTsop ..  ]
 [; ;cdrbot.c: 55: mInitSerialPort();
 "55
 [e ( _mInitSerialPort ..  ]
-[; ;cdrbot.c: 57: RCONbits.IPEN = 0;
+[; ;cdrbot.c: 57: RCONbits.IPEN = 1;
 "57
-[e = . . _RCONbits 5 7 -> -> 0 `i `uc ]
+[e = . . _RCONbits 5 7 -> -> 1 `i `uc ]
 [; ;cdrbot.c: 58: INTCONbits.PEIE = 1;
 "58
 [e = . . _INTCONbits 1 1 -> -> 1 `i `uc ]

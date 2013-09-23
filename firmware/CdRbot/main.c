@@ -44,7 +44,7 @@ void main ( void )
 
 void interrupt ISR ( void )
 {
-	serialInterrupt();
-	servoInterrupt();
 	tsopInterrupt();
+//	serialInterrupt();
+//	servoInterrupt();
 }

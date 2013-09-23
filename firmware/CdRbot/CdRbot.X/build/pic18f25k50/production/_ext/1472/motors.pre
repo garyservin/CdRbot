@@ -8414,6 +8414,8 @@ void moveRobotSpeed ( unsigned int direction, unsigned int speed );
 void mInitTsop ( void );
 void tsopInterrupt ( void );
 char processSensor ( void );
+void sendCarrier ( int time );
+void sentIR ( int data );
 
 
 # 38 "../cdrbot.h"
@@ -8495,6 +8497,7 @@ OpenTimer0(0b11111111 &
 0b10111111 &
 0b11011111 &
 0b11111111);
+INTCON2bits.TMR0IP = 0;
 }
 
 void servoInterrupt ( void )

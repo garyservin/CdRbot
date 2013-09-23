@@ -8414,6 +8414,8 @@ void moveRobotSpeed ( unsigned int direction, unsigned int speed );
 void mInitTsop ( void );
 void tsopInterrupt ( void );
 char processSensor ( void );
+void sendCarrier ( int time );
+void sentIR ( int data );
 
 
 # 38 "../cdrbot.h"
@@ -8536,11 +8538,11 @@ void InitRobot ( void )
 initClockCDRBot();
 LATC &= 0xFE; TRISC &= 0xFE;;
 TRISBbits.TRISB4 = 1; ANSELBbits.ANSB4 = 0;;
-mInitMotors();
+
 mInitTsop();
 mInitSerialPort();
 
-RCONbits.IPEN = 0;
+RCONbits.IPEN = 1;
 INTCONbits.PEIE = 1;
 INTCONbits.GIE = 1;
 }

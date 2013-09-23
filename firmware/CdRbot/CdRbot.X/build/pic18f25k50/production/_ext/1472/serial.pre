@@ -8360,6 +8360,8 @@ void moveRobotSpeed ( unsigned int direction, unsigned int speed );
 void mInitTsop ( void );
 void tsopInterrupt ( void );
 char processSensor ( void );
+void sendCarrier ( int time );
+void sentIR ( int data );
 
 
 # 38 "../cdrbot.h"

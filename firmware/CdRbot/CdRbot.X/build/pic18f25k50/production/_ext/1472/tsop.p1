@@ -1,4 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
+[s S910 :1 `uc 1 :1 `uc 1 ]
+[n S910 . Ready NewData ]
 [s S883 `us 1 `us 1 ]
 [n S883 . LW HW ]
 [s S884 `uc 1 `uc 1 `uc 1 `uc 1 ]
@@ -15,29 +17,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S886 . b0 b1 b2 b3 b4 b5 b6 b7 b8 b9 b10 b11 b12 b13 b14 b15 b16 b17 b18 b19 b20 b21 b22 b23 b24 b25 b26 b27 b28 b29 b30 b31 ]
 [u S882 `ul 1 `us -> 2 `i `uc -> 4 `i `S883 1 `S884 1 `S885 1 `S886 1 ]
 [n S882 . Val w v word byte wordUnion bits ]
-[s S910 `S882 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S910 . Buffer pos timer Ready NewData ]
-"185 /opt/microchip/xc8/v1.12/include/plib/timers.h
-[v _OpenTimer1 `(v ~T0 @X0 0 ef2`uc`uc ]
-[s S792 :2 `uc 1 :1 `uc 1 ]
-[n S792 . . NOT_T1SYNC ]
-[s S793 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :2 `uc 1 ]
-[n S793 . TMR1ON RD16 nT1SYNC SOSCEN T1CKPS TMR1CS ]
-[s S794 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S794 . . T1RD16 T1SYNC T1SOSCEN T1CKPS0 T1CKPS1 TMR1CS0 TMR1CS1 ]
-[s S795 :3 `uc 1 :1 `uc 1 ]
-[n S795 . . T1OSCEN ]
-[u S791 `S792 1 `S793 1 `S794 1 `S795 1 ]
-[n S791 . . . . . ]
-"12063 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
-[v _T1CONbits `VS791 ~T0 @X0 0 e@4045 ]
+"118 /opt/microchip/xc8/v1.12/include/plib/timers.h
+[v _OpenTimer0 `(v ~T0 @X0 0 ef1`uc ]
 [s S322 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S322 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
 [s S323 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S323 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
 [u S321 `S322 1 `S323 1 ]
 [n S321 . . . ]
-"4842
+"4842 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
 [v _TRISBbits `VS321 ~T0 @X0 0 e@3987 ]
 [s S13 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S13 . ANSB0 ANSB1 ANSB2 ANSB3 ANSB4 ANSB5 ]
@@ -45,32 +33,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S12 . . ]
 "279
 [v _ANSELBbits `VS12 ~T0 @X0 0 e@3932 ]
-[s S328 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S328 . TRISC0 TRISC1 TRISC2 . TRISC4 TRISC5 TRISC6 TRISC7 ]
-[s S329 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S329 . RC0 RC1 RC2 . RC6 RC7 ]
-[s S330 :3 `uc 1 :1 `uc 1 ]
-[n S330 . . TRISC3 ]
-[u S327 `S328 1 `S329 1 `S330 1 ]
-[n S327 . . . . ]
-"5065
-[v _TRISCbits `VS327 ~T0 @X0 0 e@3988 ]
-"525 /opt/microchip/xc8/v1.12/include/plib/pwm.h
-[v _OpenPWM2 `(v ~T0 @X0 0 ef2`uc`uc ]
-"526
-[v _SetDCPWM2 `(v ~T0 @X0 0 ef1`ui ]
-"325 /opt/microchip/xc8/v1.12/include/plib/timers.h
-[v _OpenTimer2 `(v ~T0 @X0 0 ef1`uc ]
-[s S366 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S366 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF ACTIF ]
-[s S367 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S367 . . SSP1IF TX1IF RC1IF . STIF ]
-[s S368 :7 `uc 1 :1 `uc 1 ]
-[n S368 . . PSPIF ]
-[u S365 `S366 1 `S367 1 `S368 1 ]
-[n S365 . . . . ]
-"5951 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
-[v _PIR1bits `VS365 ~T0 @X0 0 e@3998 ]
 [s S843 :7 `uc 1 :1 `uc 1 ]
 [n S843 . . NOT_RBPU ]
 [s S844 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -95,6 +57,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S846 . . . . . . ]
 "13025
 [v _INTCONbits `VS846 ~T0 @X0 0 e@4082 ]
+"27 ../tsop.h
+[v _sendCarrier `(v ~T0 @X0 0 ef1`i ]
+"18 /opt/microchip/xc8/v1.12/include/delays.h
+[v _Delay10TCYx `(v ~T0 @X0 0 ef1`uc ]
+"526 /opt/microchip/xc8/v1.12/include/plib/pwm.h
+[v _SetDCPWM2 `(v ~T0 @X0 0 ef1`ui ]
 [s S290 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S290 . LATC0 LATC1 LATC2 . LATC4 LATC5 LATC6 LATC7 ]
 [s S291 :1 `uc 1 ]
@@ -115,12 +83,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S298 . . LC7 ]
 [u S289 `S290 1 `S291 1 `S292 1 `S293 1 `S294 1 `S295 1 `S296 1 `S297 1 `S298 1 ]
 [n S289 . . . . . . . . . . ]
-"4170
+"4170 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
 [v _LATCbits `VS289 ~T0 @X0 0 e@3979 ]
-"188 /opt/microchip/xc8/v1.12/include/plib/timers.h
-[v _WriteTimer1 `(v ~T0 @X0 0 ef1`ui ]
-"187
-[v _ReadTimer1 `(ui ~T0 @X0 0 ef ]
+[s S817 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S817 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+[s S818 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S818 . T0PS0 T0PS1 T0PS2 ]
+[u S816 `S817 1 `S818 1 ]
+[n S816 . . . ]
+"12508
+[v _T0CONbits `VS816 ~T0 @X0 0 e@4053 ]
+"120 /opt/microchip/xc8/v1.12/include/plib/timers.h
+[v _ReadTimer0 `(ui ~T0 @X0 0 ef ]
+"121
+[v _WriteTimer0 `(v ~T0 @X0 0 ef1`ui ]
+"206 /opt/microchip/xc8/v1.12/include/stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [; ;pic18f25k50.h: 44: extern volatile unsigned char SRCON1 @ 0xF57;
 "46 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
 [; ;pic18f25k50.h: 46: asm("SRCON1 equ 0F57h");
@@ -6699,18 +6677,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tsop.h: 24: void mInitTsop ( void );
 [; ;tsop.h: 25: void tsopInterrupt ( void );
 [; ;tsop.h: 26: char processSensor ( void );
-"11 ../tsop.c
+[; ;tsop.h: 27: void sendCarrier ( int time );
+[; ;tsop.h: 28: void sentIR ( int data );
+"8 ../tsop.c
 [v _tsop `VS910 ~T0 @X0 1 e ]
 [i _tsop
 :U ..
 :U ..
-:U ..
-:U ..
--> -> -> 0 `i `l `ul
-..
-..
--> -> 0 `i `uc
--> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 1 `i `uc
 ..
@@ -6718,12 +6691,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;tsop.c: 4: volatile struct
 [; ;tsop.c: 5: {
-[; ;tsop.c: 6: UINT32_VAL Buffer;
-[; ;tsop.c: 7: unsigned char pos;
-[; ;tsop.c: 8: unsigned char timer;
-[; ;tsop.c: 9: unsigned Ready : 1;
-[; ;tsop.c: 10: unsigned NewData : 1;
-[; ;tsop.c: 11: } tsop = { 0, 0, 0, 0, 1 };
+[; ;tsop.c: 6: unsigned Ready : 1;
+[; ;tsop.c: 7: unsigned NewData : 1;
+[; ;tsop.c: 8: } tsop = { 0, 1 };
+"10
+[v _Buffer `VS882 ~T0 @X0 1 e ]
+[i _Buffer
+:U ..
+:U ..
+-> -> -> 0 `i `l `ul
+..
+..
+]
+[; ;tsop.c: 10: volatile UINT32_VAL Buffer = 0;
+"11
+[v _pos `Vuc ~T0 @X0 1 e ]
+[i _pos
+-> -> 0 `i `uc
+]
+[; ;tsop.c: 11: volatile unsigned char pos = 0;
+"12
+[v _timer `Vuc ~T0 @X0 1 e ]
+[i _timer
+-> -> 0 `i `uc
+]
+[; ;tsop.c: 12: volatile unsigned char timer = 0;
 "17
 [v _mInitTsop `(v ~T0 @X0 1 ef ]
 {
@@ -6731,206 +6723,256 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tsop.c: 17: {
 [e :U _mInitTsop ]
 [f ]
-[; ;tsop.c: 18: OpenTimer1(0b10011111 &
-[; ;tsop.c: 19: 0b11100111 &
-[; ;tsop.c: 20: 0b11111011 &
-[; ;tsop.c: 21: 0b11111111 &
-[; ;tsop.c: 22: 0b11111110 &
-[; ;tsop.c: 23: 0b01111111,
-[; ;tsop.c: 24: 0x00);
-"24
-[e ( _OpenTimer1 (2 , -> & & & & & -> 159 `i -> 231 `i -> 251 `i -> 255 `i -> 254 `i -> 127 `i `uc -> -> 0 `i `uc ]
-[; ;tsop.c: 26: T1CONbits.TMR1ON = 0;
-"26
-[e = . . _T1CONbits 1 0 -> -> 0 `i `uc ]
-[; ;tsop.c: 28: TRISBbits.TRISB0 = 1; ANSELBbits.ANSB0 = 0; TRISBbits.RB3 = 0; ANSELBbits.ANSB3 = 0;;
-"28
+[; ;tsop.c: 26: OpenTimer0(0b01111111 &
+[; ;tsop.c: 27: 0b11111111 &
+[; ;tsop.c: 28: 0b11111111 &
+[; ;tsop.c: 29: 0b11110001);
+"29
+[e ( _OpenTimer0 (1 -> & & & -> 127 `i -> 255 `i -> 255 `i -> 241 `i `uc ]
+[; ;tsop.c: 34: TRISBbits.TRISB0 = 1; ANSELBbits.ANSB0 = 0; TRISBbits.RB3 = 0; ANSELBbits.ANSB3 = 0;;
+"34
 [e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
 [e = . . _ANSELBbits 0 0 -> -> 0 `i `uc ]
 [e = . . _TRISBbits 1 3 -> -> 0 `i `uc ]
 [e = . . _ANSELBbits 0 3 -> -> 0 `i `uc ]
-[; ;tsop.c: 46: TRISCbits.TRISC1 = 1;
-"46
-[e = . . _TRISCbits 0 1 -> -> 1 `i `uc ]
-[; ;tsop.c: 47: OpenPWM2(( 48000000UL / (4 * 4 * 38000UL) ) - 1, 0b11111111);
-"47
-[e ( _OpenPWM2 (2 , -> - / -> 48000000 `ul * -> -> * -> 4 `i -> 4 `i `l `ul -> 38000 `ul -> -> -> 1 `i `l `ul `uc -> -> 255 `i `uc ]
-[; ;tsop.c: 48: SetDCPWM2(0xA0);
-"48
-[e ( _SetDCPWM2 (1 -> -> 160 `i `ui ]
-[; ;tsop.c: 49: OpenTimer2(0b10000111 &
-[; ;tsop.c: 50: 0b11111101 &
-[; ;tsop.c: 51: 0b01111111);
-"51
-[e ( _OpenTimer2 (1 -> & & -> 135 `i -> 253 `i -> 127 `i `uc ]
-[; ;tsop.c: 53: while ( !PIR1bits.TMR2IF ) continue;
-"53
-[e $U 912  ]
-[e :U 913 ]
-[e $U 912  ]
-[e :U 912 ]
-[e $ ! != -> . . _PIR1bits 0 1 `i -> -> -> 0 `i `Vuc `i 913  ]
-[e :U 914 ]
-[; ;tsop.c: 54: TRISCbits.TRISC1 = 0;
-"54
-[e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
-[; ;tsop.c: 56: INTCON2bits.INTEDG0 = 0;
-"56
+[; ;tsop.c: 63: INTCON2bits.INTEDG0 = 0;
+"63
 [e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
-[; ;tsop.c: 57: INTCONbits.INT0IF = 0;
-"57
+[; ;tsop.c: 64: INTCONbits.INT0IF = 0;
+"64
 [e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-[; ;tsop.c: 58: INTCONbits.INT0IE = 1;
-"58
+[; ;tsop.c: 65: INTCONbits.INT0IE = 1;
+"65
 [e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-[; ;tsop.c: 59: }
-"59
+[; ;tsop.c: 66: }
+"66
 [e :UE 911 ]
 }
-"62
+"69
 [v _processSensor `(uc ~T0 @X0 1 ef ]
 {
-[; ;tsop.c: 61: char processSensor ( void )
-[; ;tsop.c: 62: {
+[; ;tsop.c: 68: char processSensor ( void )
+[; ;tsop.c: 69: {
 [e :U _processSensor ]
 [f ]
-"63
+"70
 [v _value `uc ~T0 @X0 1 a ]
-[; ;tsop.c: 63: char value = 0;
+[; ;tsop.c: 70: char value = 0;
 [e = _value -> -> 0 `i `uc ]
-[; ;tsop.c: 64: if ( tsop.Ready )
-"64
-[e $ ! != -> . _tsop 3 `i -> -> -> 0 `i `Vuc `i 916  ]
-[; ;tsop.c: 65: {
-"65
-{
-[; ;tsop.c: 66: tsop.Ready = 0;
-"66
-[e = . _tsop 3 -> -> 0 `i `uc ]
-[; ;tsop.c: 71: value = tsop.Buffer.byte.UB;
+[; ;tsop.c: 71: if ( tsop.Ready )
 "71
-[e = _value . . . _tsop 0 4 2 ]
+[e $ ! != -> . _tsop 0 `i -> -> -> 0 `i `Vuc `i 913  ]
+[; ;tsop.c: 72: {
 "72
-}
-[e :U 916 ]
-[; ;tsop.c: 72: }
-[; ;tsop.c: 73: return (char) value;
+{
+[; ;tsop.c: 73: tsop.Ready = 0;
 "73
-[e ) _value ]
-[e $UE 915  ]
-[; ;tsop.c: 74: }
-"74
-[e :UE 915 ]
+[e = . _tsop 0 -> -> 0 `i `uc ]
+[; ;tsop.c: 78: value = Buffer.byte.UB;
+"78
+[e = _value . . _Buffer 4 2 ]
+"79
 }
-"77
+[e :U 913 ]
+[; ;tsop.c: 79: }
+[; ;tsop.c: 80: return (char) value;
+"80
+[e ) _value ]
+[e $UE 912  ]
+[; ;tsop.c: 81: }
+"81
+[e :UE 912 ]
+}
+"84
+[v _sentIR `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;tsop.c: 83: void sentIR ( int data )
+[; ;tsop.c: 84: {
+[e :U _sentIR ]
+[v _data `i ~T0 @X0 1 r1 ]
+[f ]
+"85
+[v _i `uc ~T0 @X0 1 a ]
+[; ;tsop.c: 85: char i = 0;
+[e = _i -> -> 0 `i `uc ]
+"86
+[v _bitTime `i ~T0 @X0 1 a ]
+[; ;tsop.c: 86: int bitTime = 0;
+[e = _bitTime -> 0 `i ]
+[; ;tsop.c: 88: sendCarrier(9000);
+"88
+[e ( _sendCarrier (1 -> 9000 `i ]
+[; ;tsop.c: 89: Delay10TCYx(4500);
+"89
+[e ( _Delay10TCYx (1 -> -> 4500 `i `uc ]
+[; ;tsop.c: 91: for ( i = 0; i < 16; i++ )
+"91
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 16 `i 915  ]
+[e $U 916  ]
+"92
+[e :U 915 ]
+[; ;tsop.c: 92: {
+{
+[; ;tsop.c: 93: sendCarrier(bitTime);
+"93
+[e ( _sendCarrier (1 _bitTime ]
+[; ;tsop.c: 94: if ( data & 0x80000 )
+"94
+[e $ ! != & -> _data `l -> 524288 `l -> -> 0 `i `l 918  ]
+[; ;tsop.c: 95: {
+"95
+{
+[; ;tsop.c: 96: Delay10TCYx(3 * bitTime);
+"96
+[e ( _Delay10TCYx (1 -> * -> 3 `i _bitTime `uc ]
+"97
+}
+[; ;tsop.c: 97: }
+[e $U 919  ]
+"98
+[e :U 918 ]
+[; ;tsop.c: 98: else
+[; ;tsop.c: 99: {
+"99
+{
+[; ;tsop.c: 100: Delay10TCYx(bitTime);
+"100
+[e ( _Delay10TCYx (1 -> _bitTime `uc ]
+"101
+}
+[e :U 919 ]
+[; ;tsop.c: 101: }
+[; ;tsop.c: 102: data <<= 1;
+"102
+[e =<< _data -> 1 `i ]
+"103
+}
+"91
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 16 `i 915  ]
+[e :U 916 ]
+"103
+}
+[; ;tsop.c: 103: }
+[; ;tsop.c: 104: sendCarrier(bitTime);
+"104
+[e ( _sendCarrier (1 _bitTime ]
+[; ;tsop.c: 105: }
+"105
+[e :UE 914 ]
+}
+"108
+[v _sendCarrier `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;tsop.c: 107: void sendCarrier ( int time )
+[; ;tsop.c: 108: {
+[e :U _sendCarrier ]
+[v _time `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;tsop.c: 109: SetDCPWM2(0xA0);
+"109
+[e ( _SetDCPWM2 (1 -> -> 160 `i `ui ]
+[; ;tsop.c: 110: Delay10TCYx(time);
+"110
+[e ( _Delay10TCYx (1 -> _time `uc ]
+[; ;tsop.c: 111: SetDCPWM2(0x00);
+"111
+[e ( _SetDCPWM2 (1 -> -> 0 `i `ui ]
+[; ;tsop.c: 112: }
+"112
+[e :UE 920 ]
+}
+"115
 [v _tsopInterrupt `(v ~T0 @X0 1 ef ]
 {
-[; ;tsop.c: 76: void tsopInterrupt ( void )
-[; ;tsop.c: 77: {
+[; ;tsop.c: 114: void tsopInterrupt ( void )
+[; ;tsop.c: 115: {
 [e :U _tsopInterrupt ]
 [f ]
-[; ;tsop.c: 78: if ( INTCONbits.INT0IE && INTCONbits.INT0IF )
-"78
-[e $ ! && != -> . . _INTCONbits 0 4 `i -> -> -> 0 `i `Vuc `i != -> . . _INTCONbits 0 1 `i -> -> -> 0 `i `Vuc `i 918  ]
-[; ;tsop.c: 79: {
-"79
-{
-[; ;tsop.c: 80: LATCbits.LATC0 = !LATCbits.LATC0;
-"80
+[; ;tsop.c: 116: LATCbits.LATC0 = !LATCbits.LATC0;;
+"116
 [e = . . _LATCbits 0 0 -> -> ! != -> . . _LATCbits 0 0 `i -> -> -> 0 `i `Vuc `i `i `uc ]
-[; ;tsop.c: 81: if ( tsop.NewData )
-"81
-[e $ ! != -> . _tsop 4 `i -> -> -> 0 `i `Vuc `i 919  ]
-[; ;tsop.c: 82: {
-"82
+[; ;tsop.c: 117: if ( INTCONbits.INT0IE && INTCONbits.INT0IF )
+"117
+[e $ ! && != -> . . _INTCONbits 0 4 `i -> -> -> 0 `i `Vuc `i != -> . . _INTCONbits 0 1 `i -> -> -> 0 `i `Vuc `i 922  ]
+[; ;tsop.c: 118: {
+"118
 {
-[; ;tsop.c: 83: tsop.NewData = 0;
-"83
-[e = . _tsop 4 -> -> 0 `i `uc ]
-[; ;tsop.c: 84: T1CONbits.TMR1ON = 1;
-"84
-[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
-[; ;tsop.c: 85: WriteTimer1(0);
-"85
-[e ( _WriteTimer1 (1 -> -> 0 `i `ui ]
-[; ;tsop.c: 86: tsop.pos = 0;
-"86
-[e = . _tsop 1 -> -> 0 `i `uc ]
-[; ;tsop.c: 87: tsop.Buffer.Val = 0;
-"87
-[e = . . _tsop 0 0 -> -> -> 0 `i `l `ul ]
-"88
+[; ;tsop.c: 119: T0CONbits.T0CS = 0;
+"119
+[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+[; ;tsop.c: 121: timer = ReadTimer0();
+"121
+[e = _timer -> ( _ReadTimer0 ..  `uc ]
+[; ;tsop.c: 122: WriteTimer0(0);
+"122
+[e ( _WriteTimer0 (1 -> -> 0 `i `ui ]
+[; ;tsop.c: 124: printf("%3u|", timer);
+"124
+[e ( _printf , (. :s 1C -> _timer `i ]
+[; ;tsop.c: 127: if ( timer > 0 && timer <= 15 )
+"127
+[e $ ! && > -> _timer `i -> 0 `i <= -> _timer `i -> 15 `i 923  ]
+[; ;tsop.c: 128: {
+"128
+{
+[; ;tsop.c: 130: Buffer.Val &= (((unsigned long) 1 << pos++) ^ 0xFFFFFFFF);
+"130
+[e =& . _Buffer 0 ^ << -> -> 1 `i `ul ++ _pos -> -> 1 `i `uc -> -1 `ul ]
+"131
 }
-[; ;tsop.c: 88: }
-[e $U 920  ]
-"89
-[e :U 919 ]
-[; ;tsop.c: 89: else
-[; ;tsop.c: 90: {
-"90
-{
-[; ;tsop.c: 91: tsop.timer = ReadTimer1();
-"91
-[e = . _tsop 2 -> ( _ReadTimer1 ..  `uc ]
-[; ;tsop.c: 92: WriteTimer1(0);
-"92
-[e ( _WriteTimer1 (1 -> -> 0 `i `ui ]
-[; ;tsop.c: 96: if ( tsop.timer >= 10 && tsop.timer < 80 )
-"96
-[e $ ! && >= -> . _tsop 2 `i -> 10 `i < -> . _tsop 2 `i -> 80 `i 921  ]
-[; ;tsop.c: 97: tsop.Buffer.Val &= (((unsigned long) 1 << tsop.pos++) ^ 0xFFFFFFFF);
-"97
-[e =& . . _tsop 0 0 ^ << -> -> 1 `i `ul ++ . _tsop 1 -> -> 1 `i `uc -> -1 `ul ]
-[e $U 922  ]
-"98
-[e :U 921 ]
-[; ;tsop.c: 98: else if ( tsop.timer >= 80 && tsop.timer < 140 )
-[e $ ! && >= -> . _tsop 2 `i -> 80 `i < -> . _tsop 2 `i -> 140 `i 923  ]
-[; ;tsop.c: 99: tsop.Buffer.Val |= ((unsigned long) 1 << tsop.pos++);
-"99
-[e =| . . _tsop 0 0 << -> -> 1 `i `ul ++ . _tsop 1 -> -> 1 `i `uc ]
+[; ;tsop.c: 131: }
 [e $U 924  ]
-"100
+"132
 [e :U 923 ]
-[; ;tsop.c: 100: else if ( tsop.timer >= 140 )
-[e $ ! >= -> . _tsop 2 `i -> 140 `i 925  ]
-[; ;tsop.c: 101: tsop.pos = 0;
-"101
-[e = . _tsop 1 -> -> 0 `i `uc ]
-[e :U 925 ]
-"103
-[e :U 924 ]
-[e :U 922 ]
-[; ;tsop.c: 103: if ( tsop.pos >= 32 )
-[e $ ! >= -> . _tsop 1 `i -> 32 `i 926  ]
-[; ;tsop.c: 104: {
-"104
+[; ;tsop.c: 132: else if ( timer > 15 && timer <= 30 )
+[e $ ! && > -> _timer `i -> 15 `i <= -> _timer `i -> 30 `i 925  ]
+[; ;tsop.c: 133: {
+"133
 {
-[; ;tsop.c: 105: tsop.NewData = 1;
-"105
-[e = . _tsop 4 -> -> 1 `i `uc ]
-[; ;tsop.c: 106: tsop.Ready = 1;
-"106
-[e = . _tsop 3 -> -> 1 `i `uc ]
-[; ;tsop.c: 107: T1CONbits.TMR1ON = 0;
-"107
-[e = . . _T1CONbits 1 0 -> -> 0 `i `uc ]
-"111
+[; ;tsop.c: 135: Buffer.Val |= ((unsigned long) 1 << pos++);
+"135
+[e =| . _Buffer 0 << -> -> 1 `i `ul ++ _pos -> -> 1 `i `uc ]
+"136
+}
+[e :U 925 ]
+"138
+[e :U 924 ]
+[; ;tsop.c: 136: }
+[; ;tsop.c: 138: if ( pos >= 32 )
+[e $ ! >= -> _pos `i -> 32 `i 926  ]
+[; ;tsop.c: 139: {
+"139
+{
+[; ;tsop.c: 141: T0CONbits.T0CS = 1;
+"141
+[e = . . _T0CONbits 0 3 -> -> 1 `i `uc ]
+[; ;tsop.c: 142: pos = 0;
+"142
+[e = _pos -> -> 0 `i `uc ]
+[; ;tsop.c: 143: WriteTimer0(0);
+"143
+[e ( _WriteTimer0 (1 -> -> 0 `i `ui ]
+[; ;tsop.c: 146: printf("\r\n");
+"146
+[e ( _printf :s 2C ]
+"147
 }
 [e :U 926 ]
-"112
-}
-[e :U 920 ]
-[; ;tsop.c: 111: }
-[; ;tsop.c: 112: }
-[; ;tsop.c: 113: INTCONbits.INT0IF = 0;
-"113
+[; ;tsop.c: 147: }
+[; ;tsop.c: 149: INTCONbits.INT0IF = 0;
+"149
 [e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"114
+"150
 }
-[e :U 918 ]
-[; ;tsop.c: 114: }
-[; ;tsop.c: 115: }
-"115
-[e :UE 917 ]
+[e :U 922 ]
+[; ;tsop.c: 150: }
+[; ;tsop.c: 151: }
+"151
+[e :UE 921 ]
 }
+[p f _printf 8422400 ]
+[a 1C 37 51 117 124 0 ]
+[a 2C 13 10 0 ]

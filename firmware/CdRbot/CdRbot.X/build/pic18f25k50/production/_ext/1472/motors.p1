@@ -7,6 +7,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "118 /opt/microchip/xc8/v1.12/include/plib/timers.h
 [v _OpenTimer0 `(v ~T0 @X0 0 ef1`uc ]
+[s S843 :7 `uc 1 :1 `uc 1 ]
+[n S843 . . NOT_RBPU ]
+[s S844 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S844 . IOCIP . TMR0IP . INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+[s S845 :2 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
+[n S845 . . T0IP . RBPU ]
+[u S842 `S843 1 `S844 1 `S845 1 ]
+[n S842 . . . . ]
+"12934 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
+[v _INTCON2bits `VS842 ~T0 @X0 0 e@4081 ]
 [s S847 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S847 . IOCIF INT0IF TMR0IF IOCIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
 [s S848 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -19,7 +29,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S851 . . GIEL GIEH ]
 [u S846 `S847 1 `S848 1 `S849 1 `S850 1 `S851 1 ]
 [n S846 . . . . . . ]
-"13025 /opt/microchip/xc8/v1.12/include/pic18f25k50.h
+"13025
 [v _INTCONbits `VS846 ~T0 @X0 0 e@4082 ]
 [s S280 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S280 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
@@ -6617,6 +6627,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tsop.h: 24: void mInitTsop ( void );
 [; ;tsop.h: 25: void tsopInterrupt ( void );
 [; ;tsop.h: 26: char processSensor ( void );
+[; ;tsop.h: 27: void sendCarrier ( int time );
+[; ;tsop.h: 28: void sentIR ( int data );
 [; ;cdrbot.h: 91: void InitRobot ( void );
 [; ;cdrbot.h: 92: void moveRobot ( unsigned int direction );
 [; ;cdrbot.h: 93: void moveRobotSpeed ( unsigned int direction, unsigned int speed );
@@ -6696,128 +6708,131 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;motors.c: 29: 0b11111111);
 "29
 [e ( _OpenTimer0 (1 -> & & & -> 255 `i -> 191 `i -> 223 `i -> 255 `i `uc ]
-[; ;motors.c: 30: }
+[; ;motors.c: 30: INTCON2bits.TMR0IP = 0;
 "30
+[e = . . _INTCON2bits 1 2 -> -> 0 `i `uc ]
+[; ;motors.c: 31: }
+"31
 [e :UE 911 ]
 }
-"33
+"34
 [v _servoInterrupt `(v ~T0 @X0 1 ef ]
 {
-[; ;motors.c: 32: void servoInterrupt ( void )
-[; ;motors.c: 33: {
+[; ;motors.c: 33: void servoInterrupt ( void )
+[; ;motors.c: 34: {
 [e :U _servoInterrupt ]
 [f ]
-[; ;motors.c: 34: if ( INTCONbits.TMR0IF && INTCONbits.TMR0IE )
-"34
-[e $ ! && != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i != -> . . _INTCONbits 0 5 `i -> -> -> 0 `i `Vuc `i 913  ]
-[; ;motors.c: 35: {
+[; ;motors.c: 35: if ( INTCONbits.TMR0IF && INTCONbits.TMR0IE )
 "35
-{
-[; ;motors.c: 36: INTCONbits.TMR0IF = 0;
+[e $ ! && != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i != -> . . _INTCONbits 0 5 `i -> -> -> 0 `i `Vuc `i 913  ]
+[; ;motors.c: 36: {
 "36
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;motors.c: 37: if ( !Servo.Phase )
-"37
-[e $ ! ! != -> . _Servo 2 `i -> -> -> 0 `i `Vuc `i 914  ]
-[; ;motors.c: 38: {
-"38
 {
-[; ;motors.c: 39: if ( Servo_Idx == 0 && enableServo[0] ) LATBbits.LATB6 = 1;
+[; ;motors.c: 37: INTCONbits.TMR0IF = 0;
+"37
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;motors.c: 38: if ( !Servo.Phase )
+"38
+[e $ ! ! != -> . _Servo 2 `i -> -> -> 0 `i `Vuc `i 914  ]
+[; ;motors.c: 39: {
 "39
+{
+[; ;motors.c: 40: if ( Servo_Idx == 0 && enableServo[0] ) LATBbits.LATB6 = 1;
+"40
 [e $ ! && == -> _Servo_Idx `i -> 0 `i != *U + &U _enableServo * -> -> -> 0 `i `ui `ux -> -> # *U &U _enableServo `ui `ux -> -> 0 `i `ui 915  ]
 [e = . . _LATBbits 0 6 -> -> 1 `i `uc ]
 [e :U 915 ]
-[; ;motors.c: 40: if ( Servo_Idx == 1 && enableServo[1] ) LATBbits.LATB7 = 1;
-"40
+[; ;motors.c: 41: if ( Servo_Idx == 1 && enableServo[1] ) LATBbits.LATB7 = 1;
+"41
 [e $ ! && == -> _Servo_Idx `i -> 1 `i != *U + &U _enableServo * -> -> -> 1 `i `ui `ux -> -> # *U &U _enableServo `ui `ux -> -> 0 `i `ui 916  ]
 [e = . . _LATBbits 0 7 -> -> 1 `i `uc ]
 [e :U 916 ]
-[; ;motors.c: 41: Ticks4NextInterrupt = 65535 - Servo_PWM[Servo_Idx];
-"41
-[e = _Ticks4NextInterrupt -> - -> 65535 `l -> *U + &U _Servo_PWM * -> _Servo_Idx `ux -> -> # *U &U _Servo_PWM `ui `ux `l `ui ]
-[; ;motors.c: 42: WriteTimer0(Ticks4NextInterrupt);
+[; ;motors.c: 42: Ticks4NextInterrupt = 65535 - Servo_PWM[Servo_Idx];
 "42
-[e ( _WriteTimer0 (1 _Ticks4NextInterrupt ]
+[e = _Ticks4NextInterrupt -> - -> 65535 `l -> *U + &U _Servo_PWM * -> _Servo_Idx `ux -> -> # *U &U _Servo_PWM `ui `ux `l `ui ]
+[; ;motors.c: 43: WriteTimer0(Ticks4NextInterrupt);
 "43
-}
-[; ;motors.c: 43: }
-[e $U 917  ]
+[e ( _WriteTimer0 (1 _Ticks4NextInterrupt ]
 "44
-[e :U 914 ]
-[; ;motors.c: 44: else
-[; ;motors.c: 45: {
+}
+[; ;motors.c: 44: }
+[e $U 917  ]
 "45
-{
-[; ;motors.c: 46: if ( Servo_Idx == 0 && enableServo[0] ) LATBbits.LATB6 = 0;
+[e :U 914 ]
+[; ;motors.c: 45: else
+[; ;motors.c: 46: {
 "46
+{
+[; ;motors.c: 47: if ( Servo_Idx == 0 && enableServo[0] ) LATBbits.LATB6 = 0;
+"47
 [e $ ! && == -> _Servo_Idx `i -> 0 `i != *U + &U _enableServo * -> -> -> 0 `i `ui `ux -> -> # *U &U _enableServo `ui `ux -> -> 0 `i `ui 918  ]
 [e = . . _LATBbits 0 6 -> -> 0 `i `uc ]
 [e :U 918 ]
-[; ;motors.c: 47: if ( Servo_Idx == 1 && enableServo[1] ) LATBbits.LATB7 = 0;
-"47
+[; ;motors.c: 48: if ( Servo_Idx == 1 && enableServo[1] ) LATBbits.LATB7 = 0;
+"48
 [e $ ! && == -> _Servo_Idx `i -> 1 `i != *U + &U _enableServo * -> -> -> 1 `i `ui `ux -> -> # *U &U _enableServo `ui `ux -> -> 0 `i `ui 919  ]
 [e = . . _LATBbits 0 7 -> -> 0 `i `uc ]
 [e :U 919 ]
-[; ;motors.c: 48: Ticks4NextInterrupt = 65535 - 5000UL * (48000000UL/4000000UL) + Servo_PWM[Servo_Idx];
-"48
-[e = _Ticks4NextInterrupt -> + - -> -> 65535 `l `ul * -> 5000 `ul / -> 48000000 `ul -> 4000000 `ul -> *U + &U _Servo_PWM * -> _Servo_Idx `ux -> -> # *U &U _Servo_PWM `ui `ux `ul `ui ]
-[; ;motors.c: 49: WriteTimer0(Ticks4NextInterrupt);
+[; ;motors.c: 49: Ticks4NextInterrupt = 65535 - 5000UL * (48000000UL/4000000UL) + Servo_PWM[Servo_Idx];
 "49
-[e ( _WriteTimer0 (1 _Ticks4NextInterrupt ]
-[; ;motors.c: 50: if ( ++Servo_Idx > 3 ) Servo_Idx = 0;
+[e = _Ticks4NextInterrupt -> + - -> -> 65535 `l `ul * -> 5000 `ul / -> 48000000 `ul -> 4000000 `ul -> *U + &U _Servo_PWM * -> _Servo_Idx `ux -> -> # *U &U _Servo_PWM `ui `ux `ul `ui ]
+[; ;motors.c: 50: WriteTimer0(Ticks4NextInterrupt);
 "50
+[e ( _WriteTimer0 (1 _Ticks4NextInterrupt ]
+[; ;motors.c: 51: if ( ++Servo_Idx > 3 ) Servo_Idx = 0;
+"51
 [e $ ! > -> =+ _Servo_Idx -> -> 1 `i `uc `i -> 3 `i 920  ]
 [e = _Servo_Idx -> -> 0 `i `uc ]
 [e :U 920 ]
-"51
+"52
 }
 [e :U 917 ]
-[; ;motors.c: 51: }
-[; ;motors.c: 52: Servo.Phase = !Servo.Phase;
-"52
-[e = . _Servo 2 -> -> ! != -> . _Servo 2 `i -> -> -> 0 `i `Vuc `i `i `uc ]
+[; ;motors.c: 52: }
+[; ;motors.c: 53: Servo.Phase = !Servo.Phase;
 "53
+[e = . _Servo 2 -> -> ! != -> . _Servo 2 `i -> -> -> 0 `i `Vuc `i `i `uc ]
+"54
 }
 [e :U 913 ]
-[; ;motors.c: 53: }
 [; ;motors.c: 54: }
-"54
+[; ;motors.c: 55: }
+"55
 [e :UE 912 ]
 }
-"57
+"58
 [v _setServoSpeed `(v ~T0 @X0 1 ef2`ui`i ]
 {
-[; ;motors.c: 56: void setServoSpeed ( unsigned int servoID, int speed )
-[; ;motors.c: 57: {
+[; ;motors.c: 57: void setServoSpeed ( unsigned int servoID, int speed )
+[; ;motors.c: 58: {
 [e :U _setServoSpeed ]
 [v _servoID `ui ~T0 @X0 1 r1 ]
 [v _speed `i ~T0 @X0 1 r2 ]
 [f ]
-[; ;motors.c: 58: if ( speed > 255 )
-"58
-[e $ ! > _speed -> 255 `i 922  ]
-[; ;motors.c: 59: speed = 255;
+[; ;motors.c: 59: if ( speed > 255 )
 "59
+[e $ ! > _speed -> 255 `i 922  ]
+[; ;motors.c: 60: speed = 255;
+"60
 [e = _speed -> 255 `i ]
 [e :U 922 ]
-[; ;motors.c: 61: Servo_PWM[servoID] = zeroServo[servoID] + (speed * 38);
-"61
+[; ;motors.c: 62: Servo_PWM[servoID] = zeroServo[servoID] + (speed * 38);
+"62
 [e = *U + &U _Servo_PWM * -> _servoID `ux -> -> # *U &U _Servo_PWM `ui `ux + *U + &U _zeroServo * -> _servoID `ux -> -> # *U &U _zeroServo `ui `ux -> * _speed -> 38 `i `ui ]
-[; ;motors.c: 63: if ( !speed )
-"63
-[e $ ! ! != _speed -> 0 `i 923  ]
-[; ;motors.c: 64: enableServo[servoID] = 0;
+[; ;motors.c: 64: if ( !speed )
 "64
+[e $ ! ! != _speed -> 0 `i 923  ]
+[; ;motors.c: 65: enableServo[servoID] = 0;
+"65
 [e = *U + &U _enableServo * -> _servoID `ux -> -> # *U &U _enableServo `ui `ux -> -> 0 `i `ui ]
 [e $U 924  ]
-"65
-[e :U 923 ]
-[; ;motors.c: 65: else
-[; ;motors.c: 66: enableServo[servoID] = 1;
 "66
+[e :U 923 ]
+[; ;motors.c: 66: else
+[; ;motors.c: 67: enableServo[servoID] = 1;
+"67
 [e = *U + &U _enableServo * -> _servoID `ux -> -> # *U &U _enableServo `ui `ux -> -> 1 `i `ui ]
 [e :U 924 ]
-[; ;motors.c: 67: }
-"67
+[; ;motors.c: 68: }
+"68
 [e :UE 921 ]
 }

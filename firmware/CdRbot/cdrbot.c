@@ -50,11 +50,11 @@ void InitRobot ( void )
 	initClockCDRBot();
 	mInitLED();
 	mInitSwitchPrg();
-	mInitMotors();
+//	mInitMotors();
 	mInitTsop();
 	mInitSerialPort();
 
-	RCONbits.IPEN = 0; // Interruption Priority Disabled
+	RCONbits.IPEN = 1; // Interruption Priority Enabled
 	INTCONbits.PEIE = 1; // Peripherial Interrupt Enabled
 	INTCONbits.GIE = 1; // Global Interrupt Enable
 }

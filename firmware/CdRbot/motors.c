@@ -22,11 +22,12 @@ unsigned int enableServo[2] = { 0, 0 };
 void mInitMotors ( void )
 {
 	mInitServos();
-	
+
 	OpenTimer0(TIMER_INT_ON &
 		T0_16BIT &
 		T0_SOURCE_INT &
 		T0_PS_1_1);
+	INTCON2bits.TMR0IP = 0;
 }
 
 void servoInterrupt ( void )

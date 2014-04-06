@@ -11,40 +11,57 @@
 /** P R I V A T E  P R O T O T Y P E S ***************************************/
 
 /** D E C L A R A T I O N S **************************************************/
-void main ( void )
-{
-	//	char i = 4;
-	//	int prueba[5] = { FORWARD, REVERSE, LEFT, RIGHT, HALT };
-	int cont[16] = { HALT, HALT, HALT, HALT,
-		HALT, FORWARD, HALT, HALT,
-		LEFT, HALT, RIGHT, HALT,
-		HALT, REVERSE, HALT, HALT };
+void main(void) {
+    InitRobot();
 
-	char sensors = 0;
+    for (;;) {
+        UINT32_VAL sensors;
+        sensors.Val = 0;
+        //        char command;
+        //
+        //        sensors = processSensor();
+        //        if (sensors) {
+        //            switch (sensors) {
+        //            case 24:
+        //                command = FORWARD;
+        //                break;
+        //            case 82:
+        //                command = REVERSE;
+        //                break;
+        //            case 90:
+        //                command = RIGHT;
+        //                break;
+        //            case 8:
+        //                command = LEFT;
+        //                break;
+        //            case 28:
+        //                command = HALT;
+        //                break;
+        //            default:
+        //                command = HALT;
+        //                break;
+        //            }
+        //            putch(command);
+        //            moveRobot(command);
+        //        }
 
-	InitRobot();
 
-	for (;; )
-	{
-		sensors = processSensor();
-		if ( sensors )
-		{
-			printf("%u\r\n", sensors);
-			moveRobot(cont[sensors]);
-		}
+        sendIR(0xE718FF00);
+        sensors = processSensor();
+        printf("0x%X\r\n",sensors.word.HW);
+        Delay10KTCYx(200);
+        //__delay_ms(5);
 
-		//		if ( !swPrg ) if ( ++i > 4 ) i = 0;
-		//moveRobot(prueba[i]);
-		//		mLED_1_Toggle();
-		//		Delay10KTCYx(200);
-		//		Delay10KTCYx(200);
-		//		Delay10KTCYx(200);
-	}
+        //        mLED_1_Toggle();
+        //        Delay10KTCYx(200);
+        //        Delay10KTCYx(200);
+        //        Delay10KTCYx(200);
+    }
 }
 
-void interrupt ISR ( void )
-{
-	tsopInterrupt();
-//	serialInterrupt();
-//	servoInterrupt();
+void interrupt ISR(void) {
+    micros_interrupt();
+    tsopInterrupt();
+    //	serialInterrupt();
+    servoInterrupt();
 }

@@ -10,6 +10,7 @@
 
 /** I N C L U D E S **********************************************************/
 #include <xc.h>
+#include <delays.h>
 #include "cdrbot.h"
 #include "io_cfg.h"
 
@@ -20,12 +21,17 @@
 
 #define PWM_PERIOD	( F_OSC / (4 * PRES_TMR2 * IR_FREQ) ) - 1
 
+#define LOW_TIME 5000
+#define HIGH_TIME 10000
+
 /** P U B L I C  P R O T O T Y P E S *****************************************/
 void mInitTsop ( void );
 void tsopInterrupt ( void );
-char processSensor ( void );
-void sendCarrier ( int time );
-void sentIR ( int data );
+UINT32_VAL processSensor ( void );
+void sendCarrier ( unsigned int time );
+void sendIR ( unsigned long data );
+char is_tsop_receiving ( void );
+void micros_interrupt(void);
 
 #endif	/* TSOP_H */
 

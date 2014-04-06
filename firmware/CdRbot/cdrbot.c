@@ -50,7 +50,7 @@ void InitRobot ( void )
 	initClockCDRBot();
 	mInitLED();
 	mInitSwitchPrg();
-//	mInitMotors();
+	mInitMotors();
 	mInitTsop();
 	mInitSerialPort();
 

@@ -21,7 +21,7 @@
 #define mLED_1			LATCbits.LATC0
 #define mLED_1_On()		mLED_1 = 1;
 #define mLED_1_Off()		mLED_1 = 0;
-#define mLED_1_Toggle()		mLED_1 = !mLED_1;
+#define mLED_1_Toggle()		mLED_1 ^= 1;
 
 /** S W I T C H **************************************************************/
 #define mInitSwitchPrg()	TRISBbits.TRISB4 = 1; ANSELBbits.ANSB4 = 0;
